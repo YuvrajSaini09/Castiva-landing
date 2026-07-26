@@ -74,6 +74,19 @@
       background: linear-gradient(135deg, #B54CFF 0%, #8D1AFF 100%);
       box-shadow: 0 6px 20px rgba(168, 51, 255, 0.5);
     }
+
+    /* Scrolling Banner Styles */
+    /* Scrolling Banner Styles */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
   </style>
 </head>
 <body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
@@ -139,6 +152,17 @@
       <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-lg">Have questions? Reach out to our support or business partnership divisions.</p>
     </div>
   </section>
+
+  <!-- Infinite Auto Scrolling Banner Strip -->
+<div class="w-full bg-[#A128FF] py-6 overflow-hidden relative z-10 select-none">
+  <div class="animate-marquee whitespace-nowrap flex items-center">
+    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-6 inline-flex items-center gap-6">India's Leading <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Talent Discovery</span> & <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Casting</span> Platform <img src="star-icon.png" class="w-12 h-12 sm:w-16 sm:h-16 inline-block ml-4" alt="*"></span>
+    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-6 inline-flex items-center gap-6">India's Leading <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Talent Discovery</span> & <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Casting</span> Platform <img src="star-icon.png" class="w-12 h-12 sm:w-16 sm:h-16 inline-block ml-4" alt="*"></span>
+    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-6 inline-flex items-center gap-6">India's Leading <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Talent Discovery</span> & <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Casting</span> Platform <img src="star-icon.png" class="w-12 h-12 sm:w-16 sm:h-16 inline-block ml-4" alt="*"></span>
+    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-6 inline-flex items-center gap-6">India's Leading <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Talent Discovery</span> & <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Casting</span> Platform <img src="star-icon.png" class="w-12 h-12 sm:w-16 sm:h-16 inline-block ml-4" alt="*"></span>
+  </div>
+</div>
+
 
   <!-- Contact Form & Info Grid -->
   <section class="py-20 px-6 max-w-6xl mx-auto">
@@ -280,6 +304,12 @@
   const l=t=>{hv+=(hvT-hv)*.1;gl.useProgram(prg);gl.uniform2f(rL,c.width,c.height);gl.uniform1f(tL,t*.001);gl.uniform2f(pL,pt.x,pt.y);gl.uniform1f(hL,hv);gl.drawArrays(gl.TRIANGLES,0,6);requestAnimationFrame(l);};
   requestAnimationFrame(l);
 })();
+
+  </script>
+
+  <!-- Scrolling Banner Script -->
+  <script>
+    // Scrolling Banner Logic
 
   </script>
 </body>
