@@ -106,7 +106,7 @@
 }
 
 
-    /* Audience Explorer Styles */
+    /* Audience Styles */
     /* Audience Tab Custom Overrides to match Legal Pages exactly */
 #audience-section .bento-tab-container {
   width: 320px;
@@ -134,7 +134,7 @@
   height: 42px;
   border-radius: 22px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 300;
   cursor: pointer;
   border: none;
   background: transparent;
@@ -166,6 +166,13 @@
   transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), 
               width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   box-sizing: border-box;
+}
+
+
+    /* Why Choose Us Styles */
+    /* Why Choose Us Section */
+.why-choose-us-section {
+  border-top: 1px solid #f1f5f9;
 }
 
 
@@ -247,57 +254,262 @@
   animation-play-state: paused;
 }
 
+
+    /* Partners Styles */
+    /* Partners Section Marquees */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 35s linear infinite;
+}
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 35s linear infinite;
+}
+.animate-marquee-left:hover, .animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+.partners-panel {
+  transition: opacity 0.4s ease;
+}
+
+
+    /* Refer & Earn Styles */
+    /* Refer & Earn Section */
+#refer-earn-section {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+.refer-earn-card {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fafafa;
+  border-radius: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 60px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.03);
+}
+
+.refer-earn-content {
+  flex: 1;
+  max-width: 520px;
+  z-index: 2;
+}
+
+.refer-earn-content h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #111827;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+.refer-earn-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #6b7280;
+  margin-bottom: 32px;
+  max-width: 460px;
+}
+
+.refer-earn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 60px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+}
+
+.refer-earn-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(161, 40, 255, 0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.refer-earn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(17, 24, 39, 0.25);
+}
+
+.refer-earn-cta:hover::before {
+  opacity: 1;
+}
+
+.refer-earn-cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.refer-earn-cta:hover .refer-earn-cta-arrow {
+  transform: translateY(2px);
+}
+
+/* Phone mockup area aligned to right corner of div */
+.refer-earn-visual {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-right: -64px;
+  margin-bottom: -64px;
+  min-height: 480px;
+  z-index: 2;
+}
+
+.refer-earn-phone {
+  position: relative;
+  z-index: 3;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  border-radius: 20px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.08));
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .refer-earn-card {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 48px 32px !important;
+    gap: 48px !important;
+  }
+
+  .refer-earn-content {
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .refer-earn-content p {
+    max-width: 100% !important;
+  }
+
+  .refer-earn-visual {
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 400px !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #refer-earn-section {
+    padding: 48px 0;
+  }
+
+  .refer-earn-card {
+    padding: 36px 20px !important;
+    border-radius: 24px !important;
+    margin: 0 12px;
+  }
+
+  .refer-earn-content h2 {
+    font-size: 2rem !important;
+  }
+
+  .refer-earn-content p {
+    font-size: 0.9rem !important;
+  }
+
+  .refer-earn-phone {
+    max-height: 380px !important;
+  }
+}
+
   </style>
 </head>
 <body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
 
   <!-- Component Layout Shell -->
   <header class="pt-6 px-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <nav class="max-w-4xl mx-auto bg-white/90 backdrop-blur-md rounded-full px-6 py-2.5 shadow-sm border border-slate-200/80 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="index.html" class="flex items-center gap-2 group">
-      <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white font-extrabold text-xl shadow-md group-hover:scale-105 transition-transform">
-        <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity="0.3"/>
-          <path d="M12 5c-3.87 0-7 3.13-7 7s3.13 7 7 7c2.38 0 4.5-1.19 5.77-3.01l-2.1-1.39C14.83 15.65 13.51 16.5 12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5c1.51 0 2.83.85 3.67 2.1l2.1-1.39C16.5 6.19 14.38 5 12 5z"/>
-        </svg>
-      </div>
-      <span class="font-extrabold text-xl tracking-tight text-slate-900">Castiva</span>
-    </a>
-
-    <!-- Menu Items -->
-    <div class="hidden md:flex items-center gap-8 font-semibold text-slate-700 text-sm">
-      <a href="index.html" class="hover:text-purple-600 transition-colors">Home</a>
-      <a href="about.html" class="hover:text-purple-600 transition-colors">About</a>
-      <a href="contact.html" class="hover:text-purple-600 transition-colors">Contact</a>
-      <a href="team.html" class="hover:text-purple-600 transition-colors">Team</a>
-      <a href="index.html#testimonials-component" class="hover:text-purple-600 transition-colors">Blog</a>
-    </div>
-
-    <!-- Action Button -->
-    <div class="relative">
-      <a href="https://castiva.in" target="_blank" class="block rounded-full">
-        <button class="group overflow-hidden transition-all duration-700 ease-out hover:scale-[1.03] border-none flex cursor-pointer w-[130px] h-[44px] z-10 rounded-full relative items-center justify-center" style="filter: drop-shadow(0 8px 16px rgba(161,40,255,0.2)); background: #f8fafc">
-          <!-- Volumetric Under-glow (Purple Theme) -->
-          <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[140%] h-32 bg-purple-500/30 blur-[60px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-          
-          <!-- WebGL Core Container -->
-          <div class="absolute inset-[2px] rounded-full overflow-hidden bg-white/5 backdrop-blur-xl border border-white/40 shadow-[inset_0_2px_12px_rgba(255,255,255,0.7)]">
-            <canvas class="w-full h-full block" id="gl-aura-header" width="260" height="88"></canvas>
-          </div>
-
-          <!-- Glossy Glass Shell -->
-          <div class="absolute inset-[2px] rounded-full overflow-hidden pointer-events-none">
-             <div class="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-white/10 opacity-70"></div>
-             <div class="absolute inset-0 rounded-full border border-white/90 shadow-[inset_0_4px_8px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.15)]"></div>
-          </div>
-
-          <!-- Content Layer -->
-          <div class="z-10 flex text-white px-3 relative drop-shadow-md items-center justify-center">
-            <span class="text-sm font-medium tracking-tight whitespace-nowrap">Login</span>
-          </div>
-        </button>
+  <nav class="max-w-4xl mx-auto relative p-[1px] rounded-full overflow-hidden bg-slate-200/40 shadow-sm">
+    <!-- Infinite Revolving Purple Beam -->
+    <div class="border-beam-bg"></div>
+    
+    <!-- Navigation Inner Content Wrapper -->
+    <div class="w-full relative z-10 bg-white/95 backdrop-blur-md rounded-full px-6 py-2.5 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white font-extrabold text-xl shadow-md group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity="0.3"/>
+            <path d="M12 5c-3.87 0-7 3.13-7 7s3.13 7 7 7c2.38 0 4.5-1.19 5.77-3.01l-2.1-1.39C14.83 15.65 13.51 16.5 12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5c1.51 0 2.83.85 3.67 2.1l2.1-1.39C16.5 6.19 14.38 5 12 5z"/>
+          </svg>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-slate-900">Castiva</span>
       </a>
+
+      <!-- Menu Items -->
+      <div class="hidden md:flex items-center gap-8 font-semibold text-slate-700 text-sm">
+        <a href="index.html" class="hover:text-purple-600 transition-colors">Home</a>
+        <a href="about.html" class="hover:text-purple-600 transition-colors">About</a>
+        <a href="contact.html" class="hover:text-purple-600 transition-colors">Contact</a>
+        <a href="team.html" class="hover:text-purple-600 transition-colors">Team</a>
+        <a href="index.html#testimonials-component" class="hover:text-purple-600 transition-colors">Blog</a>
+      </div>
+
+      <!-- Action Button -->
+      <div class="relative">
+        <a href="https://castiva.in" target="_blank" class="block rounded-full">
+          <button class="group overflow-hidden transition-all duration-700 ease-out hover:scale-[1.03] border-none flex cursor-pointer w-[130px] h-[44px] z-10 rounded-full relative items-center justify-center" style="filter: drop-shadow(0 8px 16px rgba(161,40,255,0.2)); background: #f8fafc">
+            <!-- Volumetric Under-glow (Purple Theme) -->
+            <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[140%] h-32 bg-purple-500/30 blur-[60px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+            
+            <!-- WebGL Core Container -->
+            <div class="absolute inset-[2px] rounded-full overflow-hidden bg-white/5 backdrop-blur-xl border border-white/40 shadow-[inset_0_2px_12px_rgba(255,255,255,0.7)]">
+              <canvas class="w-full h-full block" id="gl-aura-header" width="260" height="88"></canvas>
+            </div>
+
+            <!-- Glossy Glass Shell -->
+            <div class="absolute inset-[2px] rounded-full overflow-hidden pointer-events-none">
+               <div class="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-white/10 opacity-70"></div>
+               <div class="absolute inset-0 rounded-full border border-white/90 shadow-[inset_0_4px_8px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.15)]"></div>
+            </div>
+
+            <!-- Content Layer -->
+            <div class="z-10 flex text-white px-3 relative drop-shadow-md items-center justify-center">
+              <span class="text-sm font-medium tracking-tight whitespace-nowrap">Login</span>
+            </div>
+          </button>
+        </a>
+      </div>
     </div>
   </nav>
 </header>
@@ -523,6 +735,1226 @@
   </div>
 </section>
 
+      <!-- Our Exclusive Partners Section -->
+  <section id="partners-section" class="relative overflow-hidden py-20 bg-white w-full">
+    <div class="max-w-[1400px] mx-auto px-6 mb-12 text-center">
+      <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
+        Our <span class="font-serif italic font-normal text-castiva-purple text-[1.15em] scribble-underline inline-block">Exclusive</span> Partners
+      </h2>
+    </div>
+
+    <!-- sliding tab track -->
+    <div class="flex justify-center mb-12">
+      <div class="bento-tab-container" style="width: 580px; max-width: 90%;">
+        <div class="bento-tab-indicator" id="partners-tab-indicator" style="transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);"></div>
+        <button class="bento-tab active" data-tab="actors" onclick="switchPartners('actors', this)">Actors</button>
+        <button class="bento-tab" data-tab="recruiters" onclick="switchPartners('recruiters', this)">Recruiters</button>
+        <button class="bento-tab" data-tab="celebrities" onclick="switchPartners('celebrities', this)">Celebrities</button>
+        <button class="bento-tab" data-tab="influencers" onclick="switchPartners('influencers', this)">Influencers</button>
+      </div>
+    </div>
+
+    <!-- Actors Panel -->
+    <div id="partners-actors-panel" class="partners-panel space-y-6 transition-all duration-500 opacity-100 block">
+      <!-- Row 1: Left -->
+      <div class="w-full overflow-hidden select-none relative z-10">
+        <div class="animate-marquee-left whitespace-nowrap flex gap-6">
+          <!-- First set of 8 cards -->
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Karthika Nair" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Karthika Nair</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Model & Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Junaid Khan" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Junaid Khan</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor & Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Divya Pillai" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Divya Pillai</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Chennai, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80" alt="Vamsi Vutukuru" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vamsi Vutukuru</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Hyderabad, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80" alt="Alia Bhatt" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Alia Bhatt</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80" alt="Dinesh Narsapuram" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Dinesh Narsapuram</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Praneeth Karikadu" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Praneeth Karikadu</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kochi, India</p>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop&q=80" alt="Sanya Mehta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sanya Mehta</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fashion Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Pune, India</p>
+            </div>
+          </div>
+
+          <!-- Duplicate set of 8 cards for seamless loop -->
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Karthika Nair" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Karthika Nair</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Model & Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Junaid Khan" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Junaid Khan</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor & Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Divya Pillai" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Divya Pillai</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Chennai, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80" alt="Vamsi Vutukuru" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vamsi Vutukuru</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Hyderabad, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80" alt="Alia Bhatt" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Alia Bhatt</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80" alt="Dinesh Narsapuram" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Dinesh Narsapuram</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Praneeth Karikadu" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Praneeth Karikadu</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kochi, India</p>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop&q=80" alt="Sanya Mehta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sanya Mehta</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fashion Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Pune, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Right -->
+      <div class="w-full overflow-hidden select-none relative z-10">
+        <div class="animate-marquee-right whitespace-nowrap flex gap-6">
+          <!-- First set of 8 cards (reversed order) -->
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop&q=80" alt="Sanya Mehta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sanya Mehta</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fashion Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Pune, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Praneeth Karikadu" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Praneeth Karikadu</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kochi, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80" alt="Dinesh Narsapuram" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Dinesh Narsapuram</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80" alt="Alia Bhatt" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Alia Bhatt</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80" alt="Vamsi Vutukuru" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vamsi Vutukuru</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Hyderabad, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Divya Pillai" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Divya Pillai</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Chennai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Junaid Khan" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Junaid Khan</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor & Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Karthika Nair" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Karthika Nair</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Model & Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+
+          <!-- Duplicate set of 8 cards for seamless loop -->
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop&q=80" alt="Sanya Mehta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sanya Mehta</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fashion Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Pune, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Praneeth Karikadu" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Praneeth Karikadu</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kochi, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80" alt="Dinesh Narsapuram" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Dinesh Narsapuram</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80" alt="Alia Bhatt" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Alia Bhatt</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80" alt="Vamsi Vutukuru" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vamsi Vutukuru</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Hyderabad, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Divya Pillai" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Divya Pillai</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Chennai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Junaid Khan" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Junaid Khan</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor & Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Karthika Nair" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Karthika Nair</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Model & Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recruiters Panel -->
+    <div id="partners-recruiters-panel" class="partners-panel space-y-6 transition-all duration-500 opacity-0 hidden">
+      <!-- Row 1: Left -->
+      <div class="w-full overflow-hidden select-none relative z-10">
+        <div class="animate-marquee-left whitespace-nowrap flex gap-6">
+          <!-- First set of 8 cards -->
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80" alt="Rohan Gupta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rohan Gupta</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Casting Director</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80" alt="Sneha Kapoor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/gb.svg" alt="UK" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sneha Kapoor</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Producer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">London, UK</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80" alt="Vikram Sen" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vikram Sen</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Filmmaker</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kolkata, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80" alt="Anita Desai" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Anita Desai</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Agency Head</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80" alt="Michael Smith" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/us.svg" alt="US" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Michael Smith</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Casting Lead</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Los Angeles, USA</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Priya Sharma" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Priya Sharma</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Media Head</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Devendra Pal" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Devendra Pal</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Line Producer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=400&auto=format&fit=crop&q=80" alt="Sarah Connor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/au.svg" alt="Australia" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sarah Connor</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Talent Agent</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Sydney, Australia</p>
+            </div>
+          </div>
+
+          <!-- Duplicate set of 8 cards for seamless loop -->
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80" alt="Rohan Gupta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rohan Gupta</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Casting Director</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80" alt="Sneha Kapoor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/gb.svg" alt="UK" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sneha Kapoor</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Producer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">London, UK</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80" alt="Vikram Sen" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vikram Sen</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Filmmaker</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kolkata, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80" alt="Anita Desai" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Anita Desai</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Agency Head</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80" alt="Michael Smith" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/us.svg" alt="US" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Michael Smith</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Casting Lead</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Los Angeles, USA</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Priya Sharma" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Priya Sharma</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Media Head</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Devendra Pal" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Devendra Pal</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Line Producer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=400&auto=format&fit=crop&q=80" alt="Sarah Connor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/au.svg" alt="Australia" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sarah Connor</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Talent Agent</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Sydney, Australia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Right -->
+      <div class="w-full overflow-hidden select-none relative z-10">
+        <div class="animate-marquee-right whitespace-nowrap flex gap-6">
+          <!-- First set of 8 cards (reversed order) -->
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=400&auto=format&fit=crop&q=80" alt="Sarah Connor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/au.svg" alt="Australia" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sarah Connor</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Talent Agent</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Sydney, Australia</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Devendra Pal" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Devendra Pal</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Line Producer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Priya Sharma" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Priya Sharma</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Media Head</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80" alt="Michael Smith" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/us.svg" alt="US" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Michael Smith</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Casting Lead</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Los Angeles, USA</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80" alt="Anita Desai" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Anita Desai</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Agency Head</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80" alt="Vikram Sen" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vikram Sen</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Filmmaker</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kolkata, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80" alt="Sneha Kapoor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/gb.svg" alt="UK" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sneha Kapoor</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Producer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">London, UK</p>
+            </div>
+          </div>
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80" alt="Rohan Gupta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rohan Gupta</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Casting Director</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+
+          <!-- Duplicate set of 8 cards for seamless loop -->
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=400&auto=format&fit=crop&q=80" alt="Sarah Connor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/au.svg" alt="Australia" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sarah Connor</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Talent Agent</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Sydney, Australia</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Devendra Pal" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Devendra Pal</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Line Producer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Priya Sharma" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Priya Sharma</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Media Head</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80" alt="Michael Smith" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/us.svg" alt="US" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Michael Smith</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Casting Lead</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Los Angeles, USA</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80" alt="Anita Desai" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Anita Desai</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Agency Head</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80" alt="Vikram Sen" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vikram Sen</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Filmmaker</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kolkata, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80" alt="Sneha Kapoor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/gb.svg" alt="UK" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sneha Kapoor</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Producer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">London, UK</p>
+            </div>
+          </div>
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80" alt="Rohan Gupta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rohan Gupta</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Casting Director</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Celebrities Panel -->
+    <div id="partners-celebrities-panel" class="partners-panel space-y-6 transition-all duration-500 opacity-0 hidden">
+      <!-- Row 1: Left -->
+      <div class="w-full overflow-hidden select-none relative z-10">
+        <div class="animate-marquee-left whitespace-nowrap flex gap-6">
+          <!-- First set of 8 cards -->
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80" alt="Kabir Malhotra" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Kabir Malhotra</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Ananya Rao" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Ananya Rao</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Hyderabad, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80" alt="Rajveer Singh" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rajveer Singh</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Superstar</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Tara Sutaria" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Tara Sutaria</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Pop Icon</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop&q=80" alt="Kiara Advani" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Kiara Advani</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Vicky Kaushal" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vicky Kaushal</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Ranveer Roy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Ranveer Roy</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kolkata, India</p>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Deepika Padukone" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Deepika Padukone</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+
+          <!-- Duplicate set of 8 cards for seamless loop -->
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80" alt="Kabir Malhotra" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Kabir Malhotra</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Ananya Rao" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Ananya Rao</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Hyderabad, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80" alt="Rajveer Singh" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rajveer Singh</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Superstar</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Tara Sutaria" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Tara Sutaria</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Pop Icon</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop&q=80" alt="Kiara Advani" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Kiara Advani</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Vicky Kaushal" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vicky Kaushal</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Ranveer Roy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Ranveer Roy</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kolkata, India</p>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Deepika Padukone" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Deepika Padukone</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Right -->
+      <div class="w-full overflow-hidden select-none relative z-10">
+        <div class="animate-marquee-right whitespace-nowrap flex gap-6">
+          <!-- First set of 8 cards (reversed order) -->
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Deepika Padukone" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Deepika Padukone</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="Ranveer Roy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Ranveer Roy</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Model</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Kolkata, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Vicky Kaushal" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Vicky Kaushal</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop&q=80" alt="Kiara Advani" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Kiara Advani</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Tara Sutaria" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Tara Sutaria</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Pop Icon</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80" alt="Rajveer Singh" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rajveer Singh</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Superstar</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Ananya Rao" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Ananya Rao</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actress</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Hyderabad, India</p>
+            </div>
+          </div>
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80" alt="Kabir Malhotra" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Kabir Malhotra</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Actor</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Influencers Panel -->
+    <div id="partners-influencers-panel" class="partners-panel space-y-6 transition-all duration-500 opacity-0 hidden">
+      <!-- Row 1: Left -->
+      <div class="w-full overflow-hidden select-none relative z-10">
+        <div class="animate-marquee-left whitespace-nowrap flex gap-6">
+          <!-- First set of 8 cards -->
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop&q=80" alt="Rohan Bakshi" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rohan Bakshi</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Travel Vlogger</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&auto=format&fit=crop&q=80" alt="Kiara Sen" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Kiara Sen</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Beauty Creator</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=400&auto=format&fit=crop&q=80" alt="Armaan Malik" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Armaan Malik</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Singer & Influencer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Sneha Paul" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sneha Paul</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Tech Reviewer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Bangalore, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500048993953-d23a436266cf?w=400&auto=format&fit=crop&q=80" alt="John Doe" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/us.svg" alt="US" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">John Doe</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fitness Coach</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">New York, USA</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&auto=format&fit=crop&q=80" alt="Megha Rao" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Megha Rao</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fashionista</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&auto=format&fit=crop&q=80" alt="Tanmay Bhat" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Tanmay Bhat</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Comedy Creator</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Lisa Ray" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/ca.svg" alt="Canada" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Lisa Ray</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Lifestyle Vlogger</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Toronto, Canada</p>
+            </div>
+          </div>
+
+          <!-- Duplicate set of 8 cards for seamless loop -->
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop&q=80" alt="Rohan Bakshi" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rohan Bakshi</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Travel Vlogger</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&auto=format&fit=crop&q=80" alt="Kiara Sen" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Kiara Sen</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Beauty Creator</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=400&auto=format&fit=crop&q=80" alt="Armaan Malik" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Armaan Malik</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Singer & Influencer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Sneha Paul" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sneha Paul</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Tech Reviewer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Bangalore, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500048993953-d23a436266cf?w=400&auto=format&fit=crop&q=80" alt="John Doe" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/us.svg" alt="US" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">John Doe</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fitness Coach</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">New York, USA</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&auto=format&fit=crop&q=80" alt="Megha Rao" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Megha Rao</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fashionista</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&auto=format&fit=crop&q=80" alt="Tanmay Bhat" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Tanmay Bhat</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Comedy Creator</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Lisa Ray" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/ca.svg" alt="Canada" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Lisa Ray</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Lifestyle Vlogger</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Toronto, Canada</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Right -->
+      <div class="w-full overflow-hidden select-none relative z-10">
+        <div class="animate-marquee-right whitespace-nowrap flex gap-6">
+          <!-- First set of 8 cards (reversed order) -->
+          <!-- Card 8 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80" alt="Lisa Ray" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/ca.svg" alt="Canada" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Lisa Ray</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Lifestyle Vlogger</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Toronto, Canada</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&auto=format&fit=crop&q=80" alt="Tanmay Bhat" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Tanmay Bhat</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Comedy Creator</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&auto=format&fit=crop&q=80" alt="Megha Rao" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Megha Rao</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fashionista</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1500048993953-d23a436266cf?w=400&auto=format&fit=crop&q=80" alt="John Doe" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/us.svg" alt="US" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">John Doe</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Fitness Coach</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">New York, USA</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" alt="Sneha Paul" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Sneha Paul</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Tech Reviewer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Bangalore, India</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=400&auto=format&fit=crop&q=80" alt="Armaan Malik" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Armaan Malik</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Singer & Influencer</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&auto=format&fit=crop&q=80" alt="Kiara Sen" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Kiara Sen</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Beauty Creator</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Mumbai, India</p>
+            </div>
+          </div>
+          <!-- Card 1 -->
+          <div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
+            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop&q=80" alt="Rohan Bakshi" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <img src="https://flagcdn.com/in.svg" alt="India" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
+              <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">Rohan Bakshi</h4>
+              <p class="text-xs text-purple-300 font-medium mt-1 font-sans">Travel Vlogger</p>
+              <p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">Delhi, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
     <!-- Bento Section 1: Challenges We Solve For Talents -->
 <section class="py-20 px-6 max-w-7xl mx-auto bg-white">
   <div class="text-center mb-12">
@@ -714,7 +2146,7 @@
   </div>
 
   <!-- Role Toggle Selector (Reused Purple Sliding Tab Track) -->
-  <div class="flex justify-center mb-12">
+  <div class="flex justify-center pt-8 mb-12">
     <div class="bento-tab-container" style="width: 320px;">
       <div class="bento-tab-indicator" id="audience-tab-indicator"></div>
       <button class="bento-tab active" data-tab="talent" onclick="switchAudience('talent', this)">For Talent</button>
@@ -1427,11 +2859,73 @@
   </div>
 </section>
 
+    <!-- Why Choose Us Section -->
+<section class="why-choose-us-section py-20 px-6 bg-white" id="why-choose-us">
+  <div class="max-w-7xl mx-auto">
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+        Why <span class="font-playfair italic font-normal text-purple-600 scribble-underline inline-block text-6xl">Choose Us</span>?
+      </h2>
+      <p class="text-slate-500 text-base sm:text-lg max-w-xl mx-auto">Everything you need — whether you're a talent, recruiter, or brand.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex justify-center mb-10">
+      <div class="bento-tab-container" style="width: 480px; max-width: 95%;">
+        <div class="bento-tab-indicator" id="why-tab-indicator" style="transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);"></div>
+        <button class="bento-tab active" data-tab="talent" onclick="switchWhy('talent', this)">Talent</button>
+        <button class="bento-tab" data-tab="recruiter" onclick="switchWhy('recruiter', this)">Recruiter</button>
+        <button class="bento-tab" data-tab="digital" onclick="switchWhy('digital', this)">Digital Marketing</button>
+      </div>
+    </div>
+
+    <!-- Talent Panel -->
+    <div id="why-talent-panel" class="why-panel grid grid-cols-1 md:grid-cols-3 gap-6 opacity-100 block">
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+        <img src="cards/Talent/1.png" alt="Verified Talent Community" class="w-full h-auto object-cover">
+      </div>
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+        <img src="cards/Talent/2.png" alt="Get Discovered Faster" class="w-full h-auto object-cover">
+      </div>
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+        <img src="cards/Talent/3.png" alt="Create. Showcase. Get Hired." class="w-full h-auto object-cover">
+      </div>
+    </div>
+
+    <!-- Recruiter Panel -->
+    <div id="why-recruiter-panel" class="why-panel grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0 hidden">
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+        <img src="cards/recruiter-tab/1.png" alt="Track Hiring Progress" class="w-full h-auto object-cover">
+      </div>
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+        <img src="cards/recruiter-tab/2.png" alt="Manage Talent Database" class="w-full h-auto object-cover">
+      </div>
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+        <img src="cards/recruiter-tab/3.png" alt="Advanced Talent Filters" class="w-full h-auto object-cover">
+      </div>
+    </div>
+
+    <!-- Digital Marketing Panel -->
+    <div id="why-digital-panel" class="why-panel grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0 hidden">
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+        <img src="cards/Digital marketing-tab/1.png" alt="Advertise to right audience" class="w-full h-auto object-cover">
+      </div>
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer bg-[#1a0a2e]">
+        <img src="cards/Digital marketing-tab/1-L.png" alt="Smarter targeted campaigns" class="w-full h-auto object-contain">
+      </div>
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+        <img src="cards/Digital marketing-tab/3.png" alt="Maximum your brand's reach" class="w-full h-auto object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
     <!-- Infinite Scrolling Testimonials Section -->
 <section class="py-20 overflow-hidden bg-slate-50/30 w-full relative">
   <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
     <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
-      Loved by the <span class="font-serif italic font-normal text-purple-600">Industry</span>
+      Loved by the <span class="font-serif italic font-normal text-castiva-purple text-[1.15em] scribble-underline inline-block">Industry</span>
     </h2>
     <p class="text-slate-500 max-w-xl mx-auto text-sm sm:text-base">See how casting directors, creators, and actors are scaling their career with Castiva.</p>
   </div>
@@ -1553,6 +3047,31 @@
     </div>
   </div>
 </section>
+
+      <!-- Refer & Earn Section -->
+  <section id="refer-earn-section" class="relative overflow-hidden py-20 px-4">
+    <div class="refer-earn-card max-w-[1200px] mx-auto relative flex items-center justify-between gap-10 overflow-hidden" style="background: #fafafa; border-radius: 32px; border: 1px solid rgba(0,0,0,0.04); padding: 60px 64px; box-shadow: 0 4px 40px rgba(0,0,0,0.03);">
+      
+      <!-- Text Content -->
+      <div class="refer-earn-content flex-1 max-w-[520px] z-[2]">
+        <h2 class="text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.3] mb-8" style="letter-spacing: -0.02em;">
+          Refer & <span class="font-playfair italic font-normal text-castiva-purple scribble-underline inline-block">Earn</span> <br>Rewards
+        </h2>
+        <p class="text-base text-slate-500 leading-relaxed mb-8 max-w-[460px]">
+          Invite your friends to join Castiva and climb the referral leaderboard. Top referrers win exclusive rewards, Nester Coins, and unlock premium casting opportunities. The more you refer, the more you earn.
+        </p>
+        <a href="https://castiva.in" target="_blank" class="inline-flex items-center gap-3 bg-slate-900 text-white text-[0.95rem] font-semibold py-4 px-9 rounded-full transition-all duration-500 hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(17,24,39,0.25)] group" style="cursor: pointer;">
+          <span>Register Now</span>
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-[2px]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <!-- Phone Visual -->
+      <div class="refer-earn-visual relative flex-1 flex items-end justify-end z-[2] -mr-16 -mb-[60px]">
+        <img src="referral-card.png" alt="Refer & Earn app screen showing leaderboard" class="refer-earn-phone relative z-[3] max-h-[520px] w-auto" style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08)); border-radius: 20px;">
+      </div>
+    </div>
+  </section>
 
   </main>
   
@@ -1993,6 +3512,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
   </script>
 
+  <!-- Why Choose Us Script -->
+  <script>
+    // Why Choose Us Tab Switcher
+function switchWhy(tab, btn) {
+  // Hide all panels
+  document.querySelectorAll('.why-panel').forEach(p => {
+    p.classList.add('opacity-0', 'hidden');
+    p.classList.remove('opacity-100', 'block');
+  });
+
+  // Show target panel
+  const panel = document.getElementById('why-' + tab + '-panel');
+  if (panel) {
+    panel.classList.remove('opacity-0', 'hidden');
+    panel.classList.add('opacity-100', 'block');
+  }
+
+  // Update tab active state
+  btn.closest('.bento-tab-container').querySelectorAll('.bento-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Slide indicator
+  const indicator = document.getElementById('why-tab-indicator');
+  if (indicator) {
+    indicator.style.left = btn.offsetLeft + 'px';
+    indicator.style.width = btn.offsetWidth + 'px';
+  }
+}
+
+// Init indicator on load
+document.addEventListener('DOMContentLoaded', () => {
+  const activeBtn = document.querySelector('#why-choose-us .bento-tab.active');
+  const indicator = document.getElementById('why-tab-indicator');
+  if (activeBtn && indicator) {
+    indicator.style.left = activeBtn.offsetLeft + 'px';
+    indicator.style.width = activeBtn.offsetWidth + 'px';
+  }
+});
+
+  </script>
+
   <!-- Testimonials Script -->
   <script>
     // Testimonials Component Logic
@@ -2002,6 +3562,102 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- Footer Script -->
   <script>
     // Footer Logic
+
+  </script>
+
+  <!-- Partners Script -->
+  <script>
+    let currentPartnersTab = 'actors';
+
+function updatePartnersIndicator(activeTab) {
+  const indicator = document.getElementById('partners-tab-indicator');
+  if (!activeTab || !indicator) return;
+  indicator.style.width = `${activeTab.offsetWidth}px`;
+  indicator.style.left = `${activeTab.offsetLeft}px`;
+}
+
+function switchPartners(type, clickedBtn) {
+  if (currentPartnersTab === type) return;
+  currentPartnersTab = type;
+  
+  const buttons = document.querySelectorAll('#partners-section .bento-tab');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  if (clickedBtn) {
+    clickedBtn.classList.add('active');
+    updatePartnersIndicator(clickedBtn);
+  }
+  
+  const panels = ['actors', 'recruiters', 'celebrities', 'influencers'];
+  panels.forEach(p => {
+    const panel = document.getElementById(`partners-${p}-panel`);
+    if (!panel) return;
+    if (p === type) {
+      panel.classList.remove('hidden');
+      setTimeout(() => {
+        panel.classList.remove('opacity-0');
+      }, 50);
+    } else {
+      panel.classList.add('opacity-0');
+      setTimeout(() => {
+        panel.classList.add('hidden');
+      }, 300);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const activePartnersTab = document.querySelector('#partners-section .bento-tab.active');
+  if (activePartnersTab) {
+    setTimeout(() => {
+      updatePartnersIndicator(activePartnersTab);
+    }, 200);
+  }
+
+  window.addEventListener('resize', () => {
+    const currentActivePartnersTab = document.querySelector('#partners-section .bento-tab.active');
+    if (currentActivePartnersTab) {
+      updatePartnersIndicator(currentActivePartnersTab);
+    }
+  });
+});
+
+  </script>
+
+  <!-- Refer & Earn Script -->
+  <script>
+    // Refer & Earn GSAP Animations
+if (window.gsap && window.ScrollTrigger) {
+  const referTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#refer-earn-section',
+      start: 'top 78%',
+      toggleActions: 'play none none none'
+    }
+  });
+
+  referTl.fromTo('.refer-earn-content h2',
+    { opacity: 0, y: 40, filter: 'blur(8px)' },
+    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' }
+  );
+
+  referTl.fromTo('.refer-earn-content p',
+    { opacity: 0, y: 30, filter: 'blur(6px)' },
+    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power2.out' },
+    '-=0.5'
+  );
+
+  referTl.fromTo('.refer-earn-content a',
+    { opacity: 0, y: 20, filter: 'blur(4px)' },
+    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' },
+    '-=0.4'
+  );
+
+  referTl.fromTo('.refer-earn-phone',
+    { opacity: 0, x: 60, filter: 'blur(10px)' },
+    { opacity: 1, x: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out' },
+    '-=0.7'
+  );
+}
 
   </script>
 

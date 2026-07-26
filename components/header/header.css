@@ -1,1 +1,39 @@
-/* Header Styles */
+/* Header Infinite Revolving Purple Border Beam */
+.border-beam-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 350%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  background: conic-gradient(
+    from 0deg,
+    transparent 50%,
+    rgba(161, 40, 255, 0.1) 65%,
+    rgba(161, 40, 255, 0.8) 85%,
+    #a855f7 92%,
+    #6366f1 97%,
+    rgba(161, 40, 255, 0.8) 100%
+  );
+  animation: border-beam-spin 4s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes border-beam-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-beam-bg {
+    animation: none;
+    background: #e2e8f0;
+  }
+}

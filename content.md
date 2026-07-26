@@ -20,7 +20,7 @@ Create your portfolio free of cost with your profile’s unique web address/link
 Low Cost Premium Subscriptions
 Verified Recruiter Profile
 Min Job Assurance 
-Proper Support System
+
 
  
  
