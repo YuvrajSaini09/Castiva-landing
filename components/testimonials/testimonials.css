@@ -1,0 +1,13 @@
+/* Testimonial Marquee Styles */
+@keyframes marquee-testimonials {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee-testimonials {
+  display: flex;
+  width: max-content;
+  animation: marquee-testimonials 35s linear infinite;
+}
+.animate-marquee-testimonials:hover {
+  animation-play-state: paused;
+}

@@ -1,0 +1,14 @@
+/* Main Features Component Styles */
+
+.main-features-section {
+  background: radial-gradient(80% 80% at 90% 20%, rgba(224, 242, 254, 0.5) 0%, rgba(248, 250, 252, 0.8) 100%);
+}
+
+.main-features-section .phone-mockup {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.main-features-section .phone-mockup:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+}

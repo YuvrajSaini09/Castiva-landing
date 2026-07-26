@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castiva - Legal Center</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            inter: ['"Inter"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            castiva: {
+              purple: '#A128FF',
+              lightPurple: '#C86BFF',
+              dark: '#111827',
+              gray: '#4B5563',
+              lightBg: '#FFFFFF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #fbfbfe;
+      min-height: 100vh;
+      color: #111827;
+      overflow-x: hidden;
+    }
+    
+    .scribble-underline {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .scribble-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+      width: 100%;
+      height: 16px;
+      background-image: url('sketch-line.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+    
+    .btn-login-gradient {
+      background: linear-gradient(135deg, #A833FF 0%, #7C00FF 100%);
+      box-shadow: 0 4px 15px rgba(168, 51, 255, 0.35);
+    }
+    
+    .btn-login-gradient:hover {
+      background: linear-gradient(135deg, #B54CFF 0%, #8D1AFF 100%);
+      box-shadow: 0 6px 20px rgba(168, 51, 255, 0.5);
+    }
+
+    .legal-content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.75rem;
+    }
+    .legal-content h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .legal-content p, .legal-content ul {
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.625;
+      margin-bottom: 1.25rem;
+    }
+    .legal-content ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+    .legal-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Legal Tabs Component Styles */
+    /* Purple Tab System Custom CSS Styles */
+.bento-tab-container {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+  gap: 8px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), 
+              linear-gradient(289.32deg, #4E27D0 36.27%, #8840ED 54.7%, #6227D0 73.07%);
+  background-blend-mode: hard-light, normal;
+  box-shadow: 0px 5px 50px rgba(15, 115, 247, 0.12);
+  border-radius: 30px;
+  width: 860px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.bento-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0%;
+  height: 42px;
+  border-radius: 22px;
+  font-size: 15px;
+  font-weight: 300;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #FFFFFF;
+  opacity: 0.85;
+  white-space: nowrap;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 0 14px;
+  z-index: 2;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  outline: none;
+}
+
+.bento-tab.active {
+  color: #061D3D;
+  opacity: 1;
+}
+
+.bento-tab-indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  border-radius: 22px;
+  background: linear-gradient(131.76deg, #DBC9FF 11.56%, #FFFFFF 69.18%);
+  border: 1.2px solid #FFFFFF;
+  box-shadow: 5px 4px 20px rgba(0, 0, 0, 0.12);
+  z-index: 1;
+  transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), 
+              width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  box-sizing: border-box;
+}
+
+  </style>
+</head>
+<body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
+
+  <!-- Shared Header Component -->
+  <header class="pt-6 px-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <nav class="max-w-4xl mx-auto bg-white/90 backdrop-blur-md rounded-full px-6 py-2.5 shadow-sm border border-slate-200/80 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-2 group">
+      <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white font-extrabold text-xl shadow-md group-hover:scale-105 transition-transform">
+        <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity="0.3"/>
+          <path d="M12 5c-3.87 0-7 3.13-7 7s3.13 7 7 7c2.38 0 4.5-1.19 5.77-3.01l-2.1-1.39C14.83 15.65 13.51 16.5 12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5c1.51 0 2.83.85 3.67 2.1l2.1-1.39C16.5 6.19 14.38 5 12 5z"/>
+        </svg>
+      </div>
+      <span class="font-extrabold text-xl tracking-tight text-slate-900">Castiva</span>
+    </a>
+
+    <!-- Menu Items -->
+    <div class="hidden md:flex items-center gap-8 font-semibold text-slate-700 text-sm">
+      <a href="index.html" class="hover:text-purple-600 transition-colors">Home</a>
+      <a href="about.html" class="hover:text-purple-600 transition-colors">About</a>
+      <a href="contact.html" class="hover:text-purple-600 transition-colors">Contact</a>
+      <a href="team.html" class="hover:text-purple-600 transition-colors">Team</a>
+      <a href="index.html#testimonials-component" class="hover:text-purple-600 transition-colors">Blog</a>
+    </div>
+
+    <!-- Action Button -->
+    <div class="relative">
+      <button class="group overflow-hidden transition-all duration-700 ease-out hover:scale-[1.03] border-none flex cursor-pointer w-[130px] h-[44px] z-10 rounded-full relative items-center justify-center" style="filter: drop-shadow(0 8px 16px rgba(161,40,255,0.2)); background: #f8fafc">
+        <!-- Volumetric Under-glow (Purple Theme) -->
+        <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[140%] h-32 bg-purple-500/30 blur-[60px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+        
+        <!-- WebGL Core Container -->
+        <div class="absolute inset-[2px] rounded-full overflow-hidden bg-white/5 backdrop-blur-xl border border-white/40 shadow-[inset_0_2px_12px_rgba(255,255,255,0.7)]">
+          <canvas class="w-full h-full block" id="gl-aura-header" width="260" height="88"></canvas>
+        </div>
+
+        <!-- Glossy Glass Shell -->
+        <div class="absolute inset-[2px] rounded-full overflow-hidden pointer-events-none">
+           <div class="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-white/10 opacity-70"></div>
+           <div class="absolute inset-0 rounded-full border border-white/90 shadow-[inset_0_4px_8px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.15)]"></div>
+        </div>
+
+        <!-- Content Layer -->
+        <div class="z-10 flex text-white px-3 relative drop-shadow-md items-center justify-center">
+          <span class="text-sm font-medium tracking-tight whitespace-nowrap">Login</span>
+        </div>
+      </button>
+    </div>
+  </nav>
+</header>
+
+  
+  <!-- Hero Section -->
+  <section class="pt-32 pb-12 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#a855f7,transparent_50%)] opacity-20"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">Legal Center</h1>
+      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">Please review our rules, guidelines, and policies governing the Castiva global ecosystem.</p>
+    </div>
+  </section>
+
+  <!-- Legal Main Tabs Layout -->
+  <section class="py-16 px-6 max-w-4xl mx-auto">
+    
+    <!-- Legal Tabs Selector Component -->
+    <!-- Legal Tabs Component Selector -->
+<div class="w-full overflow-x-auto pb-4 flex justify-start md:justify-center mb-12" style="-ms-overflow-style: none; scrollbar-width: none;">
+  <div class="bento-tab-container relative mx-auto shrink-0">
+    <div class="bento-tab-indicator"></div>
+    <button class="bento-tab active" data-tab="terms">Terms of Use</button>
+    <button class="bento-tab" data-tab="privacy">Privacy Policy</button>
+    <button class="bento-tab" data-tab="user">User Agreement</button>
+    <button class="bento-tab" data-tab="refund">Refund Policy</button>
+    <button class="bento-tab" data-tab="cookie">Cookie Policy</button>
+  </div>
+</div>
+
+
+    <!-- Content Area -->
+    <div class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-sm legal-content min-h-[500px]">
+        
+        <!-- Terms of Use -->
+        <div id="content-terms" class="tab-content block">
+          <h1>Terms of Use</h1>
+          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
+          <p>Welcome to Castiva. By accessing or using our platform, mobile application, or web services, you agree to comply with and be bound by these Terms of Use.</p>
+          <h2>1. Acceptable Use</h2>
+          <ul>
+            <li>You must be at least 18 years old or have parental consent to use Castiva.</li>
+            <li>You agree to provide accurate, current, and complete profile information.</li>
+            <li>You are responsible for safeguarding your login credentials.</li>
+          </ul>
+          <h2>2. Casting & Recruitment Rules</h2>
+          <ul>
+            <li>Recruiters must only publish genuine, verified casting calls.</li>
+            <li>Talents must ensure their showreels, headshots, and bio details represent their true identities.</li>
+            <li>Spoofing, spamming, or fraudulent listings will result in immediate profile suspension.</li>
+          </ul>
+          <h2>3. Limitation of Liability</h2>
+          <p>Castiva is a matching platform and does not guarantee casting selection, hiring outcomes, or project completion.</p>
+        </div>
+
+        <!-- Privacy Policy -->
+        <div id="content-privacy" class="tab-content hidden">
+          <h1>Privacy Policy</h1>
+          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
+          <p>At Castiva, we take your privacy seriously. This Privacy Policy details how we collect, store, and share your personal data.</p>
+          <h2>1. Information We Collect</h2>
+          <ul>
+            <li><strong>Profile Data:</strong> Name, gender, age, location, body type, and acting/casting attributes.</li>
+            <li><strong>Media Content:</strong> Showreels, audio voice files, and headshots uploaded to your portfolio.</li>
+            <li><strong>Usage Data:</strong> Audition scores, location preferences, and communication logs on verified chat channels.</li>
+          </ul>
+          <h2>2. How We Use Data</h2>
+          <ul>
+            <li>To run our AI-driven casting matchmaker.</li>
+            <li>To display your digital portfolio link to verified recruiters.</li>
+            <li>To process secure payments and escrow structures.</li>
+          </ul>
+          <h2>3. Data Protection</h2>
+          <p>Your data is securely stored and encrypted. We do not sell your personal information to third parties.</p>
+        </div>
+
+        <!-- User Agreement -->
+        <div id="content-user" class="tab-content hidden">
+          <h1>User Agreement</h1>
+          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
+          <p>This User Agreement governs the relationships, escrows, and booking structures completed through the Castiva ecosystem.</p>
+          <h2>1. Booking Contracts</h2>
+          <ul>
+            <li>All casting agreements processed via Castiva are legally binding contracts between the Recruiter and the Talent.</li>
+            <li>Castiva acts solely as a matching portal and escrow mediator, not as an employer or agency representative.</li>
+          </ul>
+          <h2>2. Escrow & Fees</h2>
+          <ul>
+            <li>Recruiters agree to load booking funds into Castiva's secure escrow before project start.</li>
+            <li>Talent payment is released upon milestone approvals as specified in the agreement.</li>
+          </ul>
+          <h2>3. Disclaimers</h2>
+          <p>We enforce strict KYC and verification checks, but users are advised to perform standard security precautions before physical audition meetups.</p>
+        </div>
+
+        <!-- Refund Policy -->
+        <div id="content-refund" class="tab-content hidden">
+          <h1>Refund Policy</h1>
+          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
+          <p>This Refund Policy outlines our guidelines for refunding premium subscription plans, booking deposits, and escrow balances.</p>
+          <h2>1. Subscriptions</h2>
+          <ul>
+            <li>Monthly and yearly premium plans are non-refundable once activated.</li>
+            <li>You can cancel your subscription at any time to avoid future renewals.</li>
+          </ul>
+          <h2>2. Escrow Booking Releases</h2>
+          <ul>
+            <li>Escrow funds are subject to dispute resolution if a project is cancelled or a milestone is breached.</li>
+            <li>If the Talent fails to attend or perform, funds are refunded to the Recruiter, minus administrative processing fees.</li>
+          </ul>
+          <h2>3. Discrepancies</h2>
+          <p>All dispute resolutions are managed by our compliance team. Decisions are final and binding.</p>
+        </div>
+
+        <!-- Cookie Policy -->
+        <div id="content-cookie" class="tab-content hidden">
+          <h1>Cookie Policy</h1>
+          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
+          <p>This Cookie Policy explains how Castiva uses cookies and tracking technologies to personalize your experience.</p>
+          <h2>1. What are Cookies?</h2>
+          <p>Cookies are small text files stored on your browser to recall login credentials, UI selections, and profile settings.</p>
+          <h2>2. Types of Cookies We Use</h2>
+          <ul>
+            <li><strong>Essential Cookies:</strong> Necessary for security, authentication, and core page operations.</li>
+            <li><strong>Analytics Cookies:</strong> Used to measure site performance, user engagement, and traffic sources.</li>
+            <li><strong>AI Matcher Cookies:</strong> Temporary caching cookies that help speed up matching suggestions.</li>
+          </ul>
+          <h2>3. Managing Preferences</h2>
+          <p>You can disable non-essential cookies via your browser settings, though some portal features may become unavailable.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Footer Component -->
+  <!-- Footer Component -->
+<footer class="bg-slate-950 text-slate-400 py-16 px-6 border-t border-slate-900">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+    <!-- Col 1: Brand -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white font-extrabold text-xl shadow-md">
+          <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity="0.3"/>
+            <path d="M12 5c-3.87 0-7 3.13-7 7s3.13 7 7 7c2.38 0 4.5-1.19 5.77-3.01l-2.1-1.39C14.83 15.65 13.51 16.5 12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5c1.51 0 2.83.85 3.67 2.1l2.1-1.39C16.5 6.19 14.38 5 12 5z"/>
+          </svg>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-white">Castiva</span>
+      </div>
+      <p class="text-sm text-slate-500 leading-relaxed">India's 1st AI Enabled Global Casting Ecosystem. Bridging talent and opportunity weightlessly.</p>
+    </div>
+
+    <!-- Col 2: Navigation -->
+    <div>
+      <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Platform</h5>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+        <li><a href="team.html" class="hover:text-white transition-colors">Our Team</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 3: Legal -->
+    <div>
+      <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Legal</h5>
+      <ul class="space-y-2 text-sm">
+        <li><a href="legal.html?tab=terms" class="hover:text-white transition-colors">Terms of Use</a></li>
+        <li><a href="legal.html?tab=privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+        <li><a href="legal.html?tab=user" class="hover:text-white transition-colors">User Agreement</a></li>
+        <li><a href="legal.html?tab=refund" class="hover:text-white transition-colors">Refund Policy</a></li>
+        <li><a href="legal.html?tab=cookie" class="hover:text-white transition-colors">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 4: Newsletter -->
+    <div>
+      <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Stay Tuned</h5>
+      <p class="text-sm text-slate-500 mb-4">Subscribe to receive casting alerts and news.</p>
+      <form class="flex gap-2">
+        <input type="email" placeholder="Your email" class="bg-slate-900 border border-slate-800 rounded-full px-4 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-purple-600 w-full">
+        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-full px-4 py-2 transition-colors">Go</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
+    <p>&copy; 2026 Castiva. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <!-- Header Script -->
+  <script>
+    // Header Logic
+
+// WebGL Button Shader (Purple Theme)
+(function(){
+  const c=document.getElementById('gl-aura-header');
+  if(!c) return;
+  const b=c.closest('button'),gl=c.getContext('webgl2',{antialias:true,alpha:true});
+  if(!gl)return;
+  const sh=(t,s)=>{const x=gl.createShader(t);gl.shaderSource(x,s);gl.compileShader(x);return x;},prg=gl.createProgram();
+  gl.attachShader(prg,sh(gl.VERTEX_SHADER,`#version 300 es\nin vec2 aPos;out vec2 vUv;void main(){vUv=aPos*0.5+0.5;gl_Position=vec4(aPos,0.,1.);}`));
+  gl.attachShader(prg,sh(gl.FRAGMENT_SHADER,`#version 300 es\nprecision highp float;in vec2 vUv;out vec4 o;uniform vec2 r;uniform float t;uniform vec2 p;uniform float h;float hsh(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}float n(vec2 p){vec2 i=floor(p),f=fract(p);float a=hsh(i),b=hsh(i+vec2(1.,0.)),c=hsh(i+vec2(0.,1.)),d=hsh(i+vec2(1.,1.));vec2 u=f*f*(3.-2.*f);return mix(a,b,u.x)+(c-a)*u.y*(1.-u.x)+(d-b)*u.x*u.y;}float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p*=2.;a*=.5;}return v;}void main(){vec2 uv=vUv,px=uv-p;px.x*=r.x/r.y;float d=length(px),rip=sin(30.*d-t*5.)*exp(-8.*d)*h,bl=smoothstep(.4,.7,fbm(uv*3.+t*.1));vec2 dist=vec2(fbm(uv*4.+t*.2),fbm(uv*4.-t*.15))*.04+rip*.02;vec3 cA=vec3(0.7,0.2,1.0),cB=vec3(0.5,0.0,0.9),cC=vec3(0.3,0.0,0.6),col=mix(mix(cA,cB,smoothstep(.1,.9,uv.x+dist.x)),cC,smoothstep(.5,1.,uv.y+dist.y))+bl*.15+pow(1.-length(uv-.5)*1.5,3.)*.2;o=vec4(col,.95);}`));
+  gl.linkProgram(prg);const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
+  const pos=gl.getAttribLocation(prg,"aPos");gl.enableVertexAttribArray(pos);gl.vertexAttribPointer(pos,2,gl.FLOAT,false,0,0);
+  const rL=gl.getUniformLocation(prg,"r"),tL=gl.getUniformLocation(prg,"t"),pL=gl.getUniformLocation(prg,"p"),hL=gl.getUniformLocation(prg,"h");
+  let pt={x:.5,y:.5},hv=0,hvT=0;
+  const res=()=>{c.width=c.clientWidth*devicePixelRatio;c.height=c.clientHeight*devicePixelRatio;gl.viewport(0,0,c.width,c.height);};
+  window.addEventListener('resize',res);res();
+  b.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();pt.x=(e.clientX-r.left)/r.width;pt.y=1.-(e.clientY-r.top)/r.height;});
+  b.addEventListener('pointerenter',()=>hvT=1.);b.addEventListener('pointerleave',()=>hvT=0.);
+  const l=t=>{hv+=(hvT-hv)*.1;gl.useProgram(prg);gl.uniform2f(rL,c.width,c.height);gl.uniform1f(tL,t*.001);gl.uniform2f(pL,pt.x,pt.y);gl.uniform1f(hL,hv);gl.drawArrays(gl.TRIANGLES,0,6);requestAnimationFrame(l);};
+  requestAnimationFrame(l);
+})();
+
+  </script>
+
+  <!-- Tabs Logic Component Script -->
+  <script>
+    // Purple Tabs Component Logic
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.bento-tab');
+  const indicator = document.querySelector('.bento-tab-indicator');
+  const panels = document.querySelectorAll('.tab-content');
+
+  const updateIndicator = (activeTab) => {
+    if (!activeTab || !indicator) return;
+    indicator.style.width = `${activeTab.offsetWidth}px`;
+    indicator.style.left = `${activeTab.offsetLeft}px`;
+  };
+
+  const switchTab = (tabId) => {
+    const targetTab = document.querySelector(`.bento-tab[data-tab="${tabId}"]`);
+    if (!targetTab) return;
+
+    // Toggle active state on tabs
+    tabs.forEach(t => t.classList.remove('active'));
+    targetTab.classList.add('active');
+    
+    // Slide indicator pill
+    updateIndicator(targetTab);
+
+    // Show corresponding panel content
+    panels.forEach(panel => {
+      if (panel.id === `content-${tabId}`) {
+        panel.classList.remove('hidden');
+        panel.classList.add('block');
+      } else {
+        panel.classList.remove('block');
+        panel.classList.add('hidden');
+      }
+    });
+  };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const tabId = tab.getAttribute('data-tab');
+      switchTab(tabId);
+    });
+  });
+
+  // Handle URL deep-linking and initial positioning
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialTab = urlParams.get('tab') || 'terms';
+  
+  // Timeout ensures styling is fully computed in DOM before sliding indicator
+  setTimeout(() => {
+    switchTab(initialTab);
+  }, 150);
+
+  // Recalculate position on window resize
+  window.addEventListener('resize', () => {
+    const activeTab = document.querySelector('.bento-tab.active');
+    if (activeTab) {
+      updateIndicator(activeTab);
+    }
+  });
+});
+
+  </script>
+</body>
+</html>

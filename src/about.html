@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castiva - About Us</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            inter: ['"Inter"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            castiva: {
+              purple: '#A128FF',
+              lightPurple: '#C86BFF',
+              dark: '#111827',
+              gray: '#4B5563',
+              lightBg: '#FFFFFF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      color: #111827;
+      overflow-x: hidden;
+    }
+    
+    .scribble-underline {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .scribble-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+      width: 100%;
+      height: 16px;
+      background-image: url('sketch-line.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+    
+    .btn-login-gradient {
+      background: linear-gradient(135deg, #A833FF 0%, #7C00FF 100%);
+      box-shadow: 0 4px 15px rgba(168, 51, 255, 0.35);
+    }
+    
+    .btn-login-gradient:hover {
+      background: linear-gradient(135deg, #B54CFF 0%, #8D1AFF 100%);
+      box-shadow: 0 6px 20px rgba(168, 51, 255, 0.5);
+    }
+  </style>
+</head>
+<body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
+
+  <!-- Shared Header Component -->
+  <!-- @import "../components/header/header.html" -->
+  
+  <!-- Hero Section -->
+  <section class="pt-36 pb-20 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#a855f7,transparent_50%)] opacity-25"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-4">
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
+        About <span class="font-serif italic font-medium text-purple-400 text-5xl sm:text-7xl scribble-underline">Castiva</span>
+      </h1>
+      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-lg">Bridging talent and casting directors weightlessly through state-of-the-art AI matchmaking.</p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-20 px-6 max-w-5xl mx-auto">
+    <div class="space-y-16">
+      
+      <!-- Core Vision -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <h2 class="text-3xl font-extrabold text-slate-900">Our Vision</h2>
+          <p class="text-slate-600 text-base leading-relaxed">Castiva is India's 1st AI Enabled Global Casting Ecosystem. We empower actors, models, and voice artists to launch verified digital twin portfolios, enabling instant matching against active casting briefs uploaded by directors globally.</p>
+          <p class="text-slate-600 text-base leading-relaxed font-sans">No middle agencies. No commission fees. Just pure, direct opportunities matched intelligently based on your skill parameters.</p>
+        </div>
+        <div class="bg-gradient-to-tr from-purple-100 to-indigo-50 p-8 rounded-3xl border border-purple-100 flex flex-col justify-center min-h-[300px]">
+          <h3 class="font-serif italic text-purple-600 text-3xl mb-4 font-normal">"Weightless matching, direct opportunities."</h3>
+          <p class="text-slate-500 text-sm font-semibold">Castiva Core Philosophy</p>
+        </div>
+      </div>
+
+      <!-- Core Features Grid -->
+      <div class="space-y-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-extrabold text-slate-900">What Drives Us</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 font-bold">01</div>
+            <h4 class="font-bold text-slate-900 text-lg">AI Matching Engine</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Our advanced matchmaking algorithms connect you directly to target roles with 0% human bias.</p>
+          </div>
+          <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 font-bold">02</div>
+            <h4 class="font-bold text-slate-900 text-lg">Direct Verified Channels</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Chat and share audition clips directly with casting directors through secure, encrypted messaging.</p>
+          </div>
+          <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 font-bold">03</div>
+            <h4 class="font-bold text-slate-900 text-lg">Escrow Safeguards</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Book talent and secure transactions with our built-in smart contract escrow protection layers.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Shared Footer Component -->
+  <!-- @import "../components/footer/footer.html" -->
+
+  <!-- Header Script -->
+  <script>
+    <!-- @import "../components/header/header.js" -->
+  </script>
+</body>
+</html>

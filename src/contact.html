@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castiva - Contact Us</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            inter: ['"Inter"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            castiva: {
+              purple: '#A128FF',
+              lightPurple: '#C86BFF',
+              dark: '#111827',
+              gray: '#4B5563',
+              lightBg: '#FFFFFF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      color: #111827;
+      overflow-x: hidden;
+    }
+    
+    .scribble-underline {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .scribble-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+      width: 100%;
+      height: 16px;
+      background-image: url('sketch-line.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+    
+    .btn-login-gradient {
+      background: linear-gradient(135deg, #A833FF 0%, #7C00FF 100%);
+      box-shadow: 0 4px 15px rgba(168, 51, 255, 0.35);
+    }
+    
+    .btn-login-gradient:hover {
+      background: linear-gradient(135deg, #B54CFF 0%, #8D1AFF 100%);
+      box-shadow: 0 6px 20px rgba(168, 51, 255, 0.5);
+    }
+  </style>
+</head>
+<body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
+
+  <!-- Shared Header Component -->
+  <!-- @import "../components/header/header.html" -->
+  
+  <!-- Hero Section -->
+  <section class="pt-36 pb-20 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#a855f7,transparent_50%)] opacity-25"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-4">
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
+        Contact <span class="font-serif italic font-medium text-purple-400 text-5xl sm:text-7xl scribble-underline">Us</span>
+      </h1>
+      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-lg">Have questions? Reach out to our support or business partnership divisions.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form & Info Grid -->
+  <section class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Contact Info Cards -->
+      <div class="lg:col-span-4 space-y-6">
+        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 space-y-6">
+          <div>
+            <h4 class="font-bold text-slate-900 text-lg mb-1">Direct Email</h4>
+            <a href="mailto:support@castiva.co" class="text-purple-600 font-semibold text-sm hover:underline">support@castiva.co</a>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-lg mb-1">Locations</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Mumbai &bull; Bangalore, India</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-lg mb-1">Response Time</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">We typically respond to inquiries within 24 business hours.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="lg:col-span-8 bg-white p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-sm space-y-6">
+        <h2 class="text-3xl font-extrabold text-slate-900">Send us a Message</h2>
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label class="text-slate-600 text-sm font-semibold">Your Name</label>
+              <input type="text" placeholder="John Doe" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-600 focus:bg-white transition-all">
+            </div>
+            <div class="space-y-2">
+              <label class="text-slate-600 text-sm font-semibold">Your Email</label>
+              <input type="email" placeholder="john@example.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-600 focus:bg-white transition-all">
+            </div>
+          </div>
+          
+          <div class="space-y-2">
+            <label class="text-slate-600 text-sm font-semibold">I am a...</label>
+            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-600 focus:bg-white transition-all">
+              <option>Talent (Actor, Model, Voice Artist)</option>
+              <option>Casting Director or Recruiter</option>
+              <option>Production Agency or Agency Partner</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-slate-600 text-sm font-semibold">Message</label>
+            <textarea rows="5" placeholder="Tell us how we can help..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-600 focus:bg-white transition-all"></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg shadow-purple-500/20">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Shared Footer Component -->
+  <!-- @import "../components/footer/footer.html" -->
+
+  <!-- Header Script -->
+  <script>
+    <!-- @import "../components/header/header.js" -->
+  </script>
+</body>
+</html>
