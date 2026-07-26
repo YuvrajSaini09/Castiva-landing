@@ -1,5 +1,7 @@
-/* Audience Purple Tab System Custom CSS Styles */
-.bento-tab-container {
+/* Audience Tab Custom Overrides to match Legal Pages exactly */
+#audience-section .bento-tab-container {
+  width: 320px;
+  max-width: 100%;
   position: relative;
   display: inline-flex;
   flex-direction: row;
@@ -11,11 +13,10 @@
   background-blend-mode: hard-light, normal;
   box-shadow: 0px 5px 50px rgba(15, 115, 247, 0.12);
   border-radius: 30px;
-  width: 100%;
   box-sizing: border-box;
 }
 
-.bento-tab {
+#audience-section .bento-tab {
   position: relative;
   display: flex;
   align-items: center;
@@ -24,7 +25,7 @@
   height: 42px;
   border-radius: 22px;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 500;
   cursor: pointer;
   border: none;
   background: transparent;
@@ -38,12 +39,12 @@
   outline: none;
 }
 
-.bento-tab.active {
+#audience-section .bento-tab.active {
   color: #061D3D;
   opacity: 1;
 }
 
-.bento-tab-indicator {
+#audience-section .bento-tab-indicator {
   position: absolute;
   top: 4px;
   bottom: 4px;
