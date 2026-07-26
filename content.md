@@ -26,8 +26,8 @@ Min Job Assurance
  
  
 ### RECRUITER SOLUTION
-Talent upgrade Search option As per Category/Sub Category & many Other Options ( advanced filter searching )
-Get search result talent profile according available talents according to your date/timing
+Talent advanced filter options for searching talents specifically for you
+Get search result of available talents only, as per your required date/timing
 Searching Option to see talents who are available for your require location only 
 See Proper Talent Portfolio In Single web Page 
 Verified Talent Profile 

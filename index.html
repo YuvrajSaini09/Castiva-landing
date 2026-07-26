@@ -466,14 +466,10 @@
     <!-- Navigation Inner Content Wrapper -->
     <div class="w-full relative z-10 bg-white/95 backdrop-blur-md rounded-full px-6 py-2.5 flex items-center justify-between">
       <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-2 group">
-        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white font-extrabold text-xl shadow-md group-hover:scale-105 transition-transform">
-          <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity="0.3"/>
-            <path d="M12 5c-3.87 0-7 3.13-7 7s3.13 7 7 7c2.38 0 4.5-1.19 5.77-3.01l-2.1-1.39C14.83 15.65 13.51 16.5 12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5c1.51 0 2.83.85 3.67 2.1l2.1-1.39C16.5 6.19 14.38 5 12 5z"/>
-          </svg>
+      <a href="index.html" class="flex items-center group">
+        <div class="w-[170px] h-14 overflow-hidden group-hover:scale-105 transition-transform bg-transparent flex items-center">
+          <img src="logo.png" alt="Castiva logo" class="w-full h-full object-contain scale-[1.75] origin-left">
         </div>
-        <span class="font-extrabold text-xl tracking-tight text-slate-900">Castiva</span>
       </a>
 
       <!-- Menu Items -->
@@ -670,66 +666,63 @@
   </div>
 </section>
 
-    <!-- Bento Section 2: Challenges We Solve For Recruiters -->
-<section class="py-20 px-6 max-w-7xl mx-auto bg-slate-50/40 rounded-[2.5rem]">
-  <div class="text-center mb-12">
-    <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
-      Challenges We Solve For <span class="font-serif italic font-normal text-purple-600 text-7xl scribble-underline"> Recruiters</span>
-    </h2>
-    <p class="text-slate-500 max-w-xl mx-auto text-sm sm:text-base">Search targeted candidates in a go. Access complete databases, advanced filters, and organic reviews at your fingertips.</p>
-  </div>
+    <!-- Talent Section 1: Job matches -->
+<section id="talent-job-match" data-talent-section class="py-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-6 order-2 lg:order-1" data-talent-animate>
+          <div class="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-bold text-cyan-700 mb-6">
+            For Talent
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+            Job offers that stay
+            <span class="font-serif italic font-normal text-castiva-purple scribble-underline">matched to you</span>
+          </h2>
+          <p class="mt-5 max-w-xl text-slate-600 text-sm sm:text-base leading-7">
+            Keep your search focused. Recruiters can only reach you with opportunities that align with your talent profile, preferences, and current location.
+          </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-6" id="bento-talents">
-    <!-- Card A: Advanced Category Filter -->
-    <div class="group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 opacity-0">
-      <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div class="flex flex-col h-full justify-between">
-        <div>
-          <div class="text-purple-600 text-3xl font-extrabold mb-4">01</div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2 font-sans">Advanced Filters</h3>
-          <p class="text-slate-500 text-xs sm:text-sm leading-relaxed font-sans">Search by category, availability, body type, previous projects, current location, and custom criteria instantly.</p>
-        </div>
-      </div>
-    </div>
+          <div class="mt-8 space-y-4">
+            <div class="group flex gap-4">
+              <img src="icons/howitworks-talent/dream-job.png" alt="Dream job" class="h-16 w-16 shrink-0 object-contain">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Job offer only as per your talent profile</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">No random listings. You receive opportunities that fit the profile you have already built.</p>
+              </div>
+            </div>
 
-    <!-- Card B: Availability Matching -->
-    <div class="md:col-span-2 group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 opacity-0">
-      <div class="absolute inset-0 bg-gradient-to-tr from-violet-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div class="flex flex-col h-full justify-between">
-        <div>
-          <div class="text-violet-600 text-3xl font-extrabold mb-4">02</div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2 font-sans">Real-Time Schedule Matches</h3>
-          <p class="text-slate-500 text-xs sm:text-sm leading-relaxed font-sans">Find talents who are exactly available for your production dates, shoot locations, and specific timings in one click.</p>
-        </div>
-      </div>
-    </div>
+            <div class="group flex gap-4">
+              <img src="icons/recruiter-icons/search-filter.png" alt="Search filter" class="h-16 w-16 shrink-0 object-contain">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Advanced job search as per your talent profile</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Search smarter with filters built around your skills, experience, and preferences.</p>
+              </div>
+            </div>
 
-    <!-- Card C: Single Page Portfolios -->
-    <div class="group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 opacity-0">
-      <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div class="flex flex-col h-full justify-between">
-        <div>
-          <div class="text-indigo-600 text-3xl font-extrabold mb-4">03</div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2 font-sans">Full Portfolio Pages</h3>
-          <p class="text-slate-500 text-xs sm:text-sm leading-relaxed font-sans">Access a candidate's full verified portfolio, reels, and organic reviews in a single page to decide suitability instantly.</p>
-        </div>
-      </div>
-    </div>
+            <div class="group flex gap-4">
+              <img src="icons/howitworks-talent/verified.png" alt="Verified" class="h-16 w-16 shrink-0 object-contain">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Only matching job offers by recruiters</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Recruiters see the right profile match first, so the outreach stays relevant.</p>
+              </div>
+            </div>
 
-    <!-- Card D: Grouping & Brand Promotion -->
-    <div class="md:col-span-4 group relative overflow-hidden rounded-3xl bg-white border border-slate-100 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 opacity-0">
-      <div class="absolute inset-0 bg-gradient-to-tr from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 h-full">
-        <div class="max-w-2xl">
-          <div class="text-pink-600 text-3xl font-extrabold mb-4">04</div>
-          <h3 class="text-2xl font-bold text-slate-900 mb-2 font-sans">Folder Grouping & Free Brand Promotion</h3>
-          <p class="text-slate-500 text-sm leading-relaxed font-sans">Create custom folders to organize talent groups. Plus, promote your brand/company name for zero cost to other businesses and B2B clients on our mobile and web access platforms.</p>
+            <div class="group flex gap-4">
+              <img src="icons/recruiter-icons/location.png" alt="Location" class="h-16 w-16 shrink-0 object-contain">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Choice-based offers from your current location</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Get opportunities based on where you are now, or the location you prefer to work in.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="shrink-0">
-          <a href="#signup" class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-slate-950 text-white font-bold text-sm hover:bg-slate-900 transition-all hover:scale-105">
-            Register as Recruiter
-          </a>
-        </div>
+
+      <div class="lg:col-span-6 order-1 lg:order-2" data-talent-animate>
+        <img
+          src="dream-job.png"
+          alt="Talent dream job illustration"
+          class="h-[380px] sm:h-[460px] w-full max-w-[680px] mx-auto object-contain"
+        >
       </div>
     </div>
   </div>
@@ -1955,92 +1948,139 @@
     </div>
   </section>
 
-    <!-- Bento Section 1: Challenges We Solve For Talents -->
-<section class="py-20 px-6 max-w-7xl mx-auto bg-white">
-  <div class="text-center mb-12">
-    <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
-      Challenges We Solve For <span class="font-serif italic font-medium text-purple-600 text-7xl scribble-underline">Talents</span>
-    </h2>
-    <p class="text-slate-500 max-w-xl mx-auto text-sm sm:text-base">Register on the next-gen talent job portal for zero cost and build a high-level digital twin portfolio.</p>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="bento-directors">
-    <!-- Card 1: Free Showcase Portfolio (Col span 2 on md) with Video -->
-    <div class="md:col-span-2 group relative overflow-hidden rounded-3xl border border-slate-100 bg-slate-50/50 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 opacity-0 flex flex-col md:flex-row gap-6">
-      <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-      <div class="flex-1 flex flex-col justify-between relative z-10">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-          </div>
-          <h3 class="text-2xl font-bold text-slate-900 mb-2 font-sans">Free Showcase Portfolio</h3>
-          <p class="text-slate-500 text-sm leading-relaxed font-sans">Create your high-level portfolio free of cost in under 10 minutes, complete with a unique web address link. Say goodbye to expensive physical portfolios.</p>
-        </div>
-        <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-4 text-xs font-semibold text-purple-600">
-          <span>CREATE FREE PORTFOLIO</span>
-          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-        </div>
-      </div>
-      
-      <!-- Video Element -->
-      <div class="w-full md:w-[240px] h-48 md:h-auto relative rounded-2xl overflow-hidden shrink-0 bg-slate-900 border border-slate-100">
-        <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
+    <!-- Talent Section 2: Portfolio and trust -->
+<section id="talent-portfolio" data-talent-section class="py-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-6 order-1" data-talent-animate>
+        <video class="h-[380px] sm:h-[460px] w-full max-w-[680px] mx-auto object-contain" autoplay loop muted playsinline>
           <source src="bento-vid.mp4" type="video/mp4">
         </video>
       </div>
-    </div>
 
-    <!-- Card 2: Smart Job Matcher -->
-    <div class="group relative overflow-hidden rounded-3xl border border-slate-100 bg-slate-50/50 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 opacity-0">
-      <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div class="flex flex-col h-full justify-between relative z-10">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      <div class="lg:col-span-6 order-2" data-talent-animate>
+          <div class="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-4 py-2 text-xs font-bold text-rose-700 mb-6">
+            For Talent
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-2 font-sans">Smart Job Matcher</h3>
-          <p class="text-slate-500 text-sm leading-relaxed font-sans">Only get job offers matching your talent profile, location choices, and preferences. No unmatched listings, no unwanted calls.</p>
-        </div>
-        <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-4 text-xs font-semibold text-indigo-600">
-          <span>CONFIGURE MATCHES</span>
-          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-        </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+            A portfolio that feels
+            <span class="font-serif italic font-normal text-castiva-purple scribble-underline">easy to build and trusted</span>
+          </h2>
+          <p class="mt-5 max-w-xl text-slate-600 text-sm sm:text-base leading-7">
+            Your profile becomes a clean, shareable destination with strong visibility, low-cost upgrades, and recruiter trust built in.
+          </p>
+
+          <div class="mt-8 space-y-4">
+            <div class="group flex gap-4">
+              <img src="icons/recruiter-icons/web-portfolio.png" alt="Web portfolio" class="h-16 w-16 shrink-0 object-contain">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Create your portfolio free with a unique web address</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Set up a shareable link for your profile at no cost and start presenting yourself instantly.</p>
+              </div>
+            </div>
+
+            <div class="group flex gap-4">
+              <img src="icons/recruiter-icons/cost-effective.png" alt="Cost effective" class="h-16 w-16 shrink-0 object-contain">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Low-cost premium subscriptions</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Upgrade affordably when you want extra visibility and stronger profile placement.</p>
+              </div>
+            </div>
+
+            <div class="group flex gap-4">
+              <img src="icons/recruiter-icons/verified.png" alt="Verified recruiter" class="h-16 w-16 shrink-0 object-contain">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Verified recruiter profile</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">See verified recruiters first so you can engage with more confidence.</p>
+              </div>
+            </div>
+
+            <div class="group flex gap-4">
+              <img src="icons/howitworks-talent/auto-update.png" alt="Auto update" class="h-16 w-16 shrink-0 object-contain">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900">Minimum job assurance</h3>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Improve your chances of getting meaningful opportunities instead of waiting in the dark.</p>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Card 3: Verified Recruiters Only -->
-    <div class="group relative overflow-hidden rounded-3xl border border-slate-100 bg-slate-50/50 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 opacity-0">
-      <div class="absolute inset-0 bg-gradient-to-bl from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div class="flex flex-col h-full justify-between relative z-10">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-2 font-sans">Verified Recruiters Only</h3>
-          <p class="text-slate-500 text-sm leading-relaxed font-sans">Connect safely. We eliminate fake recruiter profiles through dynamic verification checks, keeping your career secure.</p>
+    <!-- Recruiter Section -->
+<section id="recruiter-solution" data-talent-section class="py-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-5 order-2 lg:order-1" data-talent-animate>
+        <div class="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-xs font-bold text-purple-700 mb-6">
+          For Recruiters
         </div>
-        <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-4 text-xs font-semibold text-pink-600">
-          <span>VIEW SAFETY PROTOCOLS</span>
-          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+          Recruiter solution for
+          <span class="font-serif italic font-normal text-castiva-purple scribble-underline">faster, better matching</span>
+        </h2>
+        <p class="mt-5 max-w-xl text-slate-600 text-sm sm:text-base leading-7">
+          Find the right talent faster with cleaner filters, verified profiles, and a single-page view of each candidate.
+        </p>
+
+        <div class="mt-8 space-y-4">
+          <div class="group flex gap-4">
+            <img src="icons/recruiter-icons/search-filter.png" alt="Search filter" class="h-16 w-16 shrink-0 object-contain">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900">Advanced talent filters for your search</h3>
+              <p class="mt-1 text-sm leading-6 text-slate-600">Search talents by the criteria that matter for your role and project.</p>
+            </div>
+          </div>
+
+          <div class="group flex gap-4">
+            <img src="icons/recruiter-icons/calender.png" alt="Calendar" class="h-16 w-16 shrink-0 object-contain">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900">Available talent only for your date and timing</h3>
+              <p class="mt-1 text-sm leading-6 text-slate-600">See only talent that matches your required schedule and availability window.</p>
+            </div>
+          </div>
+
+          <div class="group flex gap-4">
+            <img src="icons/recruiter-icons/location.png" alt="Location" class="h-16 w-16 shrink-0 object-contain">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900">Location-based talent search</h3>
+              <p class="mt-1 text-sm leading-6 text-slate-600">Filter to talent who can work in your required location only.</p>
+            </div>
+          </div>
+
+          <div class="group flex gap-4">
+            <img src="icons/recruiter-icons/web-portfolio.png" alt="Web portfolio" class="h-16 w-16 shrink-0 object-contain">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900">Single-page portfolio view</h3>
+              <p class="mt-1 text-sm leading-6 text-slate-600">Review a complete talent portfolio in one clean web page.</p>
+            </div>
+          </div>
+
+          <div class="group flex gap-4">
+            <img src="icons/recruiter-icons/verified.png" alt="Verified" class="h-16 w-16 shrink-0 object-contain">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900">Verified talent profiles</h3>
+              <p class="mt-1 text-sm leading-6 text-slate-600">Work with talent profiles that are easier to trust and shortlist.</p>
+            </div>
+          </div>
+
+          <div class="group flex gap-4">
+            <img src="icons/recruiter-icons/cost-effective.png" alt="Cost effective" class="h-16 w-16 shrink-0 object-contain">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900">Low-cost, fastest talent search</h3>
+              <p class="mt-1 text-sm leading-6 text-slate-600">Save time and budget while finding better matches for your requirements.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Card 4: Total Control -->
-    <div class="md:col-span-2 group relative overflow-hidden rounded-3xl border border-slate-100 bg-slate-50/50 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 hover:-translate-y-1 opacity-0">
-      <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div class="flex flex-col h-full justify-between relative z-10">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-          </div>
-          <h3 class="text-2xl font-bold text-slate-900 mb-2 font-sans">Accept / Reject Offers Instantly</h3>
-          <p class="text-slate-500 max-w-md text-sm leading-relaxed font-sans">You decide who to work with. Accept or reject opportunities directly inside the app, automatically pausing incoming requests when you're booked.</p>
-        </div>
-        <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-4 text-xs font-semibold text-emerald-600">
-          <span>CONFIGURE DELEGATIONS</span>
-          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-        </div>
+      <div class="lg:col-span-7 order-1 lg:order-2" data-talent-animate>
+        <img
+          src="recruiter.png"
+          alt="Recruiter solution graphic"
+          class="h-[440px] sm:h-[540px] w-full max-w-[820px] mx-auto object-contain"
+        >
       </div>
     </div>
   </div>
@@ -3335,49 +3375,36 @@ if (window.gsap && window.ScrollTrigger) {
 
   <!-- Bento Talents Script -->
   <script>
-    // Bento Talents Logic
+    // Talent split sections animation
 if (window.gsap && window.ScrollTrigger) {
-  gsap.fromTo('#bento-talents > div', 
-    { opacity: 0, y: 50, filter: 'blur(10px)' },
-    { 
-      opacity: 1, 
-      y: 0, 
-      filter: 'blur(0px)', 
-      duration: 0.9, 
-      stagger: 0.15, 
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '#bento-talents',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
+  gsap.utils.toArray('[data-talent-section]').forEach((section) => {
+    const animatedElements = section.querySelectorAll('[data-talent-animate]');
+
+    gsap.fromTo(
+      animatedElements,
+      { opacity: 0, y: 40, filter: 'blur(10px)' },
+      {
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        duration: 0.9,
+        stagger: 0.12,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
       }
-    }
-  );
+    );
+  });
 }
 
   </script>
 
   <!-- Bento Directors Script -->
   <script>
-    // Bento Directors logic
-if (window.gsap && window.ScrollTrigger) {
-  gsap.fromTo('#bento-directors > div', 
-    { opacity: 0, y: 50, filter: 'blur(10px)' },
-    { 
-      opacity: 1, 
-      y: 0, 
-      filter: 'blur(0px)', 
-      duration: 0.9, 
-      stagger: 0.15, 
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '#bento-directors',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-      }
-    }
-  );
-}
+    // Animation handled by the shared talent split section logic.
 
   </script>
 
