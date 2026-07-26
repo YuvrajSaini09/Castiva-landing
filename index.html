@@ -583,19 +583,16 @@
 <section class="py-20 px-6 max-w-7xl mx-auto bg-white border-t border-slate-100" id="audience-section">
   <div class="text-center mb-10">
     <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-      Who Is <span class="font-playfair italic font-normal text-purple-600 scribble-underline inline-block">Castiva</span> Built For?
+      Who Is <span class="font-playfair italic font-normal text-purple-600 scribble-underline inline-block text-6xl ">Castiva</span> Built For?
     </h2>
   </div>
 
-  <!-- Role Toggle Selector -->
+  <!-- Role Toggle Selector (Reused Purple Sliding Tab Track) -->
   <div class="flex justify-center mb-12">
-    <div class="bg-slate-100/80 p-1.5 rounded-full inline-flex relative border border-slate-200/50 shadow-inner">
-      <button onclick="switchAudience('talent')" id="toggle-talent-btn" class="px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-sm">
-        For Talent
-      </button>
-      <button onclick="switchAudience('recruiter')" id="toggle-recruiter-btn" class="px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-slate-900 hover:text-black">
-        For Recruiters
-      </button>
+    <div class="bento-tab-container" style="width: 320px;">
+      <div class="bento-tab-indicator" id="audience-tab-indicator"></div>
+      <button class="bento-tab active" data-tab="talent" onclick="switchAudience('talent', this)">For Talent</button>
+      <button class="bento-tab" data-tab="recruiter" onclick="switchAudience('recruiter', this)">For Recruiters</button>
     </div>
   </div>
 
@@ -605,7 +602,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
       <!-- On Screen -->
       <div>
-        <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
           <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> On-Screen Talent
         </h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -674,7 +671,7 @@
 
       <!-- Performance Talent -->
       <div>
-        <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
           <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Performance Talent
         </h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -738,7 +735,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Creative & Production -->
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Creative & Production
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -797,7 +794,7 @@
 
         <!-- Post Production -->
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Post Production
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -859,7 +856,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Technical Crew -->
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Technical Crew
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -918,7 +915,7 @@
 
         <!-- Styling & Support -->
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Styling & Support
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -968,7 +965,7 @@
 
       <!-- Row 4: Digital & New Media -->
       <div class="max-w-2xl mx-auto">
-        <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2 justify-center">
+        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2 justify-center">
           <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Digital & New Media Talent
         </h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -1033,7 +1030,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
       <!-- Film & OTT Industry -->
       <div>
-        <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
           <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Film & OTT Industry
         </h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1082,7 +1079,7 @@
 
       <!-- Television & Media -->
       <div>
-        <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
           <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Television & Media
         </h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1126,7 +1123,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Advertising & Marketing -->
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Advertising & Marketing
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1165,7 +1162,7 @@
 
         <!-- Music Industry -->
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Music Industry
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1207,7 +1204,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Events & Live Shows -->
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Events & Live Shows
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1246,7 +1243,7 @@
 
         <!-- Product Company / Brands -->
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Brands & Products
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1266,7 +1263,7 @@
 
       <!-- Row 4: Emerging Sectors -->
       <div class="max-w-2xl mx-auto">
-        <h4 class="text-xs uppercase tracking-widest font-extrabold text-slate-900 mb-6 flex items-center gap-2 justify-center">
+        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2 justify-center">
           <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Emerging Sectors
         </h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1773,25 +1770,40 @@ if (window.gsap && window.ScrollTrigger) {
 
   <!-- Audience Script -->
   <script>
-    // Audience Categories Switcher and Expander Logic
+    // Audience Categories Selector & Expander Logic
 let currentAudienceTab = 'talent';
 let categoriesExpanded = false;
 
-function switchAudience(type) {
+function updateAudienceIndicator(activeTab) {
+  const indicator = document.getElementById('audience-tab-indicator');
+  if (!activeTab || !indicator) return;
+  indicator.style.width = `${activeTab.offsetWidth}px`;
+  indicator.style.left = `${activeTab.offsetLeft}px`;
+}
+
+function switchAudience(type, clickedBtn) {
   if (currentAudienceTab === type) return;
   currentAudienceTab = type;
   
   const talentPanel = document.getElementById('talent-categories-panel');
   const recruiterPanel = document.getElementById('recruiter-categories-panel');
-  const talentBtn = document.getElementById('toggle-talent-btn');
-  const recruiterBtn = document.getElementById('toggle-recruiter-btn');
+  const buttons = document.querySelectorAll('#audience-section .bento-tab');
   
+  // Update active class on buttons
+  buttons.forEach(btn => btn.classList.remove('active'));
+  if (clickedBtn) {
+    clickedBtn.classList.add('active');
+    updateAudienceIndicator(clickedBtn);
+  } else {
+    const targetBtn = document.querySelector(`#audience-section .bento-tab[data-tab="${type}"]`);
+    if (targetBtn) {
+      targetBtn.classList.add('active');
+      updateAudienceIndicator(targetBtn);
+    }
+  }
+  
+  // Handle Panel visibility transitions
   if (type === 'talent') {
-    // Reset toggle button styles
-    talentBtn.className = "px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-sm";
-    recruiterBtn.className = "px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-slate-600 hover:text-slate-900";
-    
-    // Panel visibility
     recruiterPanel.classList.add('opacity-0');
     setTimeout(() => {
       recruiterPanel.classList.add('hidden');
@@ -1801,11 +1813,6 @@ function switchAudience(type) {
       }, 50);
     }, 300);
   } else {
-    // Reset toggle button styles
-    recruiterBtn.className = "px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-sm";
-    talentBtn.className = "px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-slate-600 hover:text-slate-900";
-    
-    // Panel visibility
     talentPanel.classList.add('opacity-0');
     setTimeout(() => {
       talentPanel.classList.add('hidden');
@@ -1840,6 +1847,23 @@ function toggleCategories() {
     document.getElementById('audience-section').scrollIntoView({ behavior: 'smooth' });
   }
 }
+
+// Initial positioning on load and window resize
+document.addEventListener('DOMContentLoaded', () => {
+  const activeTab = document.querySelector('#audience-section .bento-tab.active');
+  if (activeTab) {
+    setTimeout(() => {
+      updateAudienceIndicator(activeTab);
+    }, 200);
+  }
+
+  window.addEventListener('resize', () => {
+    const currentActiveTab = document.querySelector('#audience-section .bento-tab.active');
+    if (currentActiveTab) {
+      updateAudienceIndicator(currentActiveTab);
+    }
+  });
+});
 
   </script>
 

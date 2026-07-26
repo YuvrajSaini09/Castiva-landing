@@ -1,22 +1,37 @@
-// Audience Categories Switcher and Expander Logic
+// Audience Categories Selector & Expander Logic
 let currentAudienceTab = 'talent';
 let categoriesExpanded = false;
 
-function switchAudience(type) {
+function updateAudienceIndicator(activeTab) {
+  const indicator = document.getElementById('audience-tab-indicator');
+  if (!activeTab || !indicator) return;
+  indicator.style.width = `${activeTab.offsetWidth}px`;
+  indicator.style.left = `${activeTab.offsetLeft}px`;
+}
+
+function switchAudience(type, clickedBtn) {
   if (currentAudienceTab === type) return;
   currentAudienceTab = type;
   
   const talentPanel = document.getElementById('talent-categories-panel');
   const recruiterPanel = document.getElementById('recruiter-categories-panel');
-  const talentBtn = document.getElementById('toggle-talent-btn');
-  const recruiterBtn = document.getElementById('toggle-recruiter-btn');
+  const buttons = document.querySelectorAll('#audience-section .bento-tab');
   
+  // Update active class on buttons
+  buttons.forEach(btn => btn.classList.remove('active'));
+  if (clickedBtn) {
+    clickedBtn.classList.add('active');
+    updateAudienceIndicator(clickedBtn);
+  } else {
+    const targetBtn = document.querySelector(`#audience-section .bento-tab[data-tab="${type}"]`);
+    if (targetBtn) {
+      targetBtn.classList.add('active');
+      updateAudienceIndicator(targetBtn);
+    }
+  }
+  
+  // Handle Panel visibility transitions
   if (type === 'talent') {
-    // Reset toggle button styles
-    talentBtn.className = "px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-sm";
-    recruiterBtn.className = "px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-slate-600 hover:text-slate-900";
-    
-    // Panel visibility
     recruiterPanel.classList.add('opacity-0');
     setTimeout(() => {
       recruiterPanel.classList.add('hidden');
@@ -26,11 +41,6 @@ function switchAudience(type) {
       }, 50);
     }, 300);
   } else {
-    // Reset toggle button styles
-    recruiterBtn.className = "px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-sm";
-    talentBtn.className = "px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-slate-600 hover:text-slate-900";
-    
-    // Panel visibility
     talentPanel.classList.add('opacity-0');
     setTimeout(() => {
       talentPanel.classList.add('hidden');
@@ -65,3 +75,20 @@ function toggleCategories() {
     document.getElementById('audience-section').scrollIntoView({ behavior: 'smooth' });
   }
 }
+
+// Initial positioning on load and window resize
+document.addEventListener('DOMContentLoaded', () => {
+  const activeTab = document.querySelector('#audience-section .bento-tab.active');
+  if (activeTab) {
+    setTimeout(() => {
+      updateAudienceIndicator(activeTab);
+    }, 200);
+  }
+
+  window.addEventListener('resize', () => {
+    const currentActiveTab = document.querySelector('#audience-section .bento-tab.active');
+    if (currentActiveTab) {
+      updateAudienceIndicator(currentActiveTab);
+    }
+  });
+});
