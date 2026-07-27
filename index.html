@@ -2194,11 +2194,10 @@
 <section class="py-20 px-6 max-w-7xl mx-auto bg-white border-t border-slate-100" id="audience-section">
   <div class="text-center mb-10">
     <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-      Who Is <span class="font-playfair italic font-normal text-purple-600 scribble-underline inline-block text-6xl ">Castiva</span> Built For?
+      Who Is <span class="font-playfair italic font-normal text-purple-600 scribble-underline inline-block text-6xl">Castiva</span> Built For?
     </h2>
   </div>
 
-  <!-- Role Toggle Selector (Reused Purple Sliding Tab Track) -->
   <div class="flex justify-center pt-8 mb-12">
     <div class="bento-tab-container" style="width: 320px;">
       <div class="bento-tab-indicator" id="audience-tab-indicator"></div>
@@ -2207,709 +2206,15 @@
     </div>
   </div>
 
-  <!-- Talent Main Container -->
-  <div id="talent-categories-panel" class="space-y-12 transition-all duration-500 opacity-100 block">
-    <!-- Row 1: On Screen & Performance (Always Visible) -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-      <!-- On Screen -->
-      <div>
-        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> On-Screen Talent
-        </h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Actor -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Actors</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Model -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-pink-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Model</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Child Artist -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500">
-                <svg class="w-5 h-5 fill-none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Child Artist</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Junior Artist -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Junior Artist</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Anchor/Emcee -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1 2.93c-3.37-.47-6-3.36-6-6.93h2c0 2.76 2.24 5 5 5s5-2.24 5-5h2c0 3.57-2.63 6.46-6 6.93V21h-2v-4.07z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Anchor / Emcee</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- DJ/VJ -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">DJ / VJ</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Performance Talent -->
-      <div>
-        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Performance Talent
-        </h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Singer -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2s2-.9 2-2V4c0-1.1-.9-2-2-2zm6 8c0 3.07-2.34 5.6-5.35 6.02L12 22h-1l-.65-5.98C7.34 15.6 5 13.07 5 10h2c0 2.76 2.24 5 5 5s5-2.24 5-5h2z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Singer</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Dancer -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-violet-50 flex items-center justify-center text-violet-500">
-                <svg class="w-5 h-5 fill-none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Dancer</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Musician -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Musician</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Choreographer -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
-                <svg class="w-5 h-5 fill-none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Choreographer</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Voice Over Artist -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer col-span-1 sm:col-span-2">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-sky-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.93c-2.8-.45-5-2.73-5-5.53h2c0 2.21 1.79 4 4 4v1.53zm5-5.53c0 2.8-2.2 5.08-5 5.53v-1.53c2.21 0 4-1.79 4-4h2zm-5-1.4c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2s2 .9 2 2v2c0 1.1-.9 2-2 2z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Voice Over / Dubbing Artist</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Collapsible Talent Categories (Creative, Post-Prod, Tech, Styling, Digital) -->
-    <div id="extended-talent-categories" class="hidden space-y-12">
-      <!-- Row 2: Creative & Post Production -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Creative & Production -->
-        <div>
-          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Creative & Production
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Director -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Director</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Assistant Director -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Assistant Director</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Script Writer -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Scriptwriter / Screenwriter</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Lyricist -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-pink-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9.34 8.07L11.58 10.3l-8.5 8.5H1v-2.08l8.34-8.75zm3.76-.73l-2.24-2.24 1.4-1.4 2.24 2.24-1.4 1.4z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Lyricist</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Storyboard Artist -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer col-span-1 sm:col-span-2">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Storyboard Artist</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Post Production -->
-        <div>
-          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Post Production
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Video Editor -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-sky-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22 4H2v16h20V4zm-2 14H4V6h16v12zM8 9H6v6h2V9zm8 0h-2v6h2V9zm-4 2H9v2h3v-2z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Video Editor</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- VFX Artist -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M7.5 5.6L10 7 8.6 4.5 10 2 7.5 3.4 5 2l1.4 2.5L5 7zm12 9.8l-2.5-1.4 1.4 2.5-1.4 2.5 2.5-1.4 2.5 1.4-1.4-2.5 1.4-2.5zM20 2l-2.5 1.4L19 5.9l-2.5-1.4 1.4 2.5L16.5 9.5l2.5-1.4 1.4 2.5 1.4-2.5 2.5 1.4-1.4-2.5L24 7l-2.5-1.4zM3 21h3l11-11-3-3L3 18v3zm12-12l1.5 1.5-1.5-1.5z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">VFX Artist</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Motion Graphics -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Motion Graphics</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Colorist -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.09-.64-.53-1.18-1.17-1.33-2.12-.5-3.73-2.11-4.23-4.23-.15-.64-.69-1.08-1.33-1.17C12.92 3.04 12.46 3 12 3z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Colorist</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Sound Designer -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer col-span-1 sm:col-span-2">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Sound Designer / Audio Engineer</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 3: Technical Crew & Styling -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Technical Crew -->
-        <div>
-          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Technical Crew
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Cinematographer -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Cinematographer (DOP)</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Photographer -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-pink-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 12c1.65 0 3-1.35 3-3s-1.35-3-3-3-3 1.35-3 3 1.35 3 3 3zm0-10C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Photographer</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Camera Operator -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Camera Operator</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Lighting Technicians -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.2c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l2.59-2.59c1.54 1.23 3.49 1.97 5.61 1.97 4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Lighting Tech</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Drone Operator -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer col-span-1 sm:col-span-2">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H7.5V7.5h9V16z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Drone Operator</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Styling & Support -->
-        <div>
-          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Styling & Support
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Make-up Artist -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M7.5 13c1.38 0 2.5-1.12 2.5-2.5S8.88 8 7.5 8 5 9.12 5 10.5 6.12 13 7.5 13zm9 0c1.38 0 2.5-1.12 2.5-2.5S17.88 8 16.5 8s-2.5 1.12-2.5 2.5 1.12 2.5 2.5 2.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Make-up Artist</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Hair Stylist -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-violet-50 flex items-center justify-center text-violet-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 2v6h8V2H6zm6 3H8V4h4v1zm-6 5v6h8v-6H6zm6 3H8v-1h4v1z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Hair Stylist</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Costume Designers -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-6h2v6zm0-8h-2V8h2v2z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Costume Designer</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Set Designer -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-sky-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Set Designer</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 4: Digital & New Media -->
-      <div class="max-w-2xl mx-auto">
-        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2 justify-center">
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Digital & New Media Talent
-        </h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <!-- Influencer -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-rose-50 flex items-center justify-center text-rose-500 shrink-0">
-                <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-xs">Influencer</span>
-            </div>
-            <svg class="w-3.5 h-3.5 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Digital Creator -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 shrink-0">
-                <svg class="w-4.5 h-4.5 fill-none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l5.904-.813a3.375 3.375 0 001.905-.988L21 14.904l-4.904-4.904-4.293 4.293a3.375 3.375 0 00-.99 1.905z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-xs">Digital Creator</span>
-            </div>
-            <svg class="w-3.5 h-3.5 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Podcaster -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500 shrink-0">
-                <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-xs">Podcaster</span>
-            </div>
-            <svg class="w-3.5 h-3.5 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- YouTuber -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-rose-50 flex items-center justify-center text-rose-500 shrink-0">
-                <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.87.553 9.388.553 9.388.553s7.518 0 9.388-.553a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-xs">YouTuber</span>
-            </div>
-            <svg class="w-3.5 h-3.5 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Blogger -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer sm:col-span-2 md:col-span-1">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-50 flex items-center justify-center text-amber-500 shrink-0">
-                <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-xs">Blogger</span>
-            </div>
-            <svg class="w-3.5 h-3.5 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div id="audience-loading" class="text-center py-20">
+    <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+    <p class="text-slate-500 mt-4">Loading categories...</p>
   </div>
 
-  <!-- Recruiter Main Container -->
-  <div id="recruiter-categories-panel" class="space-y-12 transition-all duration-500 opacity-0 hidden">
-    <!-- Row 1: Film & OTT / Television & Media (Always Visible) -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-      <!-- Film & OTT Industry -->
-      <div>
-        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Film & OTT Industry
-        </h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Production House -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Production House</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- OTT Platform -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-pink-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">OTT Platform</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Casting Director -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2s-2-.9-2-2V4c0-1.1.9-2 2-2zm6 8c0 3.07-2.34 5.6-5.35 6.02L12 22h-1l-.65-5.98C7.34 15.6 5 13.07 5 10h2c0 2.76 2.24 5 5 5s5-2.24 5-5h2z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Casting Director</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Line Producer -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Line Producer</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
+  <div id="talent-categories-panel" class="space-y-12 transition-all duration-500 opacity-0 hidden"></div>
 
-      <!-- Television & Media -->
-      <div>
-        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Television & Media
-        </h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- TV Channels -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Tv Channels</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Reality Show Producer -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-4h-2V7h2v8z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Reality Show Producer</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- News & Ent Channel -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer col-span-1 sm:col-span-2">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">News & Entertainment Channel</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div id="recruiter-categories-panel" class="space-y-12 transition-all duration-500 opacity-0 hidden"></div>
 
-    <!-- Collapsible Recruiter Categories (Advertising, Music, Events, Products, Emerging) -->
-    <div id="extended-recruiter-categories" class="hidden space-y-12">
-      <!-- Row 2: Advertising & Music -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Advertising & Marketing -->
-        <div>
-          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Advertising & Marketing
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Ad Agencies -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-6h2v6zm0-8h-2V8h2v2z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Ad Agencies</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Brand Marketing Team -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Brand Marketing Team</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Digital Marketing Agencies -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer col-span-1 sm:col-span-2">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-sky-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Digital Marketing Agencies</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Music Industry -->
-        <div>
-          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Music Industry
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Music Label -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Music Label</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Event Companies -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-violet-50 flex items-center justify-center text-violet-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm0-4h-2V7h2v8z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Event Companies</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Concert Organisers -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer col-span-1 sm:col-span-2">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Concert Organisers</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 3: Events & Brand/Products -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Events & Live Shows -->
-        <div>
-          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Events & Live Shows
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Event Management -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-6h2v6zm0-8h-2V8h2v2z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Event Management</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Wedding Planner -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-pink-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-6h2v6zm0-8h-2V8h2v2z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Wedding Planner</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-            <!-- Corporate Event Agencies -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer col-span-1 sm:col-span-2">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-6h2v6zm0-8h-2V8h2v2z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Corporates Event Agencies</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product Company / Brands -->
-        <div>
-          <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Brands & Products
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Business Name/Brand -->
-            <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer col-span-1 sm:col-span-2">
-              <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-6h2v6zm0-8h-2V8h2v2z"/></svg>
-                </div>
-                <span class="font-semibold text-slate-900 text-sm">Business Name / Brand</span>
-              </div>
-              <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 4: Emerging Sectors -->
-      <div class="max-w-2xl mx-auto">
-        <h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2 justify-center">
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Emerging Sectors
-        </h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Gaming Studio -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-6h2v6zm0-8h-2V8h2v2z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Gaming Studio</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-          <!-- Metaverse/Virtual Production -->
-          <div class="group flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-6h2v6zm0-8h-2V8h2v2z"/></svg>
-              </div>
-              <span class="font-semibold text-slate-900 text-sm">Metaverse / Virtual Production</span>
-            </div>
-            <svg class="w-4 h-4 text-slate-900 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Expand/Collapse Button (exactly like screenshot design) -->
-  <div class="flex justify-center mt-12">
-    <button onclick="toggleCategories()" id="categories-expand-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3.5 rounded-full transition-all duration-300 flex items-center gap-2 shadow-lg shadow-purple-500/20 hover:scale-[1.03]">
-      <span id="expand-btn-text">View All Categories</span>
-      <svg id="expand-btn-icon" class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-    </button>
-  </div>
 </section>
 
     <!-- Why Choose Us Section -->
@@ -3441,9 +2746,9 @@ if (window.gsap && window.ScrollTrigger) {
 
   <!-- Audience Script -->
   <script>
-    // Audience Categories Selector & Expander Logic
+    const API_BASE = 'https://backend.castiva.in/api/v1';
+
 let currentAudienceTab = 'talent';
-let categoriesExpanded = false;
 
 function updateAudienceIndicator(activeTab) {
   const indicator = document.getElementById('audience-tab-indicator');
@@ -3455,12 +2760,11 @@ function updateAudienceIndicator(activeTab) {
 function switchAudience(type, clickedBtn) {
   if (currentAudienceTab === type) return;
   currentAudienceTab = type;
-  
+
   const talentPanel = document.getElementById('talent-categories-panel');
   const recruiterPanel = document.getElementById('recruiter-categories-panel');
   const buttons = document.querySelectorAll('#audience-section .bento-tab');
-  
-  // Update active class on buttons
+
   buttons.forEach(btn => btn.classList.remove('active'));
   if (clickedBtn) {
     clickedBtn.classList.add('active');
@@ -3472,68 +2776,249 @@ function switchAudience(type, clickedBtn) {
       updateAudienceIndicator(targetBtn);
     }
   }
-  
-  // Handle Panel visibility transitions
+
   if (type === 'talent') {
     recruiterPanel.classList.add('opacity-0');
     setTimeout(() => {
       recruiterPanel.classList.add('hidden');
       talentPanel.classList.remove('hidden');
-      setTimeout(() => {
-        talentPanel.classList.remove('opacity-0');
-      }, 50);
+      setTimeout(() => talentPanel.classList.remove('opacity-0'), 50);
     }, 300);
   } else {
     talentPanel.classList.add('opacity-0');
     setTimeout(() => {
       talentPanel.classList.add('hidden');
       recruiterPanel.classList.remove('hidden');
-      setTimeout(() => {
-        recruiterPanel.classList.remove('opacity-0');
-      }, 50);
+      setTimeout(() => recruiterPanel.classList.remove('opacity-0'), 50);
     }, 300);
   }
 }
 
-function toggleCategories() {
-  categoriesExpanded = !categoriesExpanded;
-  
-  const talentExtended = document.getElementById('extended-talent-categories');
-  const recruiterExtended = document.getElementById('extended-recruiter-categories');
-  const btnText = document.getElementById('expand-btn-text');
-  const btnIcon = document.getElementById('expand-btn-icon');
-  
-  if (categoriesExpanded) {
-    talentExtended.classList.remove('hidden');
-    recruiterExtended.classList.remove('hidden');
-    btnText.innerText = "Show Less Categories";
-    btnIcon.classList.add('rotate-180');
+const FALLBACK_COLORS = [
+  'bg-blue-100 text-blue-600', 'bg-pink-100 text-pink-600', 'bg-amber-100 text-amber-600',
+  'bg-emerald-100 text-emerald-600', 'bg-indigo-100 text-indigo-600', 'bg-rose-100 text-rose-600',
+  'bg-violet-100 text-violet-600', 'bg-teal-100 text-teal-600', 'bg-orange-100 text-orange-600',
+  'bg-sky-100 text-sky-600'
+];
+
+function fallbackColor(name) {
+  if (!name) return FALLBACK_COLORS[0];
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  return FALLBACK_COLORS[Math.abs(hash) % FALLBACK_COLORS.length];
+}
+
+function extractIconUrl(item) {
+  if (!item) return '';
+  if (typeof item === 'string') {
+    if (item.startsWith('<svg')) return item;
+    return item;
+  }
+  return item.imageUrl || item.icon || item.image || item.url || '';
+}
+
+function getChildren(item) {
+  return item.children || item.subcategories || item.subCategories || item.items || [];
+}
+
+function imgError(img) {
+  img.onerror = null;
+  const name = img.getAttribute('data-name') || '';
+  const circle = document.createElement('div');
+  const color = fallbackColor(name);
+  const initial = name.charAt(0).toUpperCase() || '?';
+  circle.className = `w-24 h-24 rounded-full ${color} flex items-center justify-center shrink-0 text-3xl font-bold`;
+  circle.textContent = initial;
+  img.replaceWith(circle);
+}
+
+function createCategoryCard(sub) {
+  const url = extractIconUrl(sub);
+  let iconHtml;
+  if (url && !url.startsWith('<svg')) {
+    iconHtml = `<img src="${url}" alt="" class="w-24 h-24 object-contain shrink-0" loading="lazy" data-name="${sub.name || ''}" onerror="imgError(this)" />`;
   } else {
-    talentExtended.classList.add('hidden');
-    recruiterExtended.classList.add('hidden');
-    btnText.innerText = "View All Categories";
-    btnIcon.classList.remove('rotate-180');
-    
-    // Scroll smoothly to section top on collapse
+    const initial = (sub.name || '?').charAt(0).toUpperCase();
+    const color = fallbackColor(sub.name);
+    iconHtml = `<div class="w-24 h-24 rounded-full ${color} flex items-center justify-center shrink-0 text-3xl font-bold">${initial}</div>`;
+  }
+
+  return `<div class="group flex flex-col items-center gap-3 px-2 pt-4 pb-3 bg-white border border-slate-100 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(161,40,255,0.06)] hover:border-purple-200 transition-all duration-300 cursor-pointer text-center">
+    ${iconHtml}
+    <span class="font-semibold text-slate-900 text-sm leading-tight">${sub.name}</span>
+  </div>`;
+}
+
+function flattenSubcategories(categories) {
+  const items = [];
+  categories.forEach(cat => {
+    const children = getChildren(cat);
+    children.forEach(child => items.push(child));
+  });
+  return items;
+}
+
+/*
+// ---- OLD: Category-grouped layout ----
+function buildCategoryGroupHtml(category, isLastRow) {
+  const children = getChildren(category);
+  if (children.length === 0) return '';
+  const isSingleItem = children.length === 1;
+  let gridCols = 'grid-cols-1 sm:grid-cols-2';
+  if (isLastRow) {
+    gridCols = isSingleItem ? 'grid-cols-1 sm:grid-cols-1 md:grid-cols-1' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3';
+  }
+  let html = '<div>';
+  html += `<h4 class="text-sm font-extrabold text-slate-900 mb-6 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> ${category.name}</h4>`;
+  html += `<div class="grid ${gridCols} gap-4">`;
+  children.forEach(child => { html += createCategoryCard(child, isLastRow); });
+  html += '</div></div>';
+  return html;
+}
+
+function buildCategoryPanel(categories, scope) {
+  if (!categories || categories.length === 0) {
+    return '<p class="text-center text-slate-500 py-8">No categories available.</p>';
+  }
+  const alwaysVisible = categories.slice(0, 2);
+  const extended = categories.slice(2);
+  let html = '<div class="space-y-12">';
+  if (alwaysVisible.length > 0) {
+    html += '<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">';
+    alwaysVisible.forEach(cat => { html += buildCategoryGroupHtml(cat, false); });
+    html += '</div>';
+  }
+  if (extended.length > 0) {
+    const extendedId = `extended-${scope}-categories`;
+    html += `<div id="${extendedId}" class="hidden space-y-12">`;
+    for (let i = 0; i < extended.length; i += 2) {
+      const cat1 = extended[i];
+      const cat2 = extended[i + 1];
+      const isOdd = !cat2;
+      if (isOdd) {
+        html += `<div class="max-w-2xl mx-auto">${buildCategoryGroupHtml(cat1, true)}</div>`;
+      } else {
+        html += '<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">';
+        html += buildCategoryGroupHtml(cat1, false);
+        html += buildCategoryGroupHtml(cat2, false);
+        html += '</div>';
+      }
+    }
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+*/
+
+function buildCategoryPanel(categories, scope) {
+  const items = flattenSubcategories(categories);
+  if (items.length === 0) return '<p class="text-center text-slate-500 py-8">No categories available.</p>';
+
+  const INITIAL_COUNT = 14;
+  const visibleItems = items.slice(0, INITIAL_COUNT);
+  const hiddenItems = items.slice(INITIAL_COUNT);
+  const hasMore = hiddenItems.length > 0;
+  const gridClasses = 'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-x-6 gap-y-10';
+
+  let html = `<div class="${gridClasses}">`;
+  visibleItems.forEach(sub => { html += createCategoryCard(sub); });
+  html += '</div>';
+
+  if (hasMore) {
+    const hiddenId = `extended-${scope}-subcategories`;
+    html += `<div id="${hiddenId}" class="hidden mt-10"><div class="${gridClasses}">`;
+    hiddenItems.forEach(sub => { html += createCategoryCard(sub); });
+    html += '</div></div>';
+
+    html += `<div class="flex justify-center mt-10">
+      <button onclick="toggleSubcategories('${scope}')" id="expand-${scope}-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3.5 rounded-full transition-all duration-300 flex items-center gap-2 shadow-lg shadow-purple-500/20 hover:scale-[1.03]">
+        <span id="expand-${scope}-text">View All Categories</span>
+        <svg id="expand-${scope}-icon" class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+    </div>`;
+  }
+
+  return html;
+}
+
+function toggleSubcategories(scope) {
+  const hidden = document.getElementById(`extended-${scope}-subcategories`);
+  const btn = document.getElementById(`expand-${scope}-btn`);
+  const text = document.getElementById(`expand-${scope}-text`);
+  const icon = document.getElementById(`expand-${scope}-icon`);
+  if (!hidden) return;
+
+  const isHidden = hidden.classList.contains('hidden');
+  if (isHidden) {
+    hidden.classList.remove('hidden');
+    text.innerText = 'Show Less Categories';
+    if (icon) icon.classList.add('rotate-180');
+  } else {
+    hidden.classList.add('hidden');
+    text.innerText = 'View All Categories';
+    if (icon) icon.classList.remove('rotate-180');
     document.getElementById('audience-section').scrollIntoView({ behavior: 'smooth' });
   }
 }
 
-// Initial positioning on load and window resize
+function extractData(raw) {
+  if (Array.isArray(raw)) return raw;
+  if (raw && Array.isArray(raw.data)) return raw.data;
+  if (raw && Array.isArray(raw.results)) return raw.results;
+  if (raw && Array.isArray(raw.categories)) return raw.categories;
+  if (raw && typeof raw === 'object') {
+    const firstVal = Object.values(raw)[0];
+    if (Array.isArray(firstVal)) return firstVal;
+  }
+  return [];
+}
+
+async function fetchCategories(scope) {
+  const url = `${API_BASE}/cms/categories/tree?scope=${scope}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const json = await res.json();
+  return extractData(json);
+}
+
+async function initAudienceSection() {
+  const loadingEl = document.getElementById('audience-loading');
+  const talentPanel = document.getElementById('talent-categories-panel');
+  const recruiterPanel = document.getElementById('recruiter-categories-panel');
+
+  try {
+    const [talentData, recruiterData] = await Promise.all([
+      fetchCategories('talent'),
+      fetchCategories('recruiter')
+    ]);
+
+    talentPanel.innerHTML = buildCategoryPanel(talentData, 'talent');
+    recruiterPanel.innerHTML = buildCategoryPanel(recruiterData, 'recruiter');
+
+    loadingEl.style.display = 'none';
+    talentPanel.classList.remove('hidden', 'opacity-0');
+    talentPanel.classList.add('opacity-100', 'block');
+    recruiterPanel.classList.add('hidden');
+  } catch (err) {
+    console.error('Audience fetch error:', err);
+    loadingEl.innerHTML = `<p class="text-red-500">Failed to load categories. Please try again later.</p>
+      <button onclick="initAudienceSection()" class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors">Retry</button>`;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const activeTab = document.querySelector('#audience-section .bento-tab.active');
   if (activeTab) {
-    setTimeout(() => {
-      updateAudienceIndicator(activeTab);
-    }, 200);
+    setTimeout(() => updateAudienceIndicator(activeTab), 200);
   }
 
   window.addEventListener('resize', () => {
-    const currentActiveTab = document.querySelector('#audience-section .bento-tab.active');
-    if (currentActiveTab) {
-      updateAudienceIndicator(currentActiveTab);
-    }
+    const tab = document.querySelector('#audience-section .bento-tab.active');
+    if (tab) updateAudienceIndicator(tab);
   });
+
+  initAudienceSection();
 });
 
   </script>
