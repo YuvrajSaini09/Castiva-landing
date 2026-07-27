@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Castiva - Our Team</title>
+  <title>Castiva - Blogs</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,6 +129,23 @@
   animation: marquee 25s linear infinite;
 }
 
+
+    /* Blog Modal Styles */
+    .animate-modal-in {
+      animation: modalIn 0.3s ease-out;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    #blog-modal-content h1 { font-size: 1.75rem; font-weight: 800; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #0f172a; }
+    #blog-modal-content h2 { font-size: 1.375rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #0f172a; }
+    #blog-modal-content h3 { font-size: 1.125rem; font-weight: 700; margin-top: 1rem; margin-bottom: 0.5rem; color: #0f172a; }
+    #blog-modal-content p { margin-bottom: 1rem; line-height: 1.75; color: #334155; }
+    #blog-modal-content ul, #blog-modal-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+    #blog-modal-content li { margin-bottom: 0.375rem; line-height: 1.7; color: #334155; }
+    #blog-modal-content strong { font-weight: 700; color: #0f172a; }
+    #blog-modal-content blockquote { border-left: 4px solid #a128ff; padding-left: 1rem; margin: 1rem 0; color: #475569; font-style: italic; }
   </style>
 </head>
 <body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
@@ -191,9 +208,9 @@
   <section class="pt-36 pb-32 flex flex-col items-center text-center relative overflow-hidden bg-cover bg-top text-slate-900" style="background-image: url('hero-gradient-small.png');">
     <div class="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-4">
       <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
-        Meet Our <span class="font-serif italic font-medium text-purple-600 text-5xl sm:text-7xl scribble-underline">Team</span>
+        Our <span class="font-serif italic font-medium text-purple-600 text-5xl sm:text-7xl scribble-underline">Blogs</span>
       </h1>
-      <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-lg">The builders, technologists, and industry experts pioneering weightless casting matchmaking.</p>
+      <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-lg">Insights, tips, and stories from the forefront of talent discovery and casting innovation.</p>
     </div>
   </section>
 
@@ -208,23 +225,37 @@
 </div>
 
 
-  <!-- Team Grid -->
+  <!-- Blog Grid -->
   <section class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="space-y-12">
-      
-      <div class="text-center">
-        <h2 class="text-3xl font-extrabold text-slate-900">Leadership Team</h2>
-      </div>
-
-      <div id="team-loading" class="text-center py-20">
-        <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
-        <p class="text-slate-500 mt-4">Loading team...</p>
-      </div>
-
-      <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-
+    <div id="blog-loading" class="text-center py-20">
+      <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+      <p class="text-slate-500 mt-4">Loading articles...</p>
     </div>
+    <div id="blog-error" class="text-center py-16 hidden">
+      <p class="text-slate-500">Failed to load blog posts.</p>
+      <button onclick="location.reload()" class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors text-sm">Retry</button>
+    </div>
+    <div id="blog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
   </section>
+
+  <!-- Blog Modal -->
+  <div id="blog-modal" class="fixed inset-0 z-[100] hidden">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="absolute inset-0 flex items-start justify-center p-4 overflow-y-auto">
+      <div class="relative bg-white rounded-3xl shadow-2xl w-full max-w-3xl mt-16 mb-8 overflow-hidden animate-modal-in" style="border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;">
+        <button id="blog-modal-close" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center hover:bg-white transition-colors" aria-label="Close">
+          <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div id="blog-modal-cover" class="w-full aspect-[2/1] bg-slate-100 overflow-hidden"></div>
+        <div class="p-8 sm:p-10 space-y-6">
+          <div id="blog-modal-tags" class="flex flex-wrap gap-2"></div>
+          <h2 id="blog-modal-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight"></h2>
+          <p id="blog-modal-date" class="text-sm text-slate-400 font-medium"></p>
+          <div id="blog-modal-content" class="prose prose-slate max-w-none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Shared Footer Component -->
   <!-- Footer Component -->
@@ -314,76 +345,206 @@
 
   </script>
 
-  <!-- Team Data Script -->
+  <!-- Blog Data Script -->
   <script>
-    const apiBase = 'https://backend.castiva.in/api/v1';
+    var apiBase = 'https://backend.castiva.in/api/v1';
+    var blogPosts = [];
 
-    function createFallbackEl(name) {
-      const el = document.createElement('div');
-      el.className = 'w-full h-full flex items-center justify-center text-white font-bold text-3xl bg-purple-600';
-      el.textContent = name.charAt(0).toUpperCase();
-      return el;
+    function renderMarkdown(md) {
+      var html = md
+        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+        .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      var lines = html.split('\n');
+      var out = [], inList = false, inOList = false;
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        var liMatch = line.match(/^[-*] (.+)/);
+        var oliMatch = line.match(/^\d+\.\s+(.+)/);
+        var isH = /^<h[123]>/.test(line);
+        if (liMatch) {
+          if (inOList) { out.push('</ol>'); inOList = false; }
+          if (!inList) { out.push('<ul>'); inList = true; }
+          out.push('<li>' + liMatch[1] + '</li>');
+        } else if (oliMatch) {
+          if (inList) { out.push('</ul>'); inList = false; }
+          if (!inOList) { out.push('<ol>'); inOList = true; }
+          out.push('<li>' + oliMatch[1] + '</li>');
+        } else if (isH) {
+          if (inList) { out.push('</ul>'); inList = false; }
+          if (inOList) { out.push('</ol>'); inOList = false; }
+          out.push(line);
+        } else if (line.trim() === '') {
+          if (inList) { out.push('</ul>'); inList = false; }
+          if (inOList) { out.push('</ol>'); inOList = false; }
+        } else {
+          if (inList) { out.push('</ul>'); inList = false; }
+          if (inOList) { out.push('</ol>'); inOList = false; }
+          out.push('<p>' + line + '</p>');
+        }
+      }
+      if (inList) out.push('</ul>');
+      if (inOList) out.push('</ol>');
+      return out.join('\n');
     }
 
-    function buildMemberCard(member) {
-      const card = document.createElement('div');
-      card.className = 'bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4 hover:shadow-md transition-all duration-300';
+    function openBlogModal(post) {
+      var modal = document.getElementById('blog-modal');
+      var cover = document.getElementById('blog-modal-cover');
+      var tags = document.getElementById('blog-modal-tags');
+      var title = document.getElementById('blog-modal-title');
+      var date = document.getElementById('blog-modal-date');
+      var content = document.getElementById('blog-modal-content');
 
-      const imgWrapper = document.createElement('div');
-      imgWrapper.className = 'aspect-square bg-slate-100 rounded-2xl overflow-hidden flex items-center justify-center text-slate-400 font-semibold text-lg';
-
-      if (member.imageUrl) {
-        const img = document.createElement('img');
+      cover.innerHTML = '';
+      if (post.coverImageUrl) {
+        var img = document.createElement('img');
         img.className = 'w-full h-full object-cover';
-        img.src = member.imageUrl;
-        img.alt = member.name;
-        img.loading = 'lazy';
-        img.onerror = function () {
-          img.style.display = 'none';
-          imgWrapper.appendChild(createFallbackEl(member.name));
-        };
-        imgWrapper.appendChild(img);
-      } else {
-        imgWrapper.appendChild(createFallbackEl(member.name));
+        img.src = post.coverImageUrl;
+        img.alt = post.title;
+        cover.appendChild(img);
       }
 
-      const info = document.createElement('div');
-      const nameEl = document.createElement('h4');
-      nameEl.className = 'font-extrabold text-slate-900 text-lg';
-      nameEl.textContent = member.name;
+      tags.innerHTML = '';
+      if (post.tags && post.tags.length > 0) {
+        post.tags.forEach(function (tag) {
+          var el = document.createElement('span');
+          el.className = 'text-xs font-semibold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full';
+          el.textContent = tag;
+          tags.appendChild(el);
+        });
+      }
 
-      const desigEl = document.createElement('p');
-      desigEl.className = 'text-purple-600 text-sm font-semibold';
-      desigEl.textContent = member.designation;
+      title.textContent = post.title;
 
-      info.appendChild(nameEl);
-      info.appendChild(desigEl);
+      if (post.publishedAt) {
+        var d = new Date(post.publishedAt);
+        date.textContent = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      } else {
+        date.textContent = '';
+      }
+
+      content.innerHTML = renderMarkdown(post.content || '');
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBlogModal() {
+      var modal = document.getElementById('blog-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function buildBlogCard(post) {
+      var card = document.createElement('div');
+      card.className = 'cursor-pointer bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 group';
+
+      var imgWrapper = document.createElement('div');
+      imgWrapper.className = 'aspect-[2/1] bg-slate-100 overflow-hidden';
+
+      if (post.coverImageUrl) {
+        var img = document.createElement('img');
+        img.className = 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500';
+        img.src = post.coverImageUrl;
+        img.alt = post.title;
+        img.loading = 'lazy';
+        img.onerror = function () {
+          this.style.display = 'none';
+        };
+        imgWrapper.appendChild(img);
+      }
+
+      var body = document.createElement('div');
+      body.className = 'p-6 space-y-3';
+
+      if (post.tags && post.tags.length > 0) {
+        var tagRow = document.createElement('div');
+        tagRow.className = 'flex flex-wrap gap-2';
+        post.tags.slice(0, 3).forEach(function (tag) {
+          var tagEl = document.createElement('span');
+          tagEl.className = 'text-xs font-semibold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full';
+          tagEl.textContent = tag;
+          tagRow.appendChild(tagEl);
+        });
+        body.appendChild(tagRow);
+      }
+
+      var titleEl = document.createElement('h3');
+      titleEl.className = 'font-bold text-slate-900 text-lg leading-snug group-hover:text-purple-600 transition-colors';
+      titleEl.textContent = post.title;
+      body.appendChild(titleEl);
+
+      if (post.excerpt) {
+        var excerptEl = document.createElement('p');
+        excerptEl.className = 'text-slate-500 text-sm leading-relaxed line-clamp-3';
+        excerptEl.textContent = post.excerpt;
+        body.appendChild(excerptEl);
+      }
+
+      var dateEl = document.createElement('p');
+      dateEl.className = 'text-xs text-slate-400 font-medium';
+      if (post.publishedAt) {
+        var d = new Date(post.publishedAt);
+        dateEl.textContent = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+      body.appendChild(dateEl);
 
       card.appendChild(imgWrapper);
-      card.appendChild(info);
+      card.appendChild(body);
+
+      card.addEventListener('click', function () {
+        openBlogModal(post);
+      });
+
       return card;
     }
 
-    document.addEventListener('DOMContentLoaded', async () => {
-      const loading = document.getElementById('team-loading');
-      const grid = document.getElementById('team-grid');
+    document.addEventListener('DOMContentLoaded', function () {
+      var loading = document.getElementById('blog-loading');
+      var errorEl = document.getElementById('blog-error');
+      var grid = document.getElementById('blog-grid');
 
-      try {
-        const res = await fetch(apiBase + '/team');
-        const json = await res.json();
+      if (!grid) return;
 
-        if (json.success && Array.isArray(json.data)) {
-          json.data.sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
-          json.data.forEach(member => {
-            grid.appendChild(buildMemberCard(member));
-          });
+      document.getElementById('blog-modal-close').addEventListener('click', closeBlogModal);
+      document.getElementById('blog-modal').addEventListener('click', function (e) {
+        if (e.target === this || e.target.classList.contains('absolute')) {
+          closeBlogModal();
         }
-      } catch (err) {
-        console.error('Failed to load team:', err);
-        grid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-slate-500">Failed to load team. Please try again later.</p></div>';
-      } finally {
-        loading.style.display = 'none';
-      }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeBlogModal();
+      });
+
+      fetch(apiBase + '/blog?_=' + Date.now())
+        .then(function (res) { return res.json(); })
+        .then(function (json) {
+          if (!json.success || !Array.isArray(json.data)) {
+            throw new Error('Invalid response');
+          }
+
+          var items = json.data.filter(function (p) { return p.status === 'published'; });
+          blogPosts = items;
+
+          if (items.length === 0) {
+            loading.style.display = 'none';
+            grid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-slate-500">No articles published yet.</p></div>';
+            return;
+          }
+
+          items.forEach(function (post) {
+            grid.appendChild(buildBlogCard(post));
+          });
+
+          loading.style.display = 'none';
+        })
+        .catch(function (err) {
+          console.error('Blog fetch error:', err);
+          loading.style.display = 'none';
+          errorEl.classList.remove('hidden');
+        });
     });
   </script>
 </body>

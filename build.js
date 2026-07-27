@@ -20,9 +20,9 @@ function compileTemplate(filePath) {
 
 function build() {
   try {
-    console.log('Building index.html, legal.html, about.html, contact.html, team.html...');
+    console.log('Building index.html, legal.html, about.html, contact.html, team.html, blog.html...');
     
-    const pages = ['index.html', 'legal.html', 'about.html', 'contact.html', 'team.html'];
+    const pages = ['index.html', 'legal.html', 'about.html', 'contact.html', 'team.html', 'blog.html'];
     pages.forEach(page => {
       const srcPath = path.join(__dirname, 'src', page);
       const destPath = path.join(__dirname, page);

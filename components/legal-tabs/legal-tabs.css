@@ -58,3 +58,23 @@
               width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   box-sizing: border-box;
 }
+
+.bento-tab-scroll-wrapper {
+  overflow: visible;
+}
+
+@media (max-width: 640px) {
+  .bento-tab-scroll-wrapper {
+    overflow-x: auto;
+    max-width: 90%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .bento-tab-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .bento-tab-scroll-wrapper .bento-tab-container {
+    width: max-content;
+    max-width: none;
+  }
+}

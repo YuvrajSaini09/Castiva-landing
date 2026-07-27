@@ -238,6 +238,26 @@
   box-sizing: border-box;
 }
 
+.bento-tab-scroll-wrapper {
+  overflow: visible;
+}
+
+@media (max-width: 640px) {
+  .bento-tab-scroll-wrapper {
+    overflow-x: auto;
+    max-width: 90%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .bento-tab-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .bento-tab-scroll-wrapper .bento-tab-container {
+    width: max-content;
+    max-width: none;
+  }
+}
+
 
     /* Testimonials Styles */
     /* Testimonial Marquee Styles */
@@ -245,12 +265,24 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+@keyframes marquee-testimonials-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
 .animate-marquee-testimonials {
   display: flex;
   width: max-content;
   animation: marquee-testimonials 35s linear infinite;
 }
 .animate-marquee-testimonials:hover {
+  animation-play-state: paused;
+}
+.animate-marquee-testimonials-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-testimonials-reverse 35s linear infinite;
+}
+.animate-marquee-testimonials-reverse:hover {
   animation-play-state: paused;
 }
 
@@ -453,6 +485,18 @@
   }
 }
 
+
+    /* Hero Styles */
+    /* Hero Custom styles */
+
+@media (max-width: 640px) {
+  picture {
+    display: block;
+    margin-top: 24px;
+  }
+}
+
+
   </style>
 </head>
 <body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
@@ -478,6 +522,7 @@
         <a href="about.html" class="hover:text-purple-600 transition-colors">About</a>
         <a href="contact.html" class="hover:text-purple-600 transition-colors">Contact</a>
         <a href="team.html" class="hover:text-purple-600 transition-colors">Team</a>
+        <a href="blog.html" class="hover:text-purple-600 transition-colors">Blog</a>
       </div>
 
       <!-- Action Button -->
@@ -515,7 +560,7 @@
   <div class="max-w-7xl w-full mx-auto space-y-5 px-4 mb-2">
     
     <!-- Main Heading -->
-    <h1 class="text-xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.2] px-2">
+    <h1 class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.2] px-2">
       <span class="block sm:whitespace-nowrap gs-blur-reveal opacity-0">We are India’s 1st <span class="font-serif italic font-normal text-purple-600 text-[1.15em] scribble-underline inline-block">AI Enabled</span></span>
       <span class="block sm:whitespace-nowrap gs-blur-reveal opacity-0"><span class="font-serif italic font-normal text-purple-600 text-[1.15em] inline-block">Global</span> <span class="font-serif italic font-normal text-purple-600 text-[1.15em] scribble-underline inline-block">Casting</span> Ecosystem</span>
     </h1>
@@ -525,18 +570,18 @@
       
       <!-- Button 1: Discover -->
       <a href="https://castiva.in" target="_blank" class="relative inline-flex items-center justify-center group rounded-full gs-hero-btn opacity-0">
-        <button class="group relative inline-flex w-[170px] h-[52px] cursor-pointer transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] hover:-translate-y-[2px] hover:scale-[1.03] hover:text-white text-base font-semibold text-white/90 tracking-tight rounded-full px-6 items-center justify-center" style="box-shadow:inset 0 0 0 1px rgba(255,255,255,0.15);background:radial-gradient(ellipse at bottom,rgba(55,55,55,1) 0%,rgba(0,0,0,1) 100%);">
-          <span class="relative z-10 font-medium rounded-full text-base">Discover</span>
+        <button class="group relative inline-flex w-[150px] sm:w-[170px] h-[44px] sm:h-[52px] cursor-pointer transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] hover:-translate-y-[2px] hover:scale-[1.03] hover:text-white text-sm sm:text-base font-semibold text-white/90 tracking-tight rounded-full px-5 sm:px-6 items-center justify-center" style="box-shadow:inset 0 0 0 1px rgba(255,255,255,0.15);background:radial-gradient(ellipse at bottom,rgba(55,55,55,1) 0%,rgba(0,0,0,1) 100%);">
+          <span class="relative z-10 font-medium rounded-full text-sm sm:text-base">Discover</span>
           <span aria-hidden="true" class="absolute bottom-0 left-1/2 h-[1px] w-[70%] -translate-x-1/2 opacity-20 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] group-hover:opacity-80 rounded-full text-xs" style="background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);"></span>
         </button>
-        <span class="pointer-events-none absolute -bottom-3 left-1/2 z-0 h-6 w-44 -translate-x-1/2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 rounded-full text-sm" style="background: radial-gradient(60% 100% at 50% 50%, rgba(255,255,255,.55), rgba(255,255,255,.28) 35%, transparent 70%); filter: blur(10px) saturate(120%);" aria-hidden="true"></span>
+        <span class="pointer-events-none absolute -bottom-2 sm:-bottom-3 left-1/2 z-0 h-5 sm:h-6 w-36 sm:w-44 -translate-x-1/2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 rounded-full text-sm" style="background: radial-gradient(60% 100% at 50% 50%, rgba(255,255,255,.55), rgba(255,255,255,.28) 35%, transparent 70%); filter: blur(10px) saturate(120%);" aria-hidden="true"></span>
       </a>
 
       <!-- Button 2: Sign Up Now -->
       <a href="https://castiva.in" target="_blank" class="relative inline-flex rounded-full gs-hero-btn opacity-0">
-        <button class="group overflow-hidden transition-all duration-700 ease-out hover:scale-[1.03] border-none flex cursor-pointer w-[170px] h-[56px] z-10 rounded-full relative items-center justify-center" style="filter: drop-shadow(0 10px 20px rgba(161,40,255,0.25)); background: #f8fafc">
+        <button class="group overflow-hidden transition-all duration-700 ease-out hover:scale-[1.03] border-none flex cursor-pointer w-[150px] sm:w-[170px] h-[48px] sm:h-[56px] z-10 rounded-full relative items-center justify-center" style="filter: drop-shadow(0 10px 20px rgba(161,40,255,0.25)); background: #f8fafc">
           <!-- Volumetric Under-glow -->
-          <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[140%] h-32 bg-purple-500/30 blur-[60px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+          <div class="absolute -bottom-8 sm:-bottom-10 left-1/2 -translate-x-1/2 w-[140%] h-28 sm:h-32 bg-purple-500/30 blur-[60px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
           
           <!-- WebGL Core Container -->
           <div class="absolute inset-[2px] rounded-full overflow-hidden bg-white/5 backdrop-blur-xl border border-white/40 shadow-[inset_0_2px_12px_rgba(255,255,255,0.7)]">
@@ -551,7 +596,7 @@
 
           <!-- Content Layer -->
           <div class="z-10 flex text-white px-4 relative drop-shadow-md items-center justify-center">
-            <span class="text-base font-medium tracking-tight whitespace-nowrap">Sign Up Now</span>
+            <span class="text-sm sm:text-base font-medium tracking-tight whitespace-nowrap">Sign Up Now</span>
           </div>
         </button>
       </a>
@@ -561,16 +606,19 @@
 
   <!-- Full Width Hero Image -->
   <div class="w-full -mt-2 bg-transparent relative z-0">
-    <img src="hero-bg.png" alt="Castiva Talent Discovery & Casting Group" class="w-full h-auto object-cover block">
+    <picture>
+      <source srcset="hero-bg-mobile.webp" media="(max-width: 640px)">
+      <img id="hero-main-img" src="hero-bg.png" alt="Castiva Talent Discovery & Casting Group" class="w-full h-auto object-cover block">
+    </picture>
   </div>
 </section>
     <!-- Infinite Auto Scrolling Banner Strip -->
-<div class="w-full bg-[#A128FF] py-6 overflow-hidden relative z-10 select-none">
+<div class="w-full bg-[#A128FF] pt-6 pb-8 sm:py-6 mb-[22px] sm:mb-0 overflow-hidden relative z-10 select-none">
   <div class="animate-marquee whitespace-nowrap flex items-center">
-    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-6 inline-flex items-center gap-6">India's Leading <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Talent Discovery</span> & <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Casting</span> Platform <img src="star-icon.png" class="w-12 h-12 sm:w-16 sm:h-16 inline-block ml-4" alt="*"></span>
-    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-6 inline-flex items-center gap-6">India's Leading <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Talent Discovery</span> & <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Casting</span> Platform <img src="star-icon.png" class="w-12 h-12 sm:w-16 sm:h-16 inline-block ml-4" alt="*"></span>
-    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-6 inline-flex items-center gap-6">India's Leading <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Talent Discovery</span> & <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Casting</span> Platform <img src="star-icon.png" class="w-12 h-12 sm:w-16 sm:h-16 inline-block ml-4" alt="*"></span>
-    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-6 inline-flex items-center gap-6">India's Leading <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Talent Discovery</span> & <span class="font-playfair italic font-normal text-5.5xl white-scribble-underline inline-block -translate-y-1.5">Casting</span> Platform <img src="star-icon.png" class="w-12 h-12 sm:w-16 sm:h-16 inline-block ml-4" alt="*"></span>
+    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-4 sm:mx-6 inline-flex items-center gap-3 sm:gap-6">India's Leading <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block ">Talent Discovery</span> & <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block">Casting</span> Platform <img src="star-icon.png" class="w-8 h-8 sm:w-16 sm:h-16 inline-block ml-2 sm:ml-4" alt="*"></span>
+    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-4 sm:mx-6 inline-flex items-center gap-3 sm:gap-6">India's Leading <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block ">Talent Discovery</span> & <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block">Casting</span> Platform <img src="star-icon.png" class="w-8 h-8 sm:w-16 sm:h-16 inline-block ml-2 sm:ml-4" alt="*"></span>
+    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-4 sm:mx-6 inline-flex items-center gap-3 sm:gap-6">India's Leading <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block ">Talent Discovery</span> & <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block">Casting</span> Platform <img src="star-icon.png" class="w-8 h-8 sm:w-16 sm:h-16 inline-block ml-2 sm:ml-4" alt="*"></span>
+    <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-4 sm:mx-6 inline-flex items-center gap-3 sm:gap-6">India's Leading <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block ">Talent Discovery</span> & <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block">Casting</span> Platform <img src="star-icon.png" class="w-8 h-8 sm:w-16 sm:h-16 inline-block ml-2 sm:ml-4" alt="*"></span>
   </div>
 </div>
 
@@ -735,12 +783,14 @@
 
     <!-- sliding tab track -->
     <div class="flex justify-center mb-12">
-      <div class="bento-tab-container" style="width: 580px; max-width: 90%;">
-        <div class="bento-tab-indicator" id="partners-tab-indicator" style="transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);"></div>
-        <button class="bento-tab active" data-tab="actors" onclick="switchPartners('actors', this)">Actors</button>
-        <button class="bento-tab" data-tab="recruiters" onclick="switchPartners('recruiters', this)">Recruiters</button>
-        <button class="bento-tab" data-tab="celebrities" onclick="switchPartners('celebrities', this)">Celebrities</button>
-        <button class="bento-tab" data-tab="influencers" onclick="switchPartners('influencers', this)">Influencers</button>
+      <div class="bento-tab-scroll-wrapper">
+        <div class="bento-tab-container" style="width: 580px; max-width: 90%;">
+          <div class="bento-tab-indicator" id="partners-tab-indicator" style="transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);"></div>
+          <button class="bento-tab active" data-tab="actors" onclick="switchPartners('actors', this)">Actors</button>
+          <button class="bento-tab" data-tab="recruiters" onclick="switchPartners('recruiters', this)">Recruiters</button>
+          <button class="bento-tab" data-tab="celebrities" onclick="switchPartners('celebrities', this)">Celebrities</button>
+          <button class="bento-tab" data-tab="influencers" onclick="switchPartners('influencers', this)">Influencers</button>
+        </div>
       </div>
     </div>
 
@@ -2261,7 +2311,7 @@
 </section>
 
     <!-- Infinite Scrolling Testimonials Section -->
-<section class="py-20 overflow-hidden bg-slate-50/30 w-full relative">
+<section class="pt-20 pb-8 overflow-hidden bg-slate-50/30 w-full relative">
   <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
     <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
       Loved by the <span class="font-serif italic font-normal text-castiva-purple text-[1.15em] scribble-underline inline-block">Industry</span>
@@ -2269,121 +2319,22 @@
     <p class="text-slate-500 max-w-xl mx-auto text-sm sm:text-base">See how casting directors, creators, and actors are scaling their career with Castiva.</p>
   </div>
 
+  <div id="testimonials-loading" class="text-center py-16">
+    <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+    <p class="text-slate-500 mt-4">Loading testimonials...</p>
+  </div>
+
+  <div id="testimonials-error" class="text-center py-16 hidden">
+    <p class="text-slate-500">Failed to load testimonials.</p>
+    <button onclick="location.reload()" class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors text-sm">Retry</button>
+  </div>
+
   <!-- Testimonials Infinite Banner Wrapper -->
-  <div class="w-full overflow-hidden select-none relative z-10 py-4">
-    <!-- Row 1: Scrolling Left -->
-    <div class="animate-marquee-testimonials whitespace-nowrap flex gap-6">
-      
-      <!-- Card 1 -->
-      <div class="inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Sarah Jenkins" class="w-14 h-14 rounded-full object-cover">
-          <div>
-            <h4 class="font-bold text-slate-900 text-base">Sarah Jenkins</h4>
-            <p class="text-xs text-purple-600 font-semibold">Casting Director, Netflix India</p>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed whitespace-normal font-sans">
-          "Castiva completely redesigned how we discover new talent. The AI script breakdown parsed our casting requirements in seconds, and we closed casting within a week."
-        </p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Arjun Mehta" class="w-14 h-14 rounded-full object-cover">
-          <div>
-            <h4 class="font-bold text-slate-900 text-base">Arjun Mehta</h4>
-            <p class="text-xs text-purple-600 font-semibold">Independent Filmmaker</p>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed whitespace-normal font-sans">
-          "The virtual audition rooms are incredibly smooth. Being able to record, catalog, and rate actors simultaneously saved our production team countless hours."
-        </p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Nisha Roy" class="w-14 h-14 rounded-full object-cover">
-          <div>
-            <h4 class="font-bold text-slate-900 text-base">Nisha Roy</h4>
-            <p class="text-xs text-purple-600 font-semibold">Theatre & Screen Actress</p>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed whitespace-normal font-sans">
-          "Getting my profile verified on Castiva gave me instant access to international casting calls. I landed my first lead role in a global project through the platform."
-        </p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="David Lee" class="w-14 h-14 rounded-full object-cover">
-          <div>
-            <h4 class="font-bold text-slate-900 text-base">David Lee</h4>
-            <p class="text-xs text-purple-600 font-semibold">Executive Producer, Studio X</p>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed whitespace-normal font-sans">
-          "Verified talent pools and smart escrow payments made hiring in India completely risk-free. Excellent compliance and support throughout."
-        </p>
-      </div>
-
-      <!-- Repeat Cards for Infinite Scroll Effect -->
-      <div class="inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Sarah Jenkins" class="w-14 h-14 rounded-full object-cover">
-          <div>
-            <h4 class="font-bold text-slate-900 text-base">Sarah Jenkins</h4>
-            <p class="text-xs text-purple-600 font-semibold">Casting Director, Netflix India</p>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed whitespace-normal font-sans">
-          "Castiva completely redesigned how we discover new talent. The AI script breakdown parsed our casting requirements in seconds, and we closed casting within a week."
-        </p>
-      </div>
-
-      <div class="inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Arjun Mehta" class="w-14 h-14 rounded-full object-cover">
-          <div>
-            <h4 class="font-bold text-slate-900 text-base">Arjun Mehta</h4>
-            <p class="text-xs text-purple-600 font-semibold">Independent Filmmaker</p>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed whitespace-normal font-sans">
-          "The virtual audition rooms are incredibly smooth. Being able to record, catalog, and rate actors simultaneously saved our production team countless hours."
-        </p>
-      </div>
-
-      <div class="inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Nisha Roy" class="w-14 h-14 rounded-full object-cover">
-          <div>
-            <h4 class="font-bold text-slate-900 text-base">Nisha Roy</h4>
-            <p class="text-xs text-purple-600 font-semibold">Theatre & Screen Actress</p>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed whitespace-normal font-sans">
-          "Getting my profile verified on Castiva gave me instant access to international casting calls. I landed my first lead role in a global project through the platform."
-        </p>
-      </div>
-
-      <div class="inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4 mb-6">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="David Lee" class="w-14 h-14 rounded-full object-cover">
-          <div>
-            <h4 class="font-bold text-slate-900 text-base">David Lee</h4>
-            <p class="text-xs text-purple-600 font-semibold">Executive Producer, Studio X</p>
-          </div>
-        </div>
-        <p class="text-slate-600 text-sm leading-relaxed whitespace-normal font-sans">
-          "Verified talent pools and smart escrow payments made hiring in India completely risk-free. Excellent compliance and support throughout."
-        </p>
-      </div>
-
-    </div>
+  <div id="testimonials-wrapper" class="w-full overflow-hidden select-none relative z-10 py-2" style="display:none">
+    <div id="testimonials-track" class="whitespace-nowrap flex gap-6"></div>
+  </div>
+  <div id="testimonials-wrapper-2" class="w-full overflow-hidden select-none relative z-10 py-2" style="display:none">
+    <div id="testimonials-track-2" class="whitespace-nowrap flex gap-6"></div>
   </div>
 </section>
 
@@ -2435,6 +2386,7 @@
         <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
         <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
         <li><a href="team.html" class="hover:text-white transition-colors">Our Team</a></li>
+        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
       </ul>
     </div>
 
@@ -3058,6 +3010,128 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- Testimonials Script -->
   <script>
     // Testimonials Component Logic
+
+(function () {
+  var apiBase = 'https://backend.castiva.in/api/v1';
+
+  function createFallbackEl(name) {
+    var el = document.createElement('div');
+    el.className = 'w-full h-full flex items-center justify-center text-white font-bold text-xl bg-purple-600';
+    el.textContent = name.charAt(0).toUpperCase();
+    return el;
+  }
+
+  function buildTestimonialCard(t) {
+    var card = document.createElement('div');
+    card.className = 'inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow';
+
+    var top = document.createElement('div');
+    top.className = 'flex items-center gap-4 mb-6';
+
+    var imgWrapper = document.createElement('div');
+    imgWrapper.className = 'w-14 h-14 rounded-full overflow-hidden shrink-0 bg-slate-100';
+
+    if (t.imageUrl) {
+      var img = document.createElement('img');
+      img.className = 'w-full h-full object-cover';
+      img.src = t.imageUrl;
+      img.alt = t.name;
+      img.loading = 'lazy';
+      img.onerror = function () {
+        img.style.display = 'none';
+        imgWrapper.appendChild(createFallbackEl(t.name));
+      };
+      imgWrapper.appendChild(img);
+    } else {
+      imgWrapper.appendChild(createFallbackEl(t.name));
+    }
+
+    var info = document.createElement('div');
+    info.className = 'flex-1 min-w-0';
+
+    var nameRow = document.createElement('div');
+    nameRow.className = 'flex items-center gap-1.5';
+
+    var nameEl = document.createElement('h4');
+    nameEl.className = 'font-bold text-slate-900 text-base';
+    nameEl.textContent = t.name;
+
+    var starsEl = document.createElement('span');
+    starsEl.className = 'text-yellow-400 text-xs shrink-0 font-semibold';
+    starsEl.textContent = '(' + (t.starsCount || 0) + '\u00a0\u2605)';
+
+    nameRow.appendChild(nameEl);
+    nameRow.appendChild(starsEl);
+    info.appendChild(nameRow);
+
+    top.appendChild(imgWrapper);
+    top.appendChild(info);
+
+    var quote = document.createElement('p');
+    quote.className = 'text-slate-600 text-sm leading-relaxed whitespace-normal font-sans';
+    quote.textContent = '\u201C' + t.content + '\u201D';
+
+    card.appendChild(top);
+    card.appendChild(quote);
+    return card;
+  }
+
+  function populateTrack(trackId, items) {
+    var track = document.getElementById(trackId);
+    if (!track) return;
+    items.forEach(function (t) {
+      track.appendChild(buildTestimonialCard(t));
+    });
+    items.forEach(function (t) {
+      track.appendChild(buildTestimonialCard(t));
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var loading = document.getElementById('testimonials-loading');
+    var errorEl = document.getElementById('testimonials-error');
+    var wrapper = document.getElementById('testimonials-wrapper');
+    var wrapper2 = document.getElementById('testimonials-wrapper-2');
+
+    if (!wrapper) return;
+
+    fetch(apiBase + '/testimonials?_=' + Date.now())
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (!json.success || !Array.isArray(json.data)) {
+          throw new Error('Invalid response');
+        }
+
+        var items = json.data.sort(function (a, b) {
+          return (a.sortOrder || 0) - (b.sortOrder || 0);
+        });
+
+        if (items.length === 0) {
+          loading.style.display = 'none';
+          return;
+        }
+
+        populateTrack('testimonials-track', items);
+        populateTrack('testimonials-track-2', items);
+
+        loading.style.display = 'none';
+        wrapper.style.display = 'block';
+        if (wrapper2) wrapper2.style.display = 'block';
+
+        requestAnimationFrame(function () {
+          var track = document.getElementById('testimonials-track');
+          var track2 = document.getElementById('testimonials-track-2');
+          if (track) track.classList.add('animate-marquee-testimonials');
+          if (track2) track2.classList.add('animate-marquee-testimonials-reverse');
+        });
+      })
+      .catch(function (err) {
+        console.error('Testimonials fetch error:', err);
+        loading.style.display = 'none';
+        errorEl.classList.remove('hidden');
+      });
+  });
+})();
 
   </script>
 
