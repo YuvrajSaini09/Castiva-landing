@@ -4,7 +4,8 @@
 (function() {
   const btn = document.getElementById('mobile-menu-btn');
   const modal = document.getElementById('mobile-nav-modal');
-  const lines = btn?.querySelectorAll('.menu-line');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
   const links = modal?.querySelectorAll('.mobile-nav-link');
   if (!btn || !modal) return;
 
@@ -20,15 +21,21 @@
     open = true;
     positionModal();
     btn.classList.add('active');
+    openIcon?.classList.add('scale-0', 'opacity-0', 'rotate-90');
+    openIcon?.classList.remove('scale-100', 'opacity-100', 'rotate-0');
+    closeIcon?.classList.remove('scale-0', 'opacity-0', '-rotate-90');
+    closeIcon?.classList.add('scale-100', 'opacity-100', 'rotate-0');
     modal.classList.remove('pointer-events-none', 'opacity-0', 'scale-95');
-    lines.forEach(l => l.classList.add('bg-purple-600'));
   }
 
   function closeMenu() {
     open = false;
     btn.classList.remove('active');
+    openIcon?.classList.remove('scale-0', 'opacity-0', 'rotate-90');
+    openIcon?.classList.add('scale-100', 'opacity-100', 'rotate-0');
+    closeIcon?.classList.add('scale-0', 'opacity-0', '-rotate-90');
+    closeIcon?.classList.remove('scale-100', 'opacity-100', 'rotate-0');
     modal.classList.add('pointer-events-none', 'opacity-0', 'scale-95');
-    lines.forEach(l => l.classList.remove('bg-purple-600'));
   }
 
   btn.addEventListener('click', (e) => { e.stopPropagation(); open ? closeMenu() : openMenu(); });
