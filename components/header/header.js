@@ -1,5 +1,44 @@
 // Header Logic
 
+// Mobile Menu Toggle
+(function() {
+  const btn = document.getElementById('mobile-menu-btn');
+  const modal = document.getElementById('mobile-nav-modal');
+  const lines = btn?.querySelectorAll('.menu-line');
+  const links = modal?.querySelectorAll('.mobile-nav-link');
+  if (!btn || !modal) return;
+
+  let open = false;
+
+  function positionModal() {
+    const rect = btn.getBoundingClientRect();
+    modal.style.top = (rect.bottom + 20) + 'px';
+    modal.style.right = (window.innerWidth - rect.right - 12) + 'px';
+  }
+
+  function openMenu() {
+    open = true;
+    positionModal();
+    btn.classList.add('active');
+    modal.classList.remove('pointer-events-none', 'opacity-0', 'scale-95');
+    lines.forEach(l => l.classList.add('bg-purple-600'));
+  }
+
+  function closeMenu() {
+    open = false;
+    btn.classList.remove('active');
+    modal.classList.add('pointer-events-none', 'opacity-0', 'scale-95');
+    lines.forEach(l => l.classList.remove('bg-purple-600'));
+  }
+
+  btn.addEventListener('click', (e) => { e.stopPropagation(); open ? closeMenu() : openMenu(); });
+  links.forEach(l => l.addEventListener('click', closeMenu));
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  document.addEventListener('click', (e) => { if (open && !modal.contains(e.target) && !btn.contains(e.target)) closeMenu(); });
+  window.addEventListener('scroll', () => { if (open) closeMenu(); }, { passive: true });
+  window.addEventListener('resize', () => { if (open) positionModal(); });
+})();
+
 // WebGL Button Shader (Purple Theme)
 (function(){
   const c=document.getElementById('gl-aura-header');

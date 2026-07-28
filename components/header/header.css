@@ -31,6 +31,13 @@
   }
 }
 
+/* Hamburger Menu Animation */
+#mobile-menu-btn .menu-line:nth-child(1) { transform-origin: center; }
+#mobile-menu-btn .menu-line:nth-child(3) { transform-origin: center; }
+#mobile-menu-btn.active .menu-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#mobile-menu-btn.active .menu-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+#mobile-menu-btn.active .menu-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 @media (prefers-reduced-motion: reduce) {
   .border-beam-bg {
     animation: none;
