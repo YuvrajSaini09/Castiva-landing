@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castiva - FAQ</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            inter: ['"Inter"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            castiva: {
+              purple: '#A128FF',
+              lightPurple: '#C86BFF',
+              dark: '#111827',
+              gray: '#4B5563',
+              lightBg: '#FFFFFF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      color: #111827;
+      overflow-x: hidden;
+    }
+    
+    .scribble-underline {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .scribble-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+      width: 100%;
+      height: 16px;
+      background-image: url('sketch-line.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+    
+    .btn-login-gradient {
+      background: linear-gradient(135deg, #A833FF 0%, #7C00FF 100%);
+      box-shadow: 0 4px 15px rgba(168, 51, 255, 0.35);
+    }
+    
+    .btn-login-gradient:hover {
+      background: linear-gradient(135deg, #B54CFF 0%, #8D1AFF 100%);
+      box-shadow: 0 6px 20px rgba(168, 51, 255, 0.5);
+    }
+
+    /* FAQ Animations */
+    .faq-enter {
+      animation: faqFadeIn 0.4s ease-out forwards;
+    }
+    @keyframes faqFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-answer.open {
+      max-height: 1000px;
+    }
+
+    /* Header Styles */
+    <!-- @import "../components/header/header.css" -->
+
+    /* Scrolling Banner Styles */
+    <!-- @import "../components/scrolling-banner/scrolling-banner.css" -->
+  </style>
+</head>
+<body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
+
+  <!-- Shared Header Component -->
+  <!-- @import "../components/header/header.html" -->
+  
+  <!-- Hero Section -->
+  <section class="pt-36 pb-32 flex flex-col items-center text-center relative overflow-hidden bg-cover bg-top text-slate-900" style="background-image: url('hero-gradient-small.png');">
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-4">
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
+        Frequently Asked <span class="font-serif italic font-medium text-purple-600 text-5xl sm:text-7xl scribble-underline">Questions</span>
+      </h1>
+      <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-lg">Everything you need to know about Castiva. Can't find what you're looking for? Reach out to our support team.</p>
+    </div>
+  </section>
+
+  <!-- @import "../components/scrolling-banner/scrolling-banner.html" -->
+
+  <!-- FAQ Section -->
+  <section class="pt-2 pb-10 md:py-20 px-6 max-w-3xl mx-auto">
+    <div id="faq-loading" class="text-center py-20">
+      <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+      <p class="text-slate-500 mt-4">Loading FAQs...</p>
+    </div>
+    <div id="faq-error" class="text-center py-16 hidden">
+      <p class="text-slate-500">Failed to load FAQs.</p>
+      <button onclick="location.reload()" class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors text-sm">Retry</button>
+    </div>
+    <div id="faq-list" class="space-y-4"></div>
+  </section>
+
+  <!-- Shared Footer Component -->
+  <!-- @import "../components/footer/footer.html" -->
+
+  <!-- Header Script -->
+  <script>
+    <!-- @import "../components/header/header.js" -->
+  </script>
+
+  <!-- Scrolling Banner Script -->
+  <script>
+    <!-- @import "../components/scrolling-banner/scrolling-banner.js" -->
+  </script>
+
+  <!-- FAQ Data Script -->
+  <script>
+    var apiBase = 'https://backend.castiva.in/api/v1';
+    var faqItems = [];
+
+    function closeFaqItem(item) {
+      var wrap = item.querySelector('.faq-answer');
+      var btn = item.querySelector('button');
+      var ico = item.querySelector('.faq-icon');
+      if (!wrap) return;
+      wrap.classList.remove('open');
+      wrap.style.maxHeight = '0';
+      btn.setAttribute('aria-expanded', 'false');
+      if (ico) ico.style.transform = 'rotate(0deg)';
+    }
+
+    function openFaqItem(item) {
+      var wrap = item.querySelector('.faq-answer');
+      var btn = item.querySelector('button');
+      var ico = item.querySelector('.faq-icon');
+      if (!wrap) return;
+      wrap.classList.add('open');
+      wrap.style.maxHeight = wrap.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
+      if (ico) ico.style.transform = 'rotate(180deg)';
+    }
+
+    function buildFaqItem(faq, index) {
+      var item = document.createElement('div');
+      item.className = 'faq-enter opacity-0 bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md';
+      item.style.animationDelay = (index * 0.08) + 's';
+
+      var question = document.createElement('button');
+      question.className = 'w-full flex items-center justify-between px-6 py-5 text-left font-bold text-slate-900 text-base sm:text-lg gap-4';
+      question.setAttribute('aria-expanded', 'false');
+
+      var titleSpan = document.createElement('span');
+      titleSpan.className = 'flex-1';
+      titleSpan.textContent = faq.title || 'FAQ Question';
+
+      var icon = document.createElement('span');
+      icon.className = 'faq-icon flex-shrink-0 w-6 h-6 flex items-center justify-center text-purple-600 transition-transform duration-300';
+      icon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>';
+
+      question.appendChild(titleSpan);
+      question.appendChild(icon);
+
+      var answerWrap = document.createElement('div');
+      answerWrap.className = 'faq-answer';
+
+      var answer = document.createElement('div');
+      answer.className = 'px-6 pb-5 text-slate-600 text-sm sm:text-base leading-relaxed';
+      answer.innerHTML = faq.body || '';
+
+      answerWrap.appendChild(answer);
+      item.appendChild(question);
+      item.appendChild(answerWrap);
+
+      question.addEventListener('click', function () {
+        var isOpen = answerWrap.classList.contains('open');
+        if (isOpen) {
+          closeFaqItem(item);
+        } else {
+          faqItems.forEach(function (other) {
+            if (other !== item) closeFaqItem(other);
+          });
+          openFaqItem(item);
+        }
+      });
+
+      return item;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var loading = document.getElementById('faq-loading');
+      var errorEl = document.getElementById('faq-error');
+      var list = document.getElementById('faq-list');
+
+      if (!list) return;
+
+      fetch(apiBase + '/pages?category=faq&_=' + Date.now())
+        .then(function (res) { return res.json(); })
+        .then(function (json) {
+          if (!json.success || !Array.isArray(json.data)) {
+            throw new Error('Invalid response');
+          }
+
+          if (json.data.length === 0) {
+            loading.style.display = 'none';
+            list.innerHTML = '<div class="text-center py-12"><p class="text-slate-500">No FAQs available at the moment.</p></div>';
+            return;
+          }
+
+          json.data.forEach(function (faq, i) {
+            var el = buildFaqItem(faq, i);
+            faqItems.push(el);
+            list.appendChild(el);
+          });
+
+          loading.style.display = 'none';
+        })
+        .catch(function (err) {
+          console.error('FAQ fetch error:', err);
+          loading.style.display = 'none';
+          errorEl.classList.remove('hidden');
+        });
+    });
+  </script>
+</body>
+</html>

@@ -210,12 +210,16 @@
 
 .bento-tab-scroll-wrapper {
   overflow: visible;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 640px) {
   .bento-tab-scroll-wrapper {
     overflow-x: auto;
     max-width: 90%;
+    margin: 0 auto;
+    justify-content: center;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -267,6 +271,7 @@
         <a href="contact.html" class="hover:text-purple-600 transition-colors">Contact</a>
         <a href="team.html" class="hover:text-purple-600 transition-colors">Team</a>
         <a href="blog.html" class="hover:text-purple-600 transition-colors">Blog</a>
+        <a href="faq.html" class="hover:text-purple-600 transition-colors">FAQ</a>
       </div>
 
       <!-- Action Button -->
@@ -326,119 +331,22 @@
     <!-- Legal Tabs Selector Component -->
     <!-- Legal Tabs Component Selector -->
 <div class="w-full overflow-x-auto pb-4 flex justify-start md:justify-center mb-12" style="-ms-overflow-style: none; scrollbar-width: none;">
-  <div class="bento-tab-container relative mx-auto shrink-0">
+  <div id="legal-tab-container" class="bento-tab-container relative mx-auto shrink-0">
     <div class="bento-tab-indicator"></div>
-    <button class="bento-tab active" data-tab="terms">Terms of Use</button>
-    <button class="bento-tab" data-tab="privacy">Privacy Policy</button>
-    <button class="bento-tab" data-tab="user">User Agreement</button>
-    <button class="bento-tab" data-tab="refund">Refund Policy</button>
-    <button class="bento-tab" data-tab="cookie">Cookie Policy</button>
   </div>
 </div>
 
 
     <!-- Content Area -->
-    <div class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-sm legal-content min-h-[500px]">
-        
-        <!-- Terms of Use -->
-        <div id="content-terms" class="tab-content block">
-          <h1>Terms of Use</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>Welcome to Castiva. By accessing or using our platform, mobile application, or web services, you agree to comply with and be bound by these Terms of Use.</p>
-          <h2>1. Acceptable Use</h2>
-          <ul>
-            <li>You must be at least 18 years old or have parental consent to use Castiva.</li>
-            <li>You agree to provide accurate, current, and complete profile information.</li>
-            <li>You are responsible for safeguarding your login credentials.</li>
-          </ul>
-          <h2>2. Casting & Recruitment Rules</h2>
-          <ul>
-            <li>Recruiters must only publish genuine, verified casting calls.</li>
-            <li>Talents must ensure their showreels, headshots, and bio details represent their true identities.</li>
-            <li>Spoofing, spamming, or fraudulent listings will result in immediate profile suspension.</li>
-          </ul>
-          <h2>3. Limitation of Liability</h2>
-          <p>Castiva is a matching platform and does not guarantee casting selection, hiring outcomes, or project completion.</p>
-        </div>
-
-        <!-- Privacy Policy -->
-        <div id="content-privacy" class="tab-content hidden">
-          <h1>Privacy Policy</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>At Castiva, we take your privacy seriously. This Privacy Policy details how we collect, store, and share your personal data.</p>
-          <h2>1. Information We Collect</h2>
-          <ul>
-            <li><strong>Profile Data:</strong> Name, gender, age, location, body type, and acting/casting attributes.</li>
-            <li><strong>Media Content:</strong> Showreels, audio voice files, and headshots uploaded to your portfolio.</li>
-            <li><strong>Usage Data:</strong> Audition scores, location preferences, and communication logs on verified chat channels.</li>
-          </ul>
-          <h2>2. How We Use Data</h2>
-          <ul>
-            <li>To run our AI-driven casting matchmaker.</li>
-            <li>To display your digital portfolio link to verified recruiters.</li>
-            <li>To process secure payments and escrow structures.</li>
-          </ul>
-          <h2>3. Data Protection</h2>
-          <p>Your data is securely stored and encrypted. We do not sell your personal information to third parties.</p>
-        </div>
-
-        <!-- User Agreement -->
-        <div id="content-user" class="tab-content hidden">
-          <h1>User Agreement</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>This User Agreement governs the relationships, escrows, and booking structures completed through the Castiva ecosystem.</p>
-          <h2>1. Booking Contracts</h2>
-          <ul>
-            <li>All casting agreements processed via Castiva are legally binding contracts between the Recruiter and the Talent.</li>
-            <li>Castiva acts solely as a matching portal and escrow mediator, not as an employer or agency representative.</li>
-          </ul>
-          <h2>2. Escrow & Fees</h2>
-          <ul>
-            <li>Recruiters agree to load booking funds into Castiva's secure escrow before project start.</li>
-            <li>Talent payment is released upon milestone approvals as specified in the agreement.</li>
-          </ul>
-          <h2>3. Disclaimers</h2>
-          <p>We enforce strict KYC and verification checks, but users are advised to perform standard security precautions before physical audition meetups.</p>
-        </div>
-
-        <!-- Refund Policy -->
-        <div id="content-refund" class="tab-content hidden">
-          <h1>Refund Policy</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>This Refund Policy outlines our guidelines for refunding premium subscription plans, booking deposits, and escrow balances.</p>
-          <h2>1. Subscriptions</h2>
-          <ul>
-            <li>Monthly and yearly premium plans are non-refundable once activated.</li>
-            <li>You can cancel your subscription at any time to avoid future renewals.</li>
-          </ul>
-          <h2>2. Escrow Booking Releases</h2>
-          <ul>
-            <li>Escrow funds are subject to dispute resolution if a project is cancelled or a milestone is breached.</li>
-            <li>If the Talent fails to attend or perform, funds are refunded to the Recruiter, minus administrative processing fees.</li>
-          </ul>
-          <h2>3. Discrepancies</h2>
-          <p>All dispute resolutions are managed by our compliance team. Decisions are final and binding.</p>
-        </div>
-
-        <!-- Cookie Policy -->
-        <div id="content-cookie" class="tab-content hidden">
-          <h1>Cookie Policy</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>This Cookie Policy explains how Castiva uses cookies and tracking technologies to personalize your experience.</p>
-          <h2>1. What are Cookies?</h2>
-          <p>Cookies are small text files stored on your browser to recall login credentials, UI selections, and profile settings.</p>
-          <h2>2. Types of Cookies We Use</h2>
-          <ul>
-            <li><strong>Essential Cookies:</strong> Necessary for security, authentication, and core page operations.</li>
-            <li><strong>Analytics Cookies:</strong> Used to measure site performance, user engagement, and traffic sources.</li>
-            <li><strong>AI Matcher Cookies:</strong> Temporary caching cookies that help speed up matching suggestions.</li>
-          </ul>
-          <h2>3. Managing Preferences</h2>
-          <p>You can disable non-essential cookies via your browser settings, though some portal features may become unavailable.</p>
-        </div>
-
-      </div>
+    <div id="legal-loading" class="text-center py-20">
+      <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+      <p class="text-slate-500 mt-4">Loading policies...</p>
     </div>
+    <div id="legal-error" class="text-center py-16 hidden">
+      <p class="text-slate-500">Failed to load policies.</p>
+      <button onclick="location.reload()" class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors text-sm">Retry</button>
+    </div>
+    <div id="legal-content-area" class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-sm legal-content  hidden"></div>
   </section>
 
   <!-- Shared Footer Component -->
@@ -471,11 +379,11 @@
     <div>
       <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Legal</h5>
       <ul class="space-y-2 text-sm">
-        <li><a href="legal.html?tab=terms" class="hover:text-white transition-colors">Terms of Use</a></li>
-        <li><a href="legal.html?tab=privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
-        <li><a href="legal.html?tab=user" class="hover:text-white transition-colors">User Agreement</a></li>
-        <li><a href="legal.html?tab=refund" class="hover:text-white transition-colors">Refund Policy</a></li>
-        <li><a href="legal.html?tab=cookie" class="hover:text-white transition-colors">Cookie Policy</a></li>
+        <li><a href="legal.html?tab=terms-of-use" class="hover:text-white transition-colors">Terms of Use</a></li>
+        <li><a href="legal.html?tab=privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+        <li><a href="legal.html?tab=user-agreement" class="hover:text-white transition-colors">User Agreement</a></li>
+        <li><a href="legal.html?tab=refund-policy" class="hover:text-white transition-colors">Refund Policy</a></li>
+        <li><a href="legal.html?tab=cookie-policy" class="hover:text-white transition-colors">Cookie Policy</a></li>
       </ul>
     </div>
 
@@ -523,74 +431,124 @@
 
   </script>
 
-  <!-- Tabs Logic Component Script -->
-  <script>
-    // Purple Tabs Component Logic
-document.addEventListener('DOMContentLoaded', () => {
-  const tabs = document.querySelectorAll('.bento-tab');
-  const indicator = document.querySelector('.bento-tab-indicator');
-  const panels = document.querySelectorAll('.tab-content');
-
-  const updateIndicator = (activeTab) => {
-    if (!activeTab || !indicator) return;
-    indicator.style.width = `${activeTab.offsetWidth}px`;
-    indicator.style.left = `${activeTab.offsetLeft}px`;
-  };
-
-  const switchTab = (tabId) => {
-    const targetTab = document.querySelector(`.bento-tab[data-tab="${tabId}"]`);
-    if (!targetTab) return;
-
-    // Toggle active state on tabs
-    tabs.forEach(t => t.classList.remove('active'));
-    targetTab.classList.add('active');
-    
-    // Slide indicator pill
-    updateIndicator(targetTab);
-
-    // Show corresponding panel content
-    panels.forEach(panel => {
-      if (panel.id === `content-${tabId}`) {
-        panel.classList.remove('hidden');
-        panel.classList.add('block');
-      } else {
-        panel.classList.remove('block');
-        panel.classList.add('hidden');
-      }
-    });
-  };
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const tabId = tab.getAttribute('data-tab');
-      switchTab(tabId);
-    });
-  });
-
-  // Handle URL deep-linking and initial positioning
-  const urlParams = new URLSearchParams(window.location.search);
-  const initialTab = urlParams.get('tab') || 'terms';
-  
-  // Timeout ensures styling is fully computed in DOM before sliding indicator
-  setTimeout(() => {
-    switchTab(initialTab);
-  }, 150);
-
-  // Recalculate position on window resize
-  window.addEventListener('resize', () => {
-    const activeTab = document.querySelector('.bento-tab.active');
-    if (activeTab) {
-      updateIndicator(activeTab);
-    }
-  });
-});
-
-  </script>
-
   <!-- Scrolling Banner Script -->
   <script>
     // Scrolling Banner Logic
 
+  </script>
+
+  <!-- Policies Data Script -->
+  <script>
+    var legalApiBase = 'https://backend.castiva.in/api/v1';
+    var legalData = [];
+
+    function slugify(text) {
+      return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'policy';
+    }
+
+    function renderTabsAndContent(policies) {
+      var container = document.getElementById('legal-tab-container');
+      var indicator = container.querySelector('.bento-tab-indicator');
+      var contentArea = document.getElementById('legal-content-area');
+
+      container.querySelectorAll('.bento-tab').forEach(function (t) { t.remove(); });
+      contentArea.innerHTML = '';
+
+      var tabs = [];
+      policies.forEach(function (policy, i) {
+        var tabId = policy.slug || slugify(policy.title);
+
+        var btn = document.createElement('button');
+        btn.className = 'bento-tab' + (i === 0 ? ' active' : '');
+        btn.setAttribute('data-tab', tabId);
+        btn.textContent = policy.title;
+        container.appendChild(btn);
+
+        var panel = document.createElement('div');
+        panel.id = 'content-' + tabId;
+        panel.className = 'tab-content' + (i === 0 ? ' block' : ' hidden');
+        panel.innerHTML = policy.body || '';
+        contentArea.appendChild(panel);
+
+        tabs.push({ id: tabId, btn: btn });
+      });
+
+      var activeTab = tabs.length > 0 ? tabs[0].btn : null;
+      var updateIndicator = function (tabEl) {
+        if (!tabEl || !indicator) return;
+        indicator.style.width = tabEl.offsetWidth + 'px';
+        indicator.style.left = tabEl.offsetLeft + 'px';
+      };
+
+      tabs.forEach(function (t) {
+        t.btn.addEventListener('click', function () {
+          tabs.forEach(function (x) { x.btn.classList.remove('active'); });
+          document.querySelectorAll('.tab-content').forEach(function (p) {
+            p.classList.remove('block');
+            p.classList.add('hidden');
+          });
+          t.btn.classList.add('active');
+          var panel = document.getElementById('content-' + t.id);
+          if (panel) {
+            panel.classList.remove('hidden');
+            panel.classList.add('block');
+          }
+          updateIndicator(t.btn);
+        });
+      });
+
+      contentArea.classList.remove('hidden');
+
+      setTimeout(function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        var initial = urlParams.get('tab');
+        if (initial) {
+          var match = tabs.find(function (t) { return t.id === initial; });
+          if (!match) {
+            match = tabs.find(function (t) { return t.id.indexOf(initial) === 0; });
+          }
+          if (!match) {
+            match = tabs.find(function (t) { return t.id.indexOf(initial) !== -1; });
+          }
+          if (match) {
+            match.btn.click();
+            return;
+          }
+        }
+        updateIndicator(activeTab);
+      }, 150);
+
+      window.addEventListener('resize', function () {
+        var act = container.querySelector('.bento-tab.active');
+        if (act) updateIndicator(act);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var loading = document.getElementById('legal-loading');
+      var errorEl = document.getElementById('legal-error');
+
+      fetch(legalApiBase + '/pages?category=policy&_=' + Date.now())
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+          if (!json.success || !Array.isArray(json.data)) {
+            throw new Error('Invalid response');
+          }
+          legalData = json.data;
+          loading.style.display = 'none';
+          if (json.data.length === 0) {
+            document.getElementById('legal-content-area').classList.remove('hidden');
+            document.getElementById('legal-content-area').innerHTML = '<div class="text-center py-12"><p class="text-slate-500">No policies available at the moment.</p></div>';
+            return;
+          }
+          renderTabsAndContent(json.data);
+        })
+        .catch(function (err) {
+          console.error('Policies fetch error:', err);
+          loading.style.display = 'none';
+          errorEl.classList.remove('hidden');
+        });
+    });
   </script>
 </body>
 </html>

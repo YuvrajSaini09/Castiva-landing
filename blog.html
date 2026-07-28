@@ -172,6 +172,7 @@
         <a href="contact.html" class="hover:text-purple-600 transition-colors">Contact</a>
         <a href="team.html" class="hover:text-purple-600 transition-colors">Team</a>
         <a href="blog.html" class="hover:text-purple-600 transition-colors">Blog</a>
+        <a href="faq.html" class="hover:text-purple-600 transition-colors">FAQ</a>
       </div>
 
       <!-- Action Button -->
@@ -247,7 +248,7 @@
           <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
         <div id="blog-modal-cover" class="w-full aspect-[2/1] bg-slate-100 overflow-hidden"></div>
-        <div class="p-8 sm:p-10 space-y-6">
+        <div class="p-8 sm:p-10 space-y-6 rounded-t-[2.5rem] -mt-12 sm:-mt-16 relative z-10 bg-white">
           <div id="blog-modal-tags" class="flex flex-wrap gap-2"></div>
           <h2 id="blog-modal-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight"></h2>
           <p id="blog-modal-date" class="text-sm text-slate-400 font-medium"></p>
@@ -287,11 +288,11 @@
     <div>
       <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Legal</h5>
       <ul class="space-y-2 text-sm">
-        <li><a href="legal.html?tab=terms" class="hover:text-white transition-colors">Terms of Use</a></li>
-        <li><a href="legal.html?tab=privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
-        <li><a href="legal.html?tab=user" class="hover:text-white transition-colors">User Agreement</a></li>
-        <li><a href="legal.html?tab=refund" class="hover:text-white transition-colors">Refund Policy</a></li>
-        <li><a href="legal.html?tab=cookie" class="hover:text-white transition-colors">Cookie Policy</a></li>
+        <li><a href="legal.html?tab=terms-of-use" class="hover:text-white transition-colors">Terms of Use</a></li>
+        <li><a href="legal.html?tab=privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+        <li><a href="legal.html?tab=user-agreement" class="hover:text-white transition-colors">User Agreement</a></li>
+        <li><a href="legal.html?tab=refund-policy" class="hover:text-white transition-colors">Refund Policy</a></li>
+        <li><a href="legal.html?tab=cookie-policy" class="hover:text-white transition-colors">Cookie Policy</a></li>
       </ul>
     </div>
 
@@ -439,7 +440,7 @@
 
     function buildBlogCard(post) {
       var card = document.createElement('div');
-      card.className = 'cursor-pointer bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 group';
+      card.className = 'cursor-pointer bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 group';
 
       var imgWrapper = document.createElement('div');
       imgWrapper.className = 'aspect-[2/1] bg-slate-100 overflow-hidden';
@@ -457,7 +458,7 @@
       }
 
       var body = document.createElement('div');
-      body.className = 'p-6 space-y-3';
+      body.className = 'p-6 space-y-3 rounded-t-[2.5rem] -mt-8 relative z-10 bg-white';
 
       if (post.tags && post.tags.length > 0) {
         var tagRow = document.createElement('div');

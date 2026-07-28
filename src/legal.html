@@ -138,107 +138,15 @@
     <!-- @import "../components/legal-tabs/legal-tabs.html" -->
 
     <!-- Content Area -->
-    <div class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-sm legal-content min-h-[500px]">
-        
-        <!-- Terms of Use -->
-        <div id="content-terms" class="tab-content block">
-          <h1>Terms of Use</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>Welcome to Castiva. By accessing or using our platform, mobile application, or web services, you agree to comply with and be bound by these Terms of Use.</p>
-          <h2>1. Acceptable Use</h2>
-          <ul>
-            <li>You must be at least 18 years old or have parental consent to use Castiva.</li>
-            <li>You agree to provide accurate, current, and complete profile information.</li>
-            <li>You are responsible for safeguarding your login credentials.</li>
-          </ul>
-          <h2>2. Casting & Recruitment Rules</h2>
-          <ul>
-            <li>Recruiters must only publish genuine, verified casting calls.</li>
-            <li>Talents must ensure their showreels, headshots, and bio details represent their true identities.</li>
-            <li>Spoofing, spamming, or fraudulent listings will result in immediate profile suspension.</li>
-          </ul>
-          <h2>3. Limitation of Liability</h2>
-          <p>Castiva is a matching platform and does not guarantee casting selection, hiring outcomes, or project completion.</p>
-        </div>
-
-        <!-- Privacy Policy -->
-        <div id="content-privacy" class="tab-content hidden">
-          <h1>Privacy Policy</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>At Castiva, we take your privacy seriously. This Privacy Policy details how we collect, store, and share your personal data.</p>
-          <h2>1. Information We Collect</h2>
-          <ul>
-            <li><strong>Profile Data:</strong> Name, gender, age, location, body type, and acting/casting attributes.</li>
-            <li><strong>Media Content:</strong> Showreels, audio voice files, and headshots uploaded to your portfolio.</li>
-            <li><strong>Usage Data:</strong> Audition scores, location preferences, and communication logs on verified chat channels.</li>
-          </ul>
-          <h2>2. How We Use Data</h2>
-          <ul>
-            <li>To run our AI-driven casting matchmaker.</li>
-            <li>To display your digital portfolio link to verified recruiters.</li>
-            <li>To process secure payments and escrow structures.</li>
-          </ul>
-          <h2>3. Data Protection</h2>
-          <p>Your data is securely stored and encrypted. We do not sell your personal information to third parties.</p>
-        </div>
-
-        <!-- User Agreement -->
-        <div id="content-user" class="tab-content hidden">
-          <h1>User Agreement</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>This User Agreement governs the relationships, escrows, and booking structures completed through the Castiva ecosystem.</p>
-          <h2>1. Booking Contracts</h2>
-          <ul>
-            <li>All casting agreements processed via Castiva are legally binding contracts between the Recruiter and the Talent.</li>
-            <li>Castiva acts solely as a matching portal and escrow mediator, not as an employer or agency representative.</li>
-          </ul>
-          <h2>2. Escrow & Fees</h2>
-          <ul>
-            <li>Recruiters agree to load booking funds into Castiva's secure escrow before project start.</li>
-            <li>Talent payment is released upon milestone approvals as specified in the agreement.</li>
-          </ul>
-          <h2>3. Disclaimers</h2>
-          <p>We enforce strict KYC and verification checks, but users are advised to perform standard security precautions before physical audition meetups.</p>
-        </div>
-
-        <!-- Refund Policy -->
-        <div id="content-refund" class="tab-content hidden">
-          <h1>Refund Policy</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>This Refund Policy outlines our guidelines for refunding premium subscription plans, booking deposits, and escrow balances.</p>
-          <h2>1. Subscriptions</h2>
-          <ul>
-            <li>Monthly and yearly premium plans are non-refundable once activated.</li>
-            <li>You can cancel your subscription at any time to avoid future renewals.</li>
-          </ul>
-          <h2>2. Escrow Booking Releases</h2>
-          <ul>
-            <li>Escrow funds are subject to dispute resolution if a project is cancelled or a milestone is breached.</li>
-            <li>If the Talent fails to attend or perform, funds are refunded to the Recruiter, minus administrative processing fees.</li>
-          </ul>
-          <h2>3. Discrepancies</h2>
-          <p>All dispute resolutions are managed by our compliance team. Decisions are final and binding.</p>
-        </div>
-
-        <!-- Cookie Policy -->
-        <div id="content-cookie" class="tab-content hidden">
-          <h1>Cookie Policy</h1>
-          <p class="text-xs text-slate-400 italic mb-6">Last Updated: July 2026</p>
-          <p>This Cookie Policy explains how Castiva uses cookies and tracking technologies to personalize your experience.</p>
-          <h2>1. What are Cookies?</h2>
-          <p>Cookies are small text files stored on your browser to recall login credentials, UI selections, and profile settings.</p>
-          <h2>2. Types of Cookies We Use</h2>
-          <ul>
-            <li><strong>Essential Cookies:</strong> Necessary for security, authentication, and core page operations.</li>
-            <li><strong>Analytics Cookies:</strong> Used to measure site performance, user engagement, and traffic sources.</li>
-            <li><strong>AI Matcher Cookies:</strong> Temporary caching cookies that help speed up matching suggestions.</li>
-          </ul>
-          <h2>3. Managing Preferences</h2>
-          <p>You can disable non-essential cookies via your browser settings, though some portal features may become unavailable.</p>
-        </div>
-
-      </div>
+    <div id="legal-loading" class="text-center py-20">
+      <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+      <p class="text-slate-500 mt-4">Loading policies...</p>
     </div>
+    <div id="legal-error" class="text-center py-16 hidden">
+      <p class="text-slate-500">Failed to load policies.</p>
+      <button onclick="location.reload()" class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors text-sm">Retry</button>
+    </div>
+    <div id="legal-content-area" class="bg-white p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-sm legal-content  hidden"></div>
   </section>
 
   <!-- Shared Footer Component -->
@@ -249,14 +157,123 @@
     <!-- @import "../components/header/header.js" -->
   </script>
 
-  <!-- Tabs Logic Component Script -->
-  <script>
-    <!-- @import "../components/legal-tabs/legal-tabs.js" -->
-  </script>
-
   <!-- Scrolling Banner Script -->
   <script>
     <!-- @import "../components/scrolling-banner/scrolling-banner.js" -->
+  </script>
+
+  <!-- Policies Data Script -->
+  <script>
+    var legalApiBase = 'https://backend.castiva.in/api/v1';
+    var legalData = [];
+
+    function slugify(text) {
+      return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'policy';
+    }
+
+    function renderTabsAndContent(policies) {
+      var container = document.getElementById('legal-tab-container');
+      var indicator = container.querySelector('.bento-tab-indicator');
+      var contentArea = document.getElementById('legal-content-area');
+
+      container.querySelectorAll('.bento-tab').forEach(function (t) { t.remove(); });
+      contentArea.innerHTML = '';
+
+      var tabs = [];
+      policies.forEach(function (policy, i) {
+        var tabId = policy.slug || slugify(policy.title);
+
+        var btn = document.createElement('button');
+        btn.className = 'bento-tab' + (i === 0 ? ' active' : '');
+        btn.setAttribute('data-tab', tabId);
+        btn.textContent = policy.title;
+        container.appendChild(btn);
+
+        var panel = document.createElement('div');
+        panel.id = 'content-' + tabId;
+        panel.className = 'tab-content' + (i === 0 ? ' block' : ' hidden');
+        panel.innerHTML = policy.body || '';
+        contentArea.appendChild(panel);
+
+        tabs.push({ id: tabId, btn: btn });
+      });
+
+      var activeTab = tabs.length > 0 ? tabs[0].btn : null;
+      var updateIndicator = function (tabEl) {
+        if (!tabEl || !indicator) return;
+        indicator.style.width = tabEl.offsetWidth + 'px';
+        indicator.style.left = tabEl.offsetLeft + 'px';
+      };
+
+      tabs.forEach(function (t) {
+        t.btn.addEventListener('click', function () {
+          tabs.forEach(function (x) { x.btn.classList.remove('active'); });
+          document.querySelectorAll('.tab-content').forEach(function (p) {
+            p.classList.remove('block');
+            p.classList.add('hidden');
+          });
+          t.btn.classList.add('active');
+          var panel = document.getElementById('content-' + t.id);
+          if (panel) {
+            panel.classList.remove('hidden');
+            panel.classList.add('block');
+          }
+          updateIndicator(t.btn);
+        });
+      });
+
+      contentArea.classList.remove('hidden');
+
+      setTimeout(function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        var initial = urlParams.get('tab');
+        if (initial) {
+          var match = tabs.find(function (t) { return t.id === initial; });
+          if (!match) {
+            match = tabs.find(function (t) { return t.id.indexOf(initial) === 0; });
+          }
+          if (!match) {
+            match = tabs.find(function (t) { return t.id.indexOf(initial) !== -1; });
+          }
+          if (match) {
+            match.btn.click();
+            return;
+          }
+        }
+        updateIndicator(activeTab);
+      }, 150);
+
+      window.addEventListener('resize', function () {
+        var act = container.querySelector('.bento-tab.active');
+        if (act) updateIndicator(act);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var loading = document.getElementById('legal-loading');
+      var errorEl = document.getElementById('legal-error');
+
+      fetch(legalApiBase + '/pages?category=policy&_=' + Date.now())
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+          if (!json.success || !Array.isArray(json.data)) {
+            throw new Error('Invalid response');
+          }
+          legalData = json.data;
+          loading.style.display = 'none';
+          if (json.data.length === 0) {
+            document.getElementById('legal-content-area').classList.remove('hidden');
+            document.getElementById('legal-content-area').innerHTML = '<div class="text-center py-12"><p class="text-slate-500">No policies available at the moment.</p></div>';
+            return;
+          }
+          renderTabsAndContent(json.data);
+        })
+        .catch(function (err) {
+          console.error('Policies fetch error:', err);
+          loading.style.display = 'none';
+          errorEl.classList.remove('hidden');
+        });
+    });
   </script>
 </body>
 </html>

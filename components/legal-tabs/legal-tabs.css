@@ -61,12 +61,16 @@
 
 .bento-tab-scroll-wrapper {
   overflow: visible;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 640px) {
   .bento-tab-scroll-wrapper {
     overflow-x: auto;
     max-width: 90%;
+    margin: 0 auto;
+    justify-content: center;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
