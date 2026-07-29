@@ -20,6 +20,12 @@
   animation-play-state: paused;
 }
 
+#partners-section .bento-tab-scroll-wrapper {
+  -webkit-mask-image: none;
+  mask-image: none;
+  justify-content: center;
+}
+
 .sub-pill {
   padding: 8px 20px;
   border-radius: 9999px;
