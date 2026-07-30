@@ -116,6 +116,77 @@
   }
 }
 
+/* Desktop Dropdown Menu */
+.dropdown-group {
+  position: relative;
+}
+
+.dropdown-trigger {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  top: 100%;
+  margin-top: 12px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+}
+
+/* Invisible bridge to prevent gap from closing dropdown */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: -20px;
+  right: -20px;
+  height: 16px;
+}
+
+.dropdown-group:hover .dropdown-menu,
+.dropdown-group:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-group:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-link {
+  display: block;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #334155;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dropdown-link:hover {
+  color: #A128FF;
+  background: #faf5ff;
+}
+
+/* Mobile Submenu */
+.mobile-sub-open .mobile-sub-arrow {
+  transform: rotate(180deg);
+}
+
 
     /* Scrolling Banner Styles */
     /* Scrolling Banner Styles */
@@ -136,12 +207,14 @@
 
   <!-- Shared Header Component -->
   <header class="pt-6 px-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <nav class="max-w-4xl mx-auto relative p-[1px] rounded-full overflow-hidden bg-slate-200/40 shadow-sm">
-    <!-- Infinite Revolving Purple Beam -->
-    <div class="border-beam-bg"></div>
-    
+  <nav class="max-w-5xl mx-auto relative p-[1px] rounded-full bg-slate-200/40 shadow-sm">
+    <!-- Infinite Revolving Purple Beam (wrapped for overflow clip) -->
+    <div class="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+      <div class="border-beam-bg"></div>
+    </div>
+
     <!-- Navigation Inner Content Wrapper -->
-    <div class="w-full relative z-10 bg-white/95 backdrop-blur-md rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between">
+    <div class="w-full relative z-10 bg-white/95 backdrop-blur-md rounded-full px-3 sm:px-4 py-2.5 flex items-center justify-between">
       <!-- Logo -->
       <a href="index.html" class="flex items-center group">
         <div class="w-[112px] h-10 overflow-hidden group-hover:scale-105 transition-transform bg-transparent flex items-center">
@@ -150,13 +223,48 @@
       </a>
 
       <!-- Menu Items (Desktop) -->
-      <div class="hidden md:flex items-center gap-8 font-semibold text-slate-700 text-sm">
+      <div class="hidden md:flex items-center gap-10 font-semibold text-slate-700 text-sm">
+
         <a href="index.html" class="hover:text-purple-600 transition-colors">Home</a>
-        <a href="about.html" class="hover:text-purple-600 transition-colors">About</a>
+
+        <!-- About Dropdown -->
+        <div class="relative dropdown-group">
+          <button class="dropdown-trigger flex items-center gap-1 hover:text-purple-600 transition-colors cursor-pointer">
+            About
+            <svg class="w-3 h-3 mt-0.5 dropdown-arrow transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 py-3 px-2 min-w-[190px]">
+              <a href="about.html" class="dropdown-link">About Us</a>
+              <a href="index.html#testimonials" class="dropdown-link">Testimonials</a>
+              <a href="career.html" class="dropdown-link">Career</a>
+              <a href="faq.html" class="dropdown-link">FAQ</a>
+              <a href="pricing.html" class="dropdown-link">Pricing</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events & Shows Dropdown -->
+        <div class="relative dropdown-group">
+          <button class="dropdown-trigger flex items-center gap-1 hover:text-purple-600 transition-colors cursor-pointer">
+            Events & Shows
+            <svg class="w-3 h-3 mt-0.5 dropdown-arrow transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 py-3 px-2 min-w-[190px]">
+              <a href="events.html" class="dropdown-link">Events</a>
+              <a href="award-shows.html" class="dropdown-link">Award Shows</a>
+              <a href="projects.html" class="dropdown-link">Projects</a>
+              <a href="services.html" class="dropdown-link">Services</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="auditions.html" class="hover:text-purple-600 transition-colors">Auditions</a>
         <a href="contact.html" class="hover:text-purple-600 transition-colors">Contact</a>
         <a href="team.html" class="hover:text-purple-600 transition-colors">Team</a>
         <a href="blog.html" class="hover:text-purple-600 transition-colors">Blog</a>
-        <a href="faq.html" class="hover:text-purple-600 transition-colors">FAQ</a>
+
       </div>
 
       <!-- Right: Login Button + Hamburger -->
@@ -167,7 +275,7 @@
             <button class="group overflow-hidden transition-all duration-700 ease-out hover:scale-[1.03] border-none flex cursor-pointer w-[90px] h-[38px] z-10 rounded-full relative items-center justify-center" style="filter: drop-shadow(0 8px 16px rgba(161,40,255,0.2)); background: #f8fafc">
               <!-- Volumetric Under-glow (Purple Theme) -->
               <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[140%] h-32 bg-purple-500/30 blur-[60px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-              
+
               <!-- WebGL Core Container -->
               <div class="absolute inset-[2px] rounded-full overflow-hidden bg-white/5 backdrop-blur-xl border border-white/40 shadow-[inset_0_2px_12px_rgba(255,255,255,0.7)]">
                 <canvas class="w-full h-full block" id="gl-aura-header" width="180" height="76"></canvas>
@@ -201,14 +309,43 @@
 
   <!-- Mobile Navigation Dropdown -->
   <div id="mobile-nav-modal" class="md:hidden fixed z-[60] pointer-events-none opacity-0 scale-95 transition-all duration-300 ease-out origin-top-right">
-    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 py-5 px-6 w-[195px]">
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 py-5 px-6 w-[220px]">
       <div class="flex flex-col items-start gap-5 text-base font-semibold text-slate-700">
         <a href="index.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Home</a>
-        <a href="about.html" class="mobile-nav-link hover:text-purple-600 transition-colors">About</a>
+
+        <!-- Mobile About Section -->
+        <div class="w-full">
+          <div class="flex items-center justify-between w-full mobile-nav-link hover:text-purple-600 transition-colors cursor-pointer" id="mobile-about-trigger">
+            <span>About</span>
+            <svg class="w-3 h-3 transition-transform duration-300" id="mobile-about-arrow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="mobile-about-sub" class="hidden flex flex-col gap-3 pl-4 mt-3 text-sm font-medium text-slate-600">
+            <a href="about.html" class="mobile-nav-link hover:text-purple-600 transition-colors">About Us</a>
+            <a href="index.html#testimonials" class="mobile-nav-link hover:text-purple-600 transition-colors">Testimonials</a>
+            <a href="career.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Career</a>
+            <a href="faq.html" class="mobile-nav-link hover:text-purple-600 transition-colors">FAQ</a>
+            <a href="pricing.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Pricing</a>
+          </div>
+        </div>
+
+        <!-- Mobile Events & Shows Section -->
+        <div class="w-full">
+          <div class="flex items-center justify-between w-full mobile-nav-link hover:text-purple-600 transition-colors cursor-pointer" id="mobile-events-trigger">
+            <span>Events & Shows</span>
+            <svg class="w-3 h-3 transition-transform duration-300" id="mobile-events-arrow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="mobile-events-sub" class="hidden flex flex-col gap-3 pl-4 mt-3 text-sm font-medium text-slate-600">
+            <a href="events.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Events</a>
+            <a href="award-shows.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Award Shows</a>
+            <a href="projects.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Projects</a>
+            <a href="services.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Services</a>
+          </div>
+        </div>
+
+        <a href="auditions.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Auditions</a>
         <a href="contact.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Contact</a>
         <a href="team.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Team</a>
         <a href="blog.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Blog</a>
-        <a href="faq.html" class="mobile-nav-link hover:text-purple-600 transition-colors">FAQ</a>
       </div>
     </div>
   </div>
@@ -226,7 +363,7 @@
   </section>
 
   <!-- Infinite Auto Scrolling Banner Strip -->
-<div class="w-full bg-[#A128FF] pt-6 pb-8 sm:py-6 mb-6 md:mb-12 overflow-hidden relative z-10 select-none">
+<div data-follows="hero_section" class="w-full bg-[#A128FF] pt-6 pb-8 sm:py-6 mb-8 md:mb-12 overflow-hidden relative z-10 select-none">
   <div class="animate-marquee whitespace-nowrap flex items-center">
     <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-4 sm:mx-6 inline-flex items-center gap-3 sm:gap-6">India's Leading <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block ">Talent Discovery</span> & <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block">Casting</span> Platform <img src="star-icon.png" class="w-8 h-8 sm:w-16 sm:h-16 inline-block ml-2 sm:ml-4" alt="*"></span>
     <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-4 sm:mx-6 inline-flex items-center gap-3 sm:gap-6">India's Leading <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block ">Talent Discovery</span> & <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block">Casting</span> Platform <img src="star-icon.png" class="w-8 h-8 sm:w-16 sm:h-16 inline-block ml-2 sm:ml-4" alt="*"></span>
@@ -352,6 +489,24 @@
   document.addEventListener('click', (e) => { if (open && !modal.contains(e.target) && !btn.contains(e.target)) closeMenu(); });
   window.addEventListener('scroll', () => { if (open) closeMenu(); }, { passive: true });
   window.addEventListener('resize', () => { if (open) positionModal(); });
+
+  // Mobile submenu toggles
+  function setupMobileSubmenu(triggerId, subId, arrowId) {
+    const trigger = document.getElementById(triggerId);
+    const sub = document.getElementById(subId);
+    const arrow = document.getElementById(arrowId);
+    if (!trigger || !sub || !arrow) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = sub.classList.contains('hidden');
+      sub.classList.toggle('hidden');
+      arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  }
+
+  setupMobileSubmenu('mobile-about-trigger', 'mobile-about-sub', 'mobile-about-arrow');
+  setupMobileSubmenu('mobile-events-trigger', 'mobile-events-sub', 'mobile-events-arrow');
 })();
 
 // WebGL Button Shader (Purple Theme)

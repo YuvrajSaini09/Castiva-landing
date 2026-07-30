@@ -39,6 +39,9 @@
     }
   </script>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: #ffffff;
@@ -145,6 +148,58 @@
 
   <!-- Component Logic -->
   <script>
+    // Landing page section order from API
+    (async function() {
+      try {
+        const ts = Date.now();
+        const res = await fetch('https://backend.castiva.in/api/v1/landing?_=' + ts);
+        const json = await res.json();
+        if (!json.success || !json.data) {
+          console.warn('Landing API: invalid response', json);
+          return;
+        }
+
+        const ordered = json.data.filter(s => s.isActive).sort((a, b) => a.sortOrder - b.sortOrder);
+        console.log('Landing API: received', ordered.length, 'sections in order:', ordered.map(s => s.key + '(' + s.sortOrder + ')'));
+
+        const main = document.querySelector('main');
+        if (!main) { console.warn('Landing API: <main> not found'); return; }
+
+        const keyed = {};
+        main.querySelectorAll('[data-section-key]').forEach(el => {
+          keyed[el.getAttribute('data-section-key')] = el;
+        });
+        console.log('Landing API: found', Object.keys(keyed).length, 'sections in DOM');
+
+        const followers = {};
+        main.querySelectorAll('[data-follows]').forEach(el => {
+          const follows = el.getAttribute('data-follows');
+          if (!followers[follows]) followers[follows] = [];
+          followers[follows].push(el);
+        });
+
+        let insertPoint = main.firstChild;
+        let moved = 0;
+        ordered.forEach(s => {
+          const el = keyed[s.key];
+          if (el && el.parentNode === main) {
+            main.insertBefore(el, insertPoint);
+            insertPoint = el.nextSibling;
+            moved++;
+            (followers[s.key] || []).forEach(f => {
+              if (f.parentNode === main) {
+                main.insertBefore(f, insertPoint);
+                insertPoint = f.nextSibling;
+              }
+            });
+          }
+        });
+        console.log('Landing API: reordered', moved, 'sections successfully');
+      } catch (e) {
+        console.warn('Landing API: fetch failed, using default order:', e);
+      }
+    })();
+
     document.addEventListener('DOMContentLoaded', () => {
       // Register GSAP ScrollTrigger plugin
       if (window.gsap && window.ScrollTrigger) {
@@ -211,6 +266,20 @@
   <!-- Refer & Earn Script -->
   <script>
     <!-- @import "../components/refer-earn/refer-earn.js" -->
+  </script>
+
+  <!-- Smooth Scroll on Hash Load (cross-page) -->
+  <script>
+    if (window.location.hash) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 400);
+      });
+    }
   </script>
 
   <!-- Global ScrollTrigger Refresh -->

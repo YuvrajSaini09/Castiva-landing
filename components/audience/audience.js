@@ -101,7 +101,7 @@ function createCategoryCard(sub) {
   </div>`;
 }
 
-function flattenSubcategories(categories) {
+function flattenAudienceSubcategories(categories) {
   const items = [];
   categories.forEach(cat => {
     const children = getChildren(cat);
@@ -164,7 +164,7 @@ function buildCategoryPanel(categories, scope) {
 */
 
 function buildCategoryPanel(categories, scope) {
-  const items = flattenSubcategories(categories);
+  const items = flattenAudienceSubcategories(categories);
   if (items.length === 0) return '<p class="text-center text-slate-500 py-8">No categories available.</p>';
 
   const INITIAL_COUNT = 14;

@@ -20,9 +20,43 @@ const COUNTRY_FLAGS = {
 
 const CELEBRITY_ROLES = ['actor', 'model', 'singer', 'dancer'];
 
+const CARD_PHOTOS = [
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&auto=format&fit=crop&q=80',
+];
+
+const CARD_GRADIENTS = [
+  'linear-gradient(110deg, #c7d2fe 0%, #fbcfe8 45%, #fed7aa 100%)',
+  'linear-gradient(110deg, #bae6fd 0%, #ddd6fe 50%, #fbcfe8 100%)',
+  'linear-gradient(110deg, #fde68a 0%, #fca5a5 55%, #f9a8d4 100%)',
+  'linear-gradient(110deg, #a7f3d0 0%, #bae6fd 50%, #c4b5fd 100%)',
+  'linear-gradient(110deg, #e9d5ff 0%, #fbcfe8 50%, #fecaca 100%)',
+  'linear-gradient(110deg, #fecdd3 0%, #fdba74 50%, #fef08a 100%)',
+];
+
+function hashId(id) {
+  var hash = 0;
+  for (var i = 0; i < id.length; i++) hash = id.charCodeAt(i) + ((hash << 5) - hash);
+  return Math.abs(hash);
+}
+
+function getGradient(id) {
+  return CARD_GRADIENTS[hashId(id) % CARD_GRADIENTS.length];
+}
+
+function getPhoto(id) {
+  return CARD_PHOTOS[hashId(id) % CARD_PHOTOS.length];
+}
+
 function getCountryCode(country) {
   if (!country) return '';
-  const key = country.toLowerCase().trim();
+  var key = country.toLowerCase().trim();
   return COUNTRY_FLAGS[key] || key.slice(0, 2).toLowerCase();
 }
 
@@ -37,114 +71,194 @@ function extractPartnerData(raw) {
 }
 
 function flattenSubcategories(categories) {
-  const subs = [];
-  categories.forEach(cat => {
-    (cat.children || []).forEach(child => {
-      if (child.name && !subs.some(s => s.name === child.name)) {
-        subs.push({ name: child.name, slug: child.slug || child.name });
+  var subs = [];
+  categories.forEach(function(cat) {
+    var children = cat.children || [];
+    if (children.length > 0) {
+      children.forEach(function(child) {
+        if (child.name && !subs.some(function(s) { return s.name === child.name; })) {
+          subs.push({ name: child.name, slug: child.slug || child.name });
+        }
+      });
+    } else {
+      if (cat.name && !subs.some(function(s) { return s.name === cat.name; })) {
+        subs.push({ name: cat.name, slug: cat.slug || cat.name });
       }
-    });
+    }
   });
   return subs;
 }
 
-function createPartnerCard(profile, categoryId, subcategoryName) {
-  const name = profile.fullName || profile.name || 'Talent';
-  const avatar = profile.avatar || profile.image || profile.profileImage || profile.photo || profile.photoUrl || '';
-  const city = profile.city || '';
-  const country = profile.country || '';
-  const countryCode = getCountryCode(country);
-  const initial = name.charAt(0).toUpperCase();
-  const location = [city, country].filter(Boolean).join(', ') || '';
+function getProfileName(profile, categoryId) {
+  if (categoryId === 'recruiter') return profile.companyName || profile.fullName || 'Recruiter';
+  return profile.screenName || profile.fullName || profile.name || 'Talent';
+}
 
-  let role = profile.primaryCategory || 'Talent';
-  if (subcategoryName) {
-    role = subcategoryName;
-  } else if (categoryId === 'celebrities') {
-    const subs = (profile.subTalents || []).map(s => s.toLowerCase());
-    for (const r of CELEBRITY_ROLES) {
-      if (subs.includes(r)) { role = r.charAt(0).toUpperCase() + r.slice(1); break; }
+function getProfileCategory(profile, categoryId, subcategoryName) {
+  if (subcategoryName) return subcategoryName;
+  if (categoryId === 'recruiter') return profile.recruiterCategory || 'Recruiter';
+  if (categoryId === 'celebrities') {
+    if (profile.category) return profile.category;
+    var subs = (profile.subTalents || []).map(function(s) { return s.toLowerCase(); });
+    for (var i = 0; i < CELEBRITY_ROLES.length; i++) {
+      if (subs.indexOf(CELEBRITY_ROLES[i]) !== -1) {
+        return CELEBRITY_ROLES[i].charAt(0).toUpperCase() + CELEBRITY_ROLES[i].slice(1);
+      }
     }
   }
-
-  const flagHtml = countryCode
-    ? `<img src="https://flagcdn.com/${countryCode}.svg" alt="${country}" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20" loading="lazy" onerror="this.style.display='none'">`
-    : '';
-
-  const avatarHtml = avatar
-    ? `<img src="${avatar}" alt="${name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">`
-    : '';
-
-  return `<div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-purple-800 to-slate-900 group-hover:scale-105 transition-transform duration-500"></div>
-    ${avatarHtml}
-    <div class="absolute inset-0 flex items-center justify-center">
-      <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-3xl font-bold text-white/80 backdrop-blur-sm">${initial}</div>
-    </div>
-    ${flagHtml}
-    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
-      <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">${name}</h4>
-      <p class="text-xs text-purple-300 font-medium mt-1 font-sans">${role}</p>
-      ${location ? `<p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">${location}</p>` : ''}
-    </div>
-  </div>`;
+  return profile.primaryCategory || profile.recruiterCategory || 'Professional';
 }
+
+function getProfileLocation(profile) {
+  var city = profile.city;
+  var state = profile.state;
+  var country = profile.country;
+  
+  if (typeof city === 'string' && city.trim().startsWith('{')) {
+    try {
+      var parsed = JSON.parse(city.replace(/'/g, '"'));
+      city = parsed.city || city;
+      if (parsed.state) state = parsed.state;
+      if (parsed.country) country = parsed.country;
+    } catch(e) {}
+  }
+  
+  var parts = [city, state, country].filter(Boolean);
+  var loc = parts.join(', ') || '';
+  if (loc.indexOf('{') !== -1) {
+    loc = loc.replace(/[\{\}"]/g, '').replace(/\b(city|state|country)\s*:\s*/gi, '').trim();
+  }
+  return loc;
+}
+
+function getProfileTagline(profile) {
+  if (profile.bio) {
+    return profile.bio.length > 80 ? profile.bio.slice(0, 80) + '...' : profile.bio;
+  }
+  return null;
+}
+
+function getProfileRate(profile, categoryId) {
+  if (categoryId === 'recruiter') return profile.recruiterType || '';
+  if (profile.experienceLevel) {
+    var level = profile.experienceLevel.charAt(0).toUpperCase() + profile.experienceLevel.slice(1);
+    return level;
+  }
+  return '';
+}
+
+function getAvatar(profile) {
+  return profile.avatar || profile.photo || profile.image || profile.profileImage || profile.photo || profile.photoUrl || profile.companyLogoUrl || '';
+}
+
+function createPartnerCard(profile, categoryId, subcategoryName) {
+  var id = profile.id || 'default';
+  var name = getProfileName(profile, categoryId);
+  var category = getProfileCategory(profile, categoryId, subcategoryName);
+  var location = getProfileLocation(profile);
+  var avatar = getAvatar(profile);
+  var gradient = getGradient(id);
+  var initial = name ? name.charAt(0).toUpperCase() : '?';
+  var clickHandler = "void(function(){if(localStorage.getItem('_cv')==='1'){window.open('https://castiva.in/auth','_blank')}else{localStorage.setItem('_cv','1');window.open('https://castiva.in/welcome','_blank')}}())";
+
+  var locationPillHtml = '<div class="location-pill-wrapper">' +
+    '<div class="relative inline-block group text-sm rounded-full">' +
+      '<button class="group relative inline-flex min-w-[120px] cursor-default transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] text-xs font-semibold text-white/70 tracking-tight rounded-full items-center justify-center text-center" style="height:32px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1);background:radial-gradient(ellipse at bottom,rgba(55,55,55,1) 0%,rgba(0,0,0,1) 100%);">' +
+        '<span class="relative z-10 font-normal rounded-full text-xs whitespace-nowrap">' +
+          (location ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-right:4px"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>' + location : 'UnKnown') +
+        '</span>' +
+        '<span aria-hidden="true" class="absolute bottom-0 left-1/2 h-[1px] w-[70%] -translate-x-1/2 opacity-20 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] group-hover:opacity-80 rounded-full text-xs" style="background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);"></span>' +
+      '</button>' +
+    '</div>' +
+  '</div>';
+
+  var avatarHtml = avatar
+    ? '<img src="' + avatar + '" alt="' + name + '" class="celebrity-avatar" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="partner-avatar-placeholder celebrity-avatar" style="display:none;background:' + gradient + '">' + initial + '</div>'
+    : '<div class="partner-avatar-placeholder celebrity-avatar" style="background:' + gradient + '">' + initial + '</div>';
+
+  return '<div class="partner-card celebrity-card" onclick="' + clickHandler + '" style="background: ' + gradient + '">' +
+    '<div class="celebrity-inner-card">' +
+      '<div class="celebrity-avatar-wrapper">' + avatarHtml + '</div>' +
+      '<h4 class="celebrity-name">' + name + '</h4>' +
+      '<p class="celebrity-role">' + category + '</p>' +
+      locationPillHtml +
+    '</div>' +
+  '</div>';
+}
+
 
 function filterProfilesBySubcategory(profiles, subcategoryName) {
   if (!profiles || profiles.length === 0) return [];
   if (!subcategoryName) return profiles;
-  return profiles.filter(p =>
-    (p.subTalents || []).some(s => s.toLowerCase() === subcategoryName.toLowerCase())
-  );
+  return profiles.filter(function(p) {
+    return (p.subTalents || []).some(function(s) { return s.toLowerCase() === subcategoryName.toLowerCase(); });
+  });
 }
 
 function comingSoonHtml() {
-  return `<div class="w-full flex flex-col items-center justify-center py-16 text-center">
-    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-      <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-    </div>
-    <p class="text-slate-500 text-base font-medium">Recruiter profiles are being onboarded. Check back soon!</p>
-  </div>`;
+  return '<div class="w-full flex flex-col items-center justify-center py-6 text-center">' +
+    '<div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-3">' +
+      '<svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>' +
+    '</div>' +
+    '<p class="text-slate-500 text-base font-medium">Profiles are being onboarded. Check back soon!</p>' +
+  '</div>';
 }
 
 function renderPartnerCards(profiles, categoryId, subcategoryName) {
   if (!profiles || profiles.length === 0) {
     if (categoryId === 'recruiter') return { leftCards: comingSoonHtml(), rightCards: '' };
-    return { leftCards: `<div class="text-center text-slate-500 py-10 w-full">No profiles found.</div>`, rightCards: '' };
+    if (categoryId === 'celebrities') return { leftCards: '<div class="w-full flex flex-col items-center justify-center py-6 text-center"><img src="icons/howitworks-talent/Discivery.png" alt="No celebrities" class="w-32 h-32 mb-3"><p class="text-slate-600 text-base font-semibold">No celebrity profiles found.</p></div>', rightCards: '' };
+    return { leftCards: '<div class="text-center text-slate-500 py-6 w-full">No profiles found.</div>', rightCards: '' };
   }
 
-  const mid = Math.ceil(profiles.length / 2);
-  const leftSet = profiles.slice(0, mid);
-  const rightSet = profiles.slice(mid);
+  var mid = Math.ceil(profiles.length / 2);
+  var leftSet = profiles.slice(0, mid);
+  var rightSet = profiles.slice(mid);
 
-  const leftCards = leftSet.map(p => createPartnerCard(p, categoryId, subcategoryName)).join('') + leftSet.map(p => createPartnerCard(p, categoryId, subcategoryName)).join('');
-  const rightCards = rightSet.map(p => createPartnerCard(p, categoryId, subcategoryName)).join('') + rightSet.map(p => createPartnerCard(p, categoryId, subcategoryName)).join('');
+  var leftCards = leftSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('') +
+                  leftSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
+  var rightCards = rightSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('') +
+                   rightSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
 
-  return { leftCards, rightCards };
+  return { leftCards: leftCards, rightCards: rightCards };
 }
 
 function renderContent(profiles, categoryId, subcategoryName) {
-  const cacheKey = subcategoryName ? categoryId + '-' + subcategoryName : categoryId;
-  const result = renderPartnerCards(profiles, categoryId, subcategoryName);
+  var cacheKey = subcategoryName ? categoryId + '-' + subcategoryName : categoryId;
+  var result = renderPartnerCards(profiles, categoryId, subcategoryName);
+  var hasProfiles = profiles && profiles.length > 0;
+  result.hasProfiles = hasProfiles;
   partnersDataCache[cacheKey] = result;
-  document.getElementById('partners-marquee-left').innerHTML = result.leftCards;
-  document.getElementById('partners-marquee-right').innerHTML = result.rightCards;
+
+  var marqueeLeft = document.getElementById('partners-marquee-left');
+  var marqueeRight = document.getElementById('partners-marquee-right');
+
+  marqueeLeft.innerHTML = result.leftCards;
+  marqueeRight.innerHTML = result.rightCards;
+
+  if (hasProfiles) {
+    marqueeLeft.classList.add('animate-marquee-left');
+    marqueeRight.classList.add('animate-marquee-right');
+  } else {
+    marqueeLeft.classList.remove('animate-marquee-left');
+    marqueeRight.classList.remove('animate-marquee-right');
+  }
 }
 
 function renderSubcategoryPills(subcategories, activeSub, categoryId) {
-  const container = document.getElementById('partners-subcategories-scroll');
+  var container = document.getElementById('partners-subcategories-scroll');
   if (!container) return;
 
-  let html = `<button class="sub-pill ${!activeSub ? 'active' : ''}" data-sub="">All</button>`;
-  subcategories.forEach(s => {
-    const isActive = activeSub === s.name;
-    html += `<button class="sub-pill ${isActive ? 'active' : ''}" data-sub="${s.name}">${s.name}</button>`;
+  var html = '<button class="sub-pill' + (!activeSub ? ' active' : '') + '" data-sub="">All</button>';
+  subcategories.forEach(function(s) {
+    var isActive = activeSub === s.name;
+    html += '<button class="sub-pill' + (isActive ? ' active' : '') + '" data-sub="' + s.name + '">' + s.name + '</button>';
   });
   container.innerHTML = html;
 
-  container.querySelectorAll('.sub-pill').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const sub = this.dataset.sub || null;
+  container.querySelectorAll('.sub-pill').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var sub = this.dataset.sub || null;
       currentSubcategory = sub;
       loadTalentSubcategory(sub);
       renderSubcategoryPills(subcategories, sub, categoryId);
@@ -153,21 +267,21 @@ function renderSubcategoryPills(subcategories, activeSub, categoryId) {
 }
 
 function loadTalentSubcategory(subcategoryName) {
-  const cacheKey = subcategoryName ? 'talent-' + subcategoryName : 'talent';
+  var cacheKey = subcategoryName ? 'talent-' + subcategoryName : 'talent';
 
   if (partnersDataCache[cacheKey]) {
-    const data = partnersDataCache[cacheKey];
+    var data = partnersDataCache[cacheKey];
     document.getElementById('partners-marquee-left').innerHTML = data.leftCards;
     document.getElementById('partners-marquee-right').innerHTML = data.rightCards;
     return;
   }
 
-  const profiles = filterProfilesBySubcategory(allTalentProfiles, subcategoryName);
+  var profiles = filterProfilesBySubcategory(allTalentProfiles, subcategoryName);
   renderContent(profiles, 'talent', subcategoryName);
 }
 
 function updatePartnersIndicator(activeTab) {
-  const indicator = document.getElementById('partners-tab-indicator');
+  var indicator = document.getElementById('partners-tab-indicator');
   if (!activeTab || !indicator) return;
   indicator.style.width = activeTab.offsetWidth + 'px';
   indicator.style.left = activeTab.offsetLeft + 'px';
@@ -178,24 +292,35 @@ function switchPartnerCategory(categoryId, clickedBtn) {
   currentPartnerCategory = categoryId;
   currentSubcategory = null;
 
-  document.querySelectorAll('#partners-section .bento-tab').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('#partners-section .bento-tab').forEach(function(btn) { btn.classList.remove('active'); });
   if (clickedBtn) {
     clickedBtn.classList.add('active');
     updatePartnersIndicator(clickedBtn);
   }
 
-  const loadingEl = document.getElementById('partners-loading');
-  const contentEl = document.getElementById('partners-content');
-  const subcatsContainer = document.getElementById('partners-subcategories');
-  const errorEl = document.getElementById('partners-error');
+  var loadingEl = document.getElementById('partners-loading');
+  var contentEl = document.getElementById('partners-content');
+  var subcatsContainer = document.getElementById('partners-subcategories');
+  var errorEl = document.getElementById('partners-error');
   errorEl.classList.add('hidden');
 
-  const cacheKey = categoryId;
+  var cacheKey = categoryId;
 
   if (partnersDataCache[cacheKey]) {
-    const data = partnersDataCache[cacheKey];
-    document.getElementById('partners-marquee-left').innerHTML = data.leftCards;
-    document.getElementById('partners-marquee-right').innerHTML = data.rightCards;
+    var data = partnersDataCache[cacheKey];
+    var marqueeLeft = document.getElementById('partners-marquee-left');
+    var marqueeRight = document.getElementById('partners-marquee-right');
+    marqueeLeft.innerHTML = data.leftCards;
+    marqueeRight.innerHTML = data.rightCards;
+
+    if (data.hasProfiles) {
+      marqueeLeft.classList.add('animate-marquee-left');
+      marqueeRight.classList.add('animate-marquee-right');
+    } else {
+      marqueeLeft.classList.remove('animate-marquee-left');
+      marqueeRight.classList.remove('animate-marquee-right');
+    }
+
     if (categoryId === 'talent') {
       subcatsContainer.classList.remove('hidden');
       renderSubcategoryPills(talentSubcategories, null, 'talent');
@@ -222,28 +347,28 @@ function switchPartnerCategory(categoryId, clickedBtn) {
     subcatsContainer.classList.remove('hidden');
 
     if (recruiterSubcategories.length === 0) {
-      fetch(`${PARTNERS_API_BASE}/cms/categories/tree?scope=recruiter`)
-        .then(res => res.ok ? res.json() : null)
-        .then(json => {
+      fetch(PARTNERS_API_BASE + '/cms/categories/tree?scope=recruiter')
+        .then(function(res) { return res.ok ? res.json() : null; })
+        .then(function(json) {
           if (json) recruiterSubcategories = flattenSubcategories(extractPartnerData(json));
           renderSubcategoryPills(recruiterSubcategories, null, 'recruiter');
         })
-        .catch(() => renderSubcategoryPills(recruiterSubcategories, null, 'recruiter'));
+        .catch(function() { renderSubcategoryPills(recruiterSubcategories, null, 'recruiter'); });
     } else {
       renderSubcategoryPills(recruiterSubcategories, null, 'recruiter');
     }
 
-    fetch(`${PARTNERS_API_BASE}/home/featured-recruiters`)
-      .then(res => {
+    fetch(PARTNERS_API_BASE + '/recruiter/profiles')
+      .then(function(res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       })
-      .then(json => {
+      .then(function(json) {
         renderContent(extractPartnerData(json), 'recruiter', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
       })
-      .catch(() => {
+      .catch(function() {
         renderContent([], 'recruiter', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
@@ -253,26 +378,30 @@ function switchPartnerCategory(categoryId, clickedBtn) {
     loadingEl.classList.remove('hidden');
     contentEl.classList.add('hidden');
 
-    fetch(`${PARTNERS_API_BASE}/celebrity/list?status=&page=&limit=`)
-      .then(res => {
+    fetch(PARTNERS_API_BASE + '/home/celebrities')
+      .then(function(res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       })
-      .then(json => {
-        let data = extractPartnerData(json);
+      .then(function(json) {
+        var data = extractPartnerData(json);
         if (!data || data.length === 0) {
-          data = allTalentProfiles.filter(p =>
-            (p.subTalents || []).some(s => CELEBRITY_ROLES.includes(s.toLowerCase()))
-          );
+          data = allTalentProfiles.filter(function(p) {
+            return (p.subTalents || []).some(function(s) {
+              return CELEBRITY_ROLES.indexOf(s.toLowerCase()) !== -1;
+            });
+          });
         }
         renderContent(data, 'celebrities', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
       })
-      .catch(() => {
-        const data = allTalentProfiles.filter(p =>
-          (p.subTalents || []).some(s => CELEBRITY_ROLES.includes(s.toLowerCase()))
-        );
+      .catch(function() {
+        var data = allTalentProfiles.filter(function(p) {
+          return (p.subTalents || []).some(function(s) {
+            return CELEBRITY_ROLES.indexOf(s.toLowerCase()) !== -1;
+          });
+        });
         renderContent(data, 'celebrities', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
@@ -281,50 +410,48 @@ function switchPartnerCategory(categoryId, clickedBtn) {
 }
 
 async function initPartners() {
-  const loadingEl = document.getElementById('partners-loading');
-  const contentEl = document.getElementById('partners-content');
-  const errorEl = document.getElementById('partners-error');
+  var loadingEl = document.getElementById('partners-loading');
+  var contentEl = document.getElementById('partners-content');
+  var errorEl = document.getElementById('partners-error');
 
   loadingEl.classList.remove('hidden');
   contentEl.classList.add('hidden');
   errorEl.classList.add('hidden');
 
-  const activeTab = document.querySelector('#partners-section .bento-tab.active');
+  var activeTab = document.querySelector('#partners-section .bento-tab.active');
   if (activeTab) {
-    setTimeout(() => updatePartnersIndicator(activeTab), 200);
+    setTimeout(function() { updatePartnersIndicator(activeTab); }, 200);
   }
 
-  window.addEventListener('resize', () => {
-    const tab = document.querySelector('#partners-section .bento-tab.active');
+  window.addEventListener('resize', function() {
+    var tab = document.querySelector('#partners-section .bento-tab.active');
     if (tab) updatePartnersIndicator(tab);
   });
 
-  document.querySelectorAll('#partners-section .bento-tab').forEach(btn => {
-    btn.addEventListener('click', function () {
+  document.querySelectorAll('#partners-section .bento-tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
       switchPartnerCategory(this.dataset.category, this);
     });
   });
 
   try {
-    const [profilesRes, talentCatRes] = await Promise.all([
-      fetch(`${PARTNERS_API_BASE}/talent/profiles`),
-      fetch(`${PARTNERS_API_BASE}/cms/categories/tree?scope=talent`),
-    ]);
+    var profilesRes = await fetch(PARTNERS_API_BASE + '/talent/profiles');
+    var talentCatRes = await fetch(PARTNERS_API_BASE + '/cms/categories/tree?scope=talent');
 
     if (profilesRes.ok) {
-      const json = await profilesRes.json();
+      var json = await profilesRes.json();
       allTalentProfiles = extractPartnerData(json);
     }
 
     if (talentCatRes.ok) {
-      const json = await talentCatRes.json();
+      var json = await talentCatRes.json();
       talentSubcategories = flattenSubcategories(extractPartnerData(json));
     }
   } catch (err) {
     console.error('Partners init error:', err);
   }
 
-  const subcatsContainer = document.getElementById('partners-subcategories');
+  var subcatsContainer = document.getElementById('partners-subcategories');
   subcatsContainer.classList.remove('hidden');
   renderSubcategoryPills(talentSubcategories, null, 'talent');
   loadTalentSubcategory(null);

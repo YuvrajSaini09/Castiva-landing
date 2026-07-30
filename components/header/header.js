@@ -44,6 +44,24 @@
   document.addEventListener('click', (e) => { if (open && !modal.contains(e.target) && !btn.contains(e.target)) closeMenu(); });
   window.addEventListener('scroll', () => { if (open) closeMenu(); }, { passive: true });
   window.addEventListener('resize', () => { if (open) positionModal(); });
+
+  // Mobile submenu toggles
+  function setupMobileSubmenu(triggerId, subId, arrowId) {
+    const trigger = document.getElementById(triggerId);
+    const sub = document.getElementById(subId);
+    const arrow = document.getElementById(arrowId);
+    if (!trigger || !sub || !arrow) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = sub.classList.contains('hidden');
+      sub.classList.toggle('hidden');
+      arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  }
+
+  setupMobileSubmenu('mobile-about-trigger', 'mobile-about-sub', 'mobile-about-arrow');
+  setupMobileSubmenu('mobile-events-trigger', 'mobile-events-sub', 'mobile-events-arrow');
 })();
 
 // WebGL Button Shader (Purple Theme)

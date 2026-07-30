@@ -105,18 +105,10 @@
       
       <!-- Contact Info Cards -->
       <div class="lg:col-span-4 space-y-6">
-        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 space-y-6">
-          <div>
-            <h4 class="font-bold text-slate-900 text-lg mb-1">Direct Email</h4>
-            <a href="mailto:support@castiva.co" class="text-purple-600 font-semibold text-sm hover:underline">support@castiva.co</a>
-          </div>
-          <div>
-            <h4 class="font-bold text-slate-900 text-lg mb-1">Locations</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Mumbai &bull; Bangalore, India</p>
-          </div>
-          <div>
-            <h4 class="font-bold text-slate-900 text-lg mb-1">Response Time</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">We typically respond to inquiries within 24 business hours.</p>
+        <div id="contact-info-container" class="bg-slate-50 p-8 rounded-3xl border border-slate-100 space-y-6">
+          <div id="contact-loading" class="text-center py-6">
+            <div class="inline-block w-6 h-6 border-2 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+            <p class="text-slate-500 text-sm mt-2">Loading contact info...</p>
           </div>
         </div>
       </div>
@@ -159,6 +151,49 @@
 
   <!-- Shared Footer Component -->
   <!-- @import "../components/footer/footer.html" -->
+
+  <!-- Contact Info Script -->
+  <script>
+    const CONTACT_API = 'https://backend.castiva.in/api/v1/config';
+
+    function buildContactItem(label, value, isLink) {
+      if (!value) return '';
+      const valHtml = isLink
+        ? `<a href="${isLink === 'email' ? 'mailto:' : ''}${value}" class="text-purple-600 font-semibold text-sm hover:underline">${value}</a>`
+        : `<p class="text-slate-500 text-sm leading-relaxed">${value}</p>`;
+      return `<div>
+        <h4 class="font-bold text-slate-900 text-lg mb-1">${label}</h4>
+        ${valHtml}
+      </div>`;
+    }
+
+    async function loadContactInfo() {
+      const container = document.getElementById('contact-info-container');
+      const loading = document.getElementById('contact-loading');
+      try {
+        const res = await fetch(CONTACT_API);
+        const json = await res.json();
+        const info = json?.data?.contact?.contact_info || {};
+        const items = [
+          buildContactItem('Direct Email', info.email, 'email'),
+          buildContactItem('Locations', info.location),
+          buildContactItem('Response Time', info.responseTime),
+          buildContactItem('Phone', info.phone),
+          buildContactItem('WhatsApp', info.whatsapp),
+        ].filter(Boolean);
+        if (items.length) {
+          container.innerHTML = items.join('');
+        } else {
+          container.innerHTML = `<p class="text-slate-500 text-sm text-center py-6">Contact information coming soon.</p>`;
+        }
+      } catch (e) {
+        console.warn('Failed to load contact info:', e);
+        container.innerHTML = `<p class="text-slate-500 text-sm text-center py-6">Unable to load contact info. Please try again later.</p>`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadContactInfo);
+  </script>
 
   <!-- Header Script -->
   <script>

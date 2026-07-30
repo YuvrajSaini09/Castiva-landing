@@ -39,6 +39,9 @@
     }
   </script>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: #ffffff;
@@ -175,6 +178,16 @@
   border-top: 1px solid #f1f5f9;
 }
 
+.why-choose-us-section .bento-tab-container {
+  width: 320px;
+  max-width: 100%;
+  gap: 8px;
+}
+
+.why-choose-us-section .bento-tab {
+  flex: 1 1 0%;
+}
+
 
     /* Legal Tabs Styles */
     /* Purple Tab System Custom CSS Styles */
@@ -195,12 +208,6 @@
   .bento-tab-scroll-wrapper {
     justify-content: center;
   }
-}
-
-#partners-section .bento-tab-scroll-wrapper {
-  -webkit-mask-image: none;
-  mask-image: none;
-  justify-content: center;
 }
 
 .bento-tab-container {
@@ -314,6 +321,15 @@
   animation-play-state: paused;
 }
 
+#partners-section .bento-tab-container {
+  width: 420px;
+  max-width: 95%;
+}
+
+#partners-section .bento-tab {
+  flex: 1 1 0%;
+}
+
 .sub-pill {
   padding: 8px 20px;
   border-radius: 9999px;
@@ -338,6 +354,268 @@
   color: #fff;
   border-color: #7c3aed;
 }
+
+/* --- Celebrity-style Card --- */
+.partner-card {
+  position: relative;
+  width: 270px;
+  background: transparent;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+  padding: 10px;
+}
+.partner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.partner-card-gradient {
+  height: 72px;
+  position: relative;
+  overflow: hidden;
+  margin: -10px -10px 0;
+  border-radius: 24px 24px 0 0;
+}
+
+.partner-card-glow {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  top: -40px;
+  right: -40px;
+  background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.partner-avatar-wrapper {
+  position: absolute;
+  top: 28px;
+  left: 20px;
+  z-index: 10;
+}
+
+.partner-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  background: #f1f5f9;
+}
+
+.partner-avatar-placeholder {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.partner-info {
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  margin-top: 6px;
+  padding: 40px 14px 14px;
+}
+
+.partner-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.partner-role {
+  font-size: 12px;
+  color: #9333ea;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.partner-location {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.partner-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.partner-price-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: #0f172a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.partner-price-pill:hover {
+  box-shadow: 0 0 20px rgba(168, 51, 255, 0.4);
+}
+
+.partner-price-underline {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #a855f7, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.partner-price-pill:hover .partner-price-underline {
+  opacity: 1;
+}
+
+.partner-price-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 50% 0%, rgba(168, 51, 255, 0.3) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.partner-price-pill:hover .partner-price-glow {
+  opacity: 1;
+}
+
+.partner-price-text {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* --- Celebrity Card Redesign --- */
+.partner-card.celebrity-card {
+  width: 300px;
+  padding: 52px 8px 8px 8px;
+  border-radius: 32px;
+  overflow: visible;
+  display: inline-flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+}
+
+.celebrity-inner-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px 12px 12px 12px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.celebrity-avatar-wrapper {
+  position: absolute;
+  top: -44px;
+  left: 16px;
+  z-index: 10;
+}
+
+.celebrity-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: none;
+  object-fit: cover;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  display: block;
+}
+
+.partner-avatar-placeholder.celebrity-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.celebrity-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.celebrity-role {
+  font-size: 13px;
+  color: #9333ea;
+  font-weight: 600;
+  margin: 0;
+}
+
+.celebrity-location {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 4px 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location-pill-wrapper {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.location-pill-wrapper .relative {
+  line-height: 0;
+}
+
+.location-pill-wrapper button {
+  padding: 0 14px;
+}
+
 
 
     /* Refer & Earn Styles */
@@ -564,18 +842,91 @@
   }
 }
 
+/* Desktop Dropdown Menu */
+.dropdown-group {
+  position: relative;
+}
+
+.dropdown-trigger {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  top: 100%;
+  margin-top: 12px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+}
+
+/* Invisible bridge to prevent gap from closing dropdown */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: -20px;
+  right: -20px;
+  height: 16px;
+}
+
+.dropdown-group:hover .dropdown-menu,
+.dropdown-group:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-group:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-link {
+  display: block;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #334155;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dropdown-link:hover {
+  color: #A128FF;
+  background: #faf5ff;
+}
+
+/* Mobile Submenu */
+.mobile-sub-open .mobile-sub-arrow {
+  transform: rotate(180deg);
+}
+
   </style>
 </head>
 <body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
 
   <!-- Component Layout Shell -->
   <header class="pt-6 px-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <nav class="max-w-4xl mx-auto relative p-[1px] rounded-full overflow-hidden bg-slate-200/40 shadow-sm">
-    <!-- Infinite Revolving Purple Beam -->
-    <div class="border-beam-bg"></div>
-    
+  <nav class="max-w-5xl mx-auto relative p-[1px] rounded-full bg-slate-200/40 shadow-sm">
+    <!-- Infinite Revolving Purple Beam (wrapped for overflow clip) -->
+    <div class="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+      <div class="border-beam-bg"></div>
+    </div>
+
     <!-- Navigation Inner Content Wrapper -->
-    <div class="w-full relative z-10 bg-white/95 backdrop-blur-md rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between">
+    <div class="w-full relative z-10 bg-white/95 backdrop-blur-md rounded-full px-3 sm:px-4 py-2.5 flex items-center justify-between">
       <!-- Logo -->
       <a href="index.html" class="flex items-center group">
         <div class="w-[112px] h-10 overflow-hidden group-hover:scale-105 transition-transform bg-transparent flex items-center">
@@ -584,13 +935,48 @@
       </a>
 
       <!-- Menu Items (Desktop) -->
-      <div class="hidden md:flex items-center gap-8 font-semibold text-slate-700 text-sm">
+      <div class="hidden md:flex items-center gap-10 font-semibold text-slate-700 text-sm">
+
         <a href="index.html" class="hover:text-purple-600 transition-colors">Home</a>
-        <a href="about.html" class="hover:text-purple-600 transition-colors">About</a>
+
+        <!-- About Dropdown -->
+        <div class="relative dropdown-group">
+          <button class="dropdown-trigger flex items-center gap-1 hover:text-purple-600 transition-colors cursor-pointer">
+            About
+            <svg class="w-3 h-3 mt-0.5 dropdown-arrow transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 py-3 px-2 min-w-[190px]">
+              <a href="about.html" class="dropdown-link">About Us</a>
+              <a href="index.html#testimonials" class="dropdown-link">Testimonials</a>
+              <a href="career.html" class="dropdown-link">Career</a>
+              <a href="faq.html" class="dropdown-link">FAQ</a>
+              <a href="pricing.html" class="dropdown-link">Pricing</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events & Shows Dropdown -->
+        <div class="relative dropdown-group">
+          <button class="dropdown-trigger flex items-center gap-1 hover:text-purple-600 transition-colors cursor-pointer">
+            Events & Shows
+            <svg class="w-3 h-3 mt-0.5 dropdown-arrow transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 py-3 px-2 min-w-[190px]">
+              <a href="events.html" class="dropdown-link">Events</a>
+              <a href="award-shows.html" class="dropdown-link">Award Shows</a>
+              <a href="projects.html" class="dropdown-link">Projects</a>
+              <a href="services.html" class="dropdown-link">Services</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="auditions.html" class="hover:text-purple-600 transition-colors">Auditions</a>
         <a href="contact.html" class="hover:text-purple-600 transition-colors">Contact</a>
         <a href="team.html" class="hover:text-purple-600 transition-colors">Team</a>
         <a href="blog.html" class="hover:text-purple-600 transition-colors">Blog</a>
-        <a href="faq.html" class="hover:text-purple-600 transition-colors">FAQ</a>
+
       </div>
 
       <!-- Right: Login Button + Hamburger -->
@@ -601,7 +987,7 @@
             <button class="group overflow-hidden transition-all duration-700 ease-out hover:scale-[1.03] border-none flex cursor-pointer w-[90px] h-[38px] z-10 rounded-full relative items-center justify-center" style="filter: drop-shadow(0 8px 16px rgba(161,40,255,0.2)); background: #f8fafc">
               <!-- Volumetric Under-glow (Purple Theme) -->
               <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[140%] h-32 bg-purple-500/30 blur-[60px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-              
+
               <!-- WebGL Core Container -->
               <div class="absolute inset-[2px] rounded-full overflow-hidden bg-white/5 backdrop-blur-xl border border-white/40 shadow-[inset_0_2px_12px_rgba(255,255,255,0.7)]">
                 <canvas class="w-full h-full block" id="gl-aura-header" width="180" height="76"></canvas>
@@ -635,14 +1021,43 @@
 
   <!-- Mobile Navigation Dropdown -->
   <div id="mobile-nav-modal" class="md:hidden fixed z-[60] pointer-events-none opacity-0 scale-95 transition-all duration-300 ease-out origin-top-right">
-    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 py-5 px-6 w-[195px]">
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 py-5 px-6 w-[220px]">
       <div class="flex flex-col items-start gap-5 text-base font-semibold text-slate-700">
         <a href="index.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Home</a>
-        <a href="about.html" class="mobile-nav-link hover:text-purple-600 transition-colors">About</a>
+
+        <!-- Mobile About Section -->
+        <div class="w-full">
+          <div class="flex items-center justify-between w-full mobile-nav-link hover:text-purple-600 transition-colors cursor-pointer" id="mobile-about-trigger">
+            <span>About</span>
+            <svg class="w-3 h-3 transition-transform duration-300" id="mobile-about-arrow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="mobile-about-sub" class="hidden flex flex-col gap-3 pl-4 mt-3 text-sm font-medium text-slate-600">
+            <a href="about.html" class="mobile-nav-link hover:text-purple-600 transition-colors">About Us</a>
+            <a href="index.html#testimonials" class="mobile-nav-link hover:text-purple-600 transition-colors">Testimonials</a>
+            <a href="career.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Career</a>
+            <a href="faq.html" class="mobile-nav-link hover:text-purple-600 transition-colors">FAQ</a>
+            <a href="pricing.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Pricing</a>
+          </div>
+        </div>
+
+        <!-- Mobile Events & Shows Section -->
+        <div class="w-full">
+          <div class="flex items-center justify-between w-full mobile-nav-link hover:text-purple-600 transition-colors cursor-pointer" id="mobile-events-trigger">
+            <span>Events & Shows</span>
+            <svg class="w-3 h-3 transition-transform duration-300" id="mobile-events-arrow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="mobile-events-sub" class="hidden flex flex-col gap-3 pl-4 mt-3 text-sm font-medium text-slate-600">
+            <a href="events.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Events</a>
+            <a href="award-shows.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Award Shows</a>
+            <a href="projects.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Projects</a>
+            <a href="services.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Services</a>
+          </div>
+        </div>
+
+        <a href="auditions.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Auditions</a>
         <a href="contact.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Contact</a>
         <a href="team.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Team</a>
         <a href="blog.html" class="mobile-nav-link hover:text-purple-600 transition-colors">Blog</a>
-        <a href="faq.html" class="mobile-nav-link hover:text-purple-600 transition-colors">FAQ</a>
       </div>
     </div>
   </div>
@@ -650,7 +1065,7 @@
 
   
   <main>
-    <section class="pt-36 pb-0 flex flex-col items-center text-center relative overflow-hidden bg-cover bg-top" style="background-image: url('hero-gradient.png');">
+    <section class="pt-36 pb-0 flex flex-col items-center text-center relative overflow-hidden bg-cover bg-top" style="background-image: url('hero-gradient.png');" id="hero_section" data-section-key="hero_section">
   <div class="max-w-7xl w-full mx-auto space-y-5 px-4 mb-2">
     
     <!-- Main Heading -->
@@ -671,7 +1086,7 @@
   </div>
 </section>
     <!-- Infinite Auto Scrolling Banner Strip -->
-<div class="w-full bg-[#A128FF] pt-6 pb-8 sm:py-6 mb-6 md:mb-12 overflow-hidden relative z-10 select-none">
+<div data-follows="hero_section" class="w-full bg-[#A128FF] pt-6 pb-8 sm:py-6 mb-8 md:mb-12 overflow-hidden relative z-10 select-none">
   <div class="animate-marquee whitespace-nowrap flex items-center">
     <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-4 sm:mx-6 inline-flex items-center gap-3 sm:gap-6">India's Leading <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block ">Talent Discovery</span> & <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block">Casting</span> Platform <img src="star-icon.png" class="w-8 h-8 sm:w-16 sm:h-16 inline-block ml-2 sm:ml-4" alt="*"></span>
     <span class="font-sans font-black text-white text-2xl sm:text-5xl tracking-tight mx-4 sm:mx-6 inline-flex items-center gap-3 sm:gap-6">India's Leading <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block ">Talent Discovery</span> & <span class="font-playfair italic font-normal text-2xl sm:text-5xl white-scribble-underline inline-block">Casting</span> Platform <img src="star-icon.png" class="w-8 h-8 sm:w-16 sm:h-16 inline-block ml-2 sm:ml-4" alt="*"></span>
@@ -681,7 +1096,7 @@
 </div>
 
     <!-- How It Works Section for Talents -->
-<section class="py-20 px-6 max-w-7xl mx-auto bg-white overflow-hidden" id="how-it-works">
+<section class="py-20 px-6 max-w-7xl mx-auto bg-white overflow-hidden" id="how_it_works_for_talent" data-section-key="how_it_works_for_talent">
   <div class="text-center mb-16">
     <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
       How It Works For <span class="font-serif italic font-medium text-purple-600 text-7xl scribble-underline">Talent</span>
@@ -772,14 +1187,14 @@
 </section>
 
     <!-- Talent Section 1: Job matches -->
-<section id="talent-job-match" data-talent-section class="py-20 px-6">
+<section id="job_offers_that_stay_matched_to_you" data-section-key="job_offers_that_stay_matched_to_you" data-talent-section class="py-20 px-6">
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
       <div class="lg:col-span-6 order-2 lg:order-1" data-talent-animate>
           <div class="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-bold text-cyan-700 mb-6">
             For Talent
           </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+          <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
             Job offers that stay
             <span class="font-serif italic font-normal text-castiva-purple scribble-underline">matched to you</span>
           </h2>
@@ -832,7 +1247,7 @@
 </section>
 
     <!-- Our Exclusive Partners Section -->
-<section id="partners-section" class="relative overflow-hidden py-20 bg-white w-full">
+<section id="partners-section" data-section-key="our_exclusive_partners" class="relative overflow-hidden py-20 bg-white w-full">
   <div class="max-w-[1400px] mx-auto px-6 mb-12 text-center">
     <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
       Our <span class="font-serif italic font-normal text-castiva-purple text-[1.15em] scribble-underline inline-block">Exclusive</span> Partners
@@ -840,13 +1255,11 @@
   </div>
 
   <div class="flex justify-center mb-6">
-    <div class="bento-tab-scroll-wrapper">
-      <div class="bento-tab-container">
-        <div class="bento-tab-indicator" id="partners-tab-indicator" style="transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);"></div>
-        <button class="bento-tab active" data-category="talent">Talent</button>
-        <button class="bento-tab" data-category="recruiter">Recruiter</button>
-        <button class="bento-tab" data-category="celebrities">Celebrities</button>
-      </div>
+    <div class="bento-tab-container" style="width: 420px; max-width: 95%;">
+      <div class="bento-tab-indicator" id="partners-tab-indicator"></div>
+      <button class="bento-tab active" data-category="talent">Talent</button>
+      <button class="bento-tab" data-category="recruiter">Recruiter</button>
+      <button class="bento-tab" data-category="celebrities">Celebrities</button>
     </div>
   </div>
 
@@ -880,7 +1293,7 @@
 </section>
 
     <!-- Talent Section 2: Portfolio and trust -->
-<section id="talent-portfolio" data-talent-section class="py-20 px-6">
+<section id="a_portfolio_that_feels_easy_to_build_and_trusted" data-section-key="a_portfolio_that_feels_easy_to_build_and_trusted" data-talent-section class="py-20 px-6">
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
       <div class="lg:col-span-6 order-1" data-talent-animate>
@@ -893,7 +1306,7 @@
           <div class="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-4 py-2 text-xs font-bold text-rose-700 mb-6">
             For Talent
           </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+          <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
             A portfolio that feels
             <span class="font-serif italic font-normal text-castiva-purple scribble-underline">easy to build and trusted</span>
           </h2>
@@ -940,14 +1353,14 @@
 </section>
 
     <!-- Recruiter Section -->
-<section id="recruiter-solution" data-talent-section class="py-24 sm:py-32 px-6 bg-white overflow-hidden">
+<section id="recruiter-solution" data-section-key="recruiter_solution_for_faster_better_matching" data-talent-section class="py-24 sm:py-32 px-6 bg-white overflow-hidden">
   <div class="max-w-[1400px] mx-auto">
     <!-- Centered Header -->
     <div class="text-center mb-20" data-talent-animate>
       <div class="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-xs font-bold text-purple-700 mb-6">
         For Recruiters
       </div>
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+      <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
         Recruiter solution for
         <span class="font-serif italic font-normal text-castiva-purple scribble-underline inline-block">faster, better matching</span>
       </h2>
@@ -1029,7 +1442,7 @@
 </section>
 
     <!-- How It Works Section for Recruiters -->
-<section class="py-20 px-6 max-w-7xl mx-auto bg-white overflow-hidden border-t border-slate-100" id="how-it-works-recruiter">
+<section class="py-20 px-6 max-w-7xl mx-auto bg-white overflow-hidden border-t border-slate-100" id="how_it_works_for_recruiters" data-section-key="how_it_works_for_recruiters">
   <div class="text-center mb-16">
     <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
       How It Works For <span class="font-serif italic font-medium text-purple-600 text-7xl scribble-underline">Recruiters</span>
@@ -1120,7 +1533,7 @@
 </section>
 
     <!-- Who Is Castiva Built For Component -->
-<section class="py-20 px-6 max-w-7xl mx-auto bg-white border-t border-slate-100" id="audience-section">
+<section class="py-20 px-6 max-w-7xl mx-auto bg-white border-t border-slate-100" id="audience-section" data-section-key="who_is_castiva_built_for">
   <div class="text-center mb-10">
     <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
       Who Is <span class="font-playfair italic font-normal text-purple-600 scribble-underline inline-block text-6xl">Castiva</span> Built For?
@@ -1147,11 +1560,11 @@
 </section>
 
     <!-- Why Choose Us Section -->
-<section class="why-choose-us-section py-20 px-6 bg-white" id="why-choose-us">
+<section class="why-choose-us-section py-20 px-6 bg-white" id="why_choose_us" data-section-key="why_choose_us">
   <div class="max-w-7xl mx-auto">
     <!-- Heading -->
     <div class="text-center mb-12">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+      <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
         Why <span class="font-playfair italic font-normal text-purple-600 scribble-underline inline-block text-6xl">Choose Us</span>?
       </h2>
       <p class="text-slate-500 text-base sm:text-lg max-w-xl mx-auto">Everything you need — whether you're a talent, recruiter, or brand.</p>
@@ -1159,8 +1572,8 @@
 
     <!-- Tabs -->
     <div class="flex justify-center mb-10">
-      <div class="bento-tab-container" style="width: 320px; max-width: 95%;">
-        <div class="bento-tab-indicator" id="why-tab-indicator" style="transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);"></div>
+      <div class="bento-tab-container" style="width: 320px; max-width: 100%;">
+        <div class="bento-tab-indicator" id="why-tab-indicator"></div>
         <button class="bento-tab active" data-tab="talent" onclick="switchWhy('talent', this)">Talent</button>
         <button class="bento-tab" data-tab="recruiter" onclick="switchWhy('recruiter', this)">Recruiter</button>
       </div>
@@ -1195,7 +1608,7 @@
 </section>
 
     <!-- Infinite Scrolling Testimonials Section -->
-<section class="pt-20 pb-8 overflow-hidden bg-slate-50/30 w-full relative">
+<section class="pt-20 pb-8 overflow-hidden bg-slate-50/30 w-full relative" id="testimonials" data-section-key="loved_by_the_industry">
   <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
     <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
       Loved by the <span class="font-serif italic font-normal text-castiva-purple text-[1.15em] scribble-underline inline-block">Industry</span>
@@ -1223,12 +1636,12 @@
 </section>
 
       <!-- Refer & Earn Section -->
-  <section id="refer-earn-section" class="relative overflow-hidden py-20 px-4">
+  <section id="refer_and_earn_rewards" data-section-key="refer_and_earn_rewards" class="relative overflow-hidden py-20 px-4">
     <div class="refer-earn-card max-w-[1200px] mx-auto relative flex items-center justify-between gap-10 overflow-hidden" style="background: #fafafa; border-radius: 32px; border: 1px solid rgba(0,0,0,0.04); padding: 60px 64px; box-shadow: 0 4px 40px rgba(0,0,0,0.03);">
       
       <!-- Text Content -->
       <div class="refer-earn-content flex-1 max-w-[520px] z-[2]">
-        <h2 class="text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.3] mb-8" style="letter-spacing: -0.02em;">
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
           Refer & <span class="font-playfair italic font-normal text-castiva-purple scribble-underline inline-block">Earn</span> <br>Rewards
         </h2>
         <p class="text-base text-slate-500 leading-relaxed mb-8 max-w-[460px]">
@@ -1305,6 +1718,58 @@
 
   <!-- Component Logic -->
   <script>
+    // Landing page section order from API
+    (async function() {
+      try {
+        const ts = Date.now();
+        const res = await fetch('https://backend.castiva.in/api/v1/landing?_=' + ts);
+        const json = await res.json();
+        if (!json.success || !json.data) {
+          console.warn('Landing API: invalid response', json);
+          return;
+        }
+
+        const ordered = json.data.filter(s => s.isActive).sort((a, b) => a.sortOrder - b.sortOrder);
+        console.log('Landing API: received', ordered.length, 'sections in order:', ordered.map(s => s.key + '(' + s.sortOrder + ')'));
+
+        const main = document.querySelector('main');
+        if (!main) { console.warn('Landing API: <main> not found'); return; }
+
+        const keyed = {};
+        main.querySelectorAll('[data-section-key]').forEach(el => {
+          keyed[el.getAttribute('data-section-key')] = el;
+        });
+        console.log('Landing API: found', Object.keys(keyed).length, 'sections in DOM');
+
+        const followers = {};
+        main.querySelectorAll('[data-follows]').forEach(el => {
+          const follows = el.getAttribute('data-follows');
+          if (!followers[follows]) followers[follows] = [];
+          followers[follows].push(el);
+        });
+
+        let insertPoint = main.firstChild;
+        let moved = 0;
+        ordered.forEach(s => {
+          const el = keyed[s.key];
+          if (el && el.parentNode === main) {
+            main.insertBefore(el, insertPoint);
+            insertPoint = el.nextSibling;
+            moved++;
+            (followers[s.key] || []).forEach(f => {
+              if (f.parentNode === main) {
+                main.insertBefore(f, insertPoint);
+                insertPoint = f.nextSibling;
+              }
+            });
+          }
+        });
+        console.log('Landing API: reordered', moved, 'sections successfully');
+      } catch (e) {
+        console.warn('Landing API: fetch failed, using default order:', e);
+      }
+    })();
+
     document.addEventListener('DOMContentLoaded', () => {
       // Register GSAP ScrollTrigger plugin
       if (window.gsap && window.ScrollTrigger) {
@@ -1361,6 +1826,24 @@
   document.addEventListener('click', (e) => { if (open && !modal.contains(e.target) && !btn.contains(e.target)) closeMenu(); });
   window.addEventListener('scroll', () => { if (open) closeMenu(); }, { passive: true });
   window.addEventListener('resize', () => { if (open) positionModal(); });
+
+  // Mobile submenu toggles
+  function setupMobileSubmenu(triggerId, subId, arrowId) {
+    const trigger = document.getElementById(triggerId);
+    const sub = document.getElementById(subId);
+    const arrow = document.getElementById(arrowId);
+    if (!trigger || !sub || !arrow) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = sub.classList.contains('hidden');
+      sub.classList.toggle('hidden');
+      arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  }
+
+  setupMobileSubmenu('mobile-about-trigger', 'mobile-about-sub', 'mobile-about-arrow');
+  setupMobileSubmenu('mobile-events-trigger', 'mobile-events-sub', 'mobile-events-arrow');
 })();
 
 // WebGL Button Shader (Purple Theme)
@@ -1696,7 +2179,7 @@ function createCategoryCard(sub) {
   </div>`;
 }
 
-function flattenSubcategories(categories) {
+function flattenAudienceSubcategories(categories) {
   const items = [];
   categories.forEach(cat => {
     const children = getChildren(cat);
@@ -1759,7 +2242,7 @@ function buildCategoryPanel(categories, scope) {
 */
 
 function buildCategoryPanel(categories, scope) {
-  const items = flattenSubcategories(categories);
+  const items = flattenAudienceSubcategories(categories);
   if (items.length === 0) return '<p class="text-center text-slate-500 py-8">No categories available.</p>';
 
   const INITIAL_COUNT = 14;
@@ -1873,40 +2356,61 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- Why Choose Us Script -->
   <script>
     // Why Choose Us Tab Switcher
-function switchWhy(tab, btn) {
-  // Hide all panels
-  document.querySelectorAll('.why-panel').forEach(p => {
-    p.classList.add('opacity-0', 'hidden');
-    p.classList.remove('opacity-100', 'block');
-  });
+let currentWhyTab = 'talent';
 
-  // Show target panel
-  const panel = document.getElementById('why-' + tab + '-panel');
-  if (panel) {
-    panel.classList.remove('opacity-0', 'hidden');
-    panel.classList.add('opacity-100', 'block');
+function updateWhyIndicator(activeTab) {
+  const indicator = document.getElementById('why-tab-indicator');
+  if (!activeTab || !indicator) return;
+  indicator.style.width = `${activeTab.offsetWidth}px`;
+  indicator.style.left = `${activeTab.offsetLeft}px`;
+}
+
+function switchWhy(type, clickedBtn) {
+  if (currentWhyTab === type) return;
+  currentWhyTab = type;
+
+  const talentPanel = document.getElementById('why-talent-panel');
+  const recruiterPanel = document.getElementById('why-recruiter-panel');
+  const buttons = document.querySelectorAll('.why-choose-us-section .bento-tab');
+
+  buttons.forEach(btn => btn.classList.remove('active'));
+  if (clickedBtn) {
+    clickedBtn.classList.add('active');
+    updateWhyIndicator(clickedBtn);
+  } else {
+    const targetBtn = document.querySelector(`.why-choose-us-section .bento-tab[data-tab="${type}"]`);
+    if (targetBtn) {
+      targetBtn.classList.add('active');
+      updateWhyIndicator(targetBtn);
+    }
   }
 
-  // Update tab active state
-  btn.closest('.bento-tab-container').querySelectorAll('.bento-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-
-  // Slide indicator
-  const indicator = document.getElementById('why-tab-indicator');
-  if (indicator) {
-    indicator.style.left = btn.offsetLeft + 'px';
-    indicator.style.width = btn.offsetWidth + 'px';
+  if (type === 'talent') {
+    recruiterPanel.classList.add('opacity-0');
+    setTimeout(() => {
+      recruiterPanel.classList.add('hidden');
+      talentPanel.classList.remove('hidden');
+      setTimeout(() => talentPanel.classList.remove('opacity-0'), 50);
+    }, 300);
+  } else {
+    talentPanel.classList.add('opacity-0');
+    setTimeout(() => {
+      talentPanel.classList.add('hidden');
+      recruiterPanel.classList.remove('hidden');
+      setTimeout(() => recruiterPanel.classList.remove('opacity-0'), 50);
+    }, 300);
   }
 }
 
-// Init indicator on load
 document.addEventListener('DOMContentLoaded', () => {
-  const activeBtn = document.querySelector('#why-choose-us .bento-tab.active');
-  const indicator = document.getElementById('why-tab-indicator');
-  if (activeBtn && indicator) {
-    indicator.style.left = activeBtn.offsetLeft + 'px';
-    indicator.style.width = activeBtn.offsetWidth + 'px';
+  const activeTab = document.querySelector('.why-choose-us-section .bento-tab.active');
+  if (activeTab) {
+    setTimeout(() => updateWhyIndicator(activeTab), 200);
   }
+  window.addEventListener('resize', () => {
+    const tab = document.querySelector('.why-choose-us-section .bento-tab.active');
+    if (tab) updateWhyIndicator(tab);
+  });
 });
 
   </script>
@@ -2069,9 +2573,43 @@ const COUNTRY_FLAGS = {
 
 const CELEBRITY_ROLES = ['actor', 'model', 'singer', 'dancer'];
 
+const CARD_PHOTOS = [
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&auto=format&fit=crop&q=80',
+];
+
+const CARD_GRADIENTS = [
+  'linear-gradient(110deg, #c7d2fe 0%, #fbcfe8 45%, #fed7aa 100%)',
+  'linear-gradient(110deg, #bae6fd 0%, #ddd6fe 50%, #fbcfe8 100%)',
+  'linear-gradient(110deg, #fde68a 0%, #fca5a5 55%, #f9a8d4 100%)',
+  'linear-gradient(110deg, #a7f3d0 0%, #bae6fd 50%, #c4b5fd 100%)',
+  'linear-gradient(110deg, #e9d5ff 0%, #fbcfe8 50%, #fecaca 100%)',
+  'linear-gradient(110deg, #fecdd3 0%, #fdba74 50%, #fef08a 100%)',
+];
+
+function hashId(id) {
+  var hash = 0;
+  for (var i = 0; i < id.length; i++) hash = id.charCodeAt(i) + ((hash << 5) - hash);
+  return Math.abs(hash);
+}
+
+function getGradient(id) {
+  return CARD_GRADIENTS[hashId(id) % CARD_GRADIENTS.length];
+}
+
+function getPhoto(id) {
+  return CARD_PHOTOS[hashId(id) % CARD_PHOTOS.length];
+}
+
 function getCountryCode(country) {
   if (!country) return '';
-  const key = country.toLowerCase().trim();
+  var key = country.toLowerCase().trim();
   return COUNTRY_FLAGS[key] || key.slice(0, 2).toLowerCase();
 }
 
@@ -2086,114 +2624,194 @@ function extractPartnerData(raw) {
 }
 
 function flattenSubcategories(categories) {
-  const subs = [];
-  categories.forEach(cat => {
-    (cat.children || []).forEach(child => {
-      if (child.name && !subs.some(s => s.name === child.name)) {
-        subs.push({ name: child.name, slug: child.slug || child.name });
+  var subs = [];
+  categories.forEach(function(cat) {
+    var children = cat.children || [];
+    if (children.length > 0) {
+      children.forEach(function(child) {
+        if (child.name && !subs.some(function(s) { return s.name === child.name; })) {
+          subs.push({ name: child.name, slug: child.slug || child.name });
+        }
+      });
+    } else {
+      if (cat.name && !subs.some(function(s) { return s.name === cat.name; })) {
+        subs.push({ name: cat.name, slug: cat.slug || cat.name });
       }
-    });
+    }
   });
   return subs;
 }
 
-function createPartnerCard(profile, categoryId, subcategoryName) {
-  const name = profile.fullName || profile.name || 'Talent';
-  const avatar = profile.avatar || profile.image || profile.profileImage || profile.photo || profile.photoUrl || '';
-  const city = profile.city || '';
-  const country = profile.country || '';
-  const countryCode = getCountryCode(country);
-  const initial = name.charAt(0).toUpperCase();
-  const location = [city, country].filter(Boolean).join(', ') || '';
+function getProfileName(profile, categoryId) {
+  if (categoryId === 'recruiter') return profile.companyName || profile.fullName || 'Recruiter';
+  return profile.screenName || profile.fullName || profile.name || 'Talent';
+}
 
-  let role = profile.primaryCategory || 'Talent';
-  if (subcategoryName) {
-    role = subcategoryName;
-  } else if (categoryId === 'celebrities') {
-    const subs = (profile.subTalents || []).map(s => s.toLowerCase());
-    for (const r of CELEBRITY_ROLES) {
-      if (subs.includes(r)) { role = r.charAt(0).toUpperCase() + r.slice(1); break; }
+function getProfileCategory(profile, categoryId, subcategoryName) {
+  if (subcategoryName) return subcategoryName;
+  if (categoryId === 'recruiter') return profile.recruiterCategory || 'Recruiter';
+  if (categoryId === 'celebrities') {
+    if (profile.category) return profile.category;
+    var subs = (profile.subTalents || []).map(function(s) { return s.toLowerCase(); });
+    for (var i = 0; i < CELEBRITY_ROLES.length; i++) {
+      if (subs.indexOf(CELEBRITY_ROLES[i]) !== -1) {
+        return CELEBRITY_ROLES[i].charAt(0).toUpperCase() + CELEBRITY_ROLES[i].slice(1);
+      }
     }
   }
-
-  const flagHtml = countryCode
-    ? `<img src="https://flagcdn.com/${countryCode}.svg" alt="${country}" class="absolute top-4 right-4 w-7 h-auto rounded-sm shadow-md z-20" loading="lazy" onerror="this.style.display='none'">`
-    : '';
-
-  const avatarHtml = avatar
-    ? `<img src="${avatar}" alt="${name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">`
-    : '';
-
-  return `<div class="inline-block shrink-0 w-[240px] h-[320px] rounded-3xl overflow-hidden relative group shadow-sm hover:shadow-lg transition-all duration-300">
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-purple-800 to-slate-900 group-hover:scale-105 transition-transform duration-500"></div>
-    ${avatarHtml}
-    <div class="absolute inset-0 flex items-center justify-center">
-      <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-3xl font-bold text-white/80 backdrop-blur-sm">${initial}</div>
-    </div>
-    ${flagHtml}
-    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-5">
-      <h4 class="font-bold text-white text-base leading-tight whitespace-normal font-sans">${name}</h4>
-      <p class="text-xs text-purple-300 font-medium mt-1 font-sans">${role}</p>
-      ${location ? `<p class="text-[11px] text-slate-400 font-medium mt-1 font-sans">${location}</p>` : ''}
-    </div>
-  </div>`;
+  return profile.primaryCategory || profile.recruiterCategory || 'Professional';
 }
+
+function getProfileLocation(profile) {
+  var city = profile.city;
+  var state = profile.state;
+  var country = profile.country;
+  
+  if (typeof city === 'string' && city.trim().startsWith('{')) {
+    try {
+      var parsed = JSON.parse(city.replace(/'/g, '"'));
+      city = parsed.city || city;
+      if (parsed.state) state = parsed.state;
+      if (parsed.country) country = parsed.country;
+    } catch(e) {}
+  }
+  
+  var parts = [city, state, country].filter(Boolean);
+  var loc = parts.join(', ') || '';
+  if (loc.indexOf('{') !== -1) {
+    loc = loc.replace(/[\{\}"]/g, '').replace(/\b(city|state|country)\s*:\s*/gi, '').trim();
+  }
+  return loc;
+}
+
+function getProfileTagline(profile) {
+  if (profile.bio) {
+    return profile.bio.length > 80 ? profile.bio.slice(0, 80) + '...' : profile.bio;
+  }
+  return null;
+}
+
+function getProfileRate(profile, categoryId) {
+  if (categoryId === 'recruiter') return profile.recruiterType || '';
+  if (profile.experienceLevel) {
+    var level = profile.experienceLevel.charAt(0).toUpperCase() + profile.experienceLevel.slice(1);
+    return level;
+  }
+  return '';
+}
+
+function getAvatar(profile) {
+  return profile.avatar || profile.photo || profile.image || profile.profileImage || profile.photo || profile.photoUrl || profile.companyLogoUrl || '';
+}
+
+function createPartnerCard(profile, categoryId, subcategoryName) {
+  var id = profile.id || 'default';
+  var name = getProfileName(profile, categoryId);
+  var category = getProfileCategory(profile, categoryId, subcategoryName);
+  var location = getProfileLocation(profile);
+  var avatar = getAvatar(profile);
+  var gradient = getGradient(id);
+  var initial = name ? name.charAt(0).toUpperCase() : '?';
+  var clickHandler = "void(function(){if(localStorage.getItem('_cv')==='1'){window.open('https://castiva.in/auth','_blank')}else{localStorage.setItem('_cv','1');window.open('https://castiva.in/welcome','_blank')}}())";
+
+  var locationPillHtml = '<div class="location-pill-wrapper">' +
+    '<div class="relative inline-block group text-sm rounded-full">' +
+      '<button class="group relative inline-flex min-w-[120px] cursor-default transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] text-xs font-semibold text-white/70 tracking-tight rounded-full items-center justify-center text-center" style="height:32px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1);background:radial-gradient(ellipse at bottom,rgba(55,55,55,1) 0%,rgba(0,0,0,1) 100%);">' +
+        '<span class="relative z-10 font-normal rounded-full text-xs whitespace-nowrap">' +
+          (location ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-right:4px"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>' + location : 'UnKnown') +
+        '</span>' +
+        '<span aria-hidden="true" class="absolute bottom-0 left-1/2 h-[1px] w-[70%] -translate-x-1/2 opacity-20 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] group-hover:opacity-80 rounded-full text-xs" style="background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);"></span>' +
+      '</button>' +
+    '</div>' +
+  '</div>';
+
+  var avatarHtml = avatar
+    ? '<img src="' + avatar + '" alt="' + name + '" class="celebrity-avatar" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="partner-avatar-placeholder celebrity-avatar" style="display:none;background:' + gradient + '">' + initial + '</div>'
+    : '<div class="partner-avatar-placeholder celebrity-avatar" style="background:' + gradient + '">' + initial + '</div>';
+
+  return '<div class="partner-card celebrity-card" onclick="' + clickHandler + '" style="background: ' + gradient + '">' +
+    '<div class="celebrity-inner-card">' +
+      '<div class="celebrity-avatar-wrapper">' + avatarHtml + '</div>' +
+      '<h4 class="celebrity-name">' + name + '</h4>' +
+      '<p class="celebrity-role">' + category + '</p>' +
+      locationPillHtml +
+    '</div>' +
+  '</div>';
+}
+
 
 function filterProfilesBySubcategory(profiles, subcategoryName) {
   if (!profiles || profiles.length === 0) return [];
   if (!subcategoryName) return profiles;
-  return profiles.filter(p =>
-    (p.subTalents || []).some(s => s.toLowerCase() === subcategoryName.toLowerCase())
-  );
+  return profiles.filter(function(p) {
+    return (p.subTalents || []).some(function(s) { return s.toLowerCase() === subcategoryName.toLowerCase(); });
+  });
 }
 
 function comingSoonHtml() {
-  return `<div class="w-full flex flex-col items-center justify-center py-16 text-center">
-    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-      <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-    </div>
-    <p class="text-slate-500 text-base font-medium">Recruiter profiles are being onboarded. Check back soon!</p>
-  </div>`;
+  return '<div class="w-full flex flex-col items-center justify-center py-6 text-center">' +
+    '<div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-3">' +
+      '<svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>' +
+    '</div>' +
+    '<p class="text-slate-500 text-base font-medium">Profiles are being onboarded. Check back soon!</p>' +
+  '</div>';
 }
 
 function renderPartnerCards(profiles, categoryId, subcategoryName) {
   if (!profiles || profiles.length === 0) {
     if (categoryId === 'recruiter') return { leftCards: comingSoonHtml(), rightCards: '' };
-    return { leftCards: `<div class="text-center text-slate-500 py-10 w-full">No profiles found.</div>`, rightCards: '' };
+    if (categoryId === 'celebrities') return { leftCards: '<div class="w-full flex flex-col items-center justify-center py-6 text-center"><img src="icons/howitworks-talent/Discivery.png" alt="No celebrities" class="w-32 h-32 mb-3"><p class="text-slate-600 text-base font-semibold">No celebrity profiles found.</p></div>', rightCards: '' };
+    return { leftCards: '<div class="text-center text-slate-500 py-6 w-full">No profiles found.</div>', rightCards: '' };
   }
 
-  const mid = Math.ceil(profiles.length / 2);
-  const leftSet = profiles.slice(0, mid);
-  const rightSet = profiles.slice(mid);
+  var mid = Math.ceil(profiles.length / 2);
+  var leftSet = profiles.slice(0, mid);
+  var rightSet = profiles.slice(mid);
 
-  const leftCards = leftSet.map(p => createPartnerCard(p, categoryId, subcategoryName)).join('') + leftSet.map(p => createPartnerCard(p, categoryId, subcategoryName)).join('');
-  const rightCards = rightSet.map(p => createPartnerCard(p, categoryId, subcategoryName)).join('') + rightSet.map(p => createPartnerCard(p, categoryId, subcategoryName)).join('');
+  var leftCards = leftSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('') +
+                  leftSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
+  var rightCards = rightSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('') +
+                   rightSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
 
-  return { leftCards, rightCards };
+  return { leftCards: leftCards, rightCards: rightCards };
 }
 
 function renderContent(profiles, categoryId, subcategoryName) {
-  const cacheKey = subcategoryName ? categoryId + '-' + subcategoryName : categoryId;
-  const result = renderPartnerCards(profiles, categoryId, subcategoryName);
+  var cacheKey = subcategoryName ? categoryId + '-' + subcategoryName : categoryId;
+  var result = renderPartnerCards(profiles, categoryId, subcategoryName);
+  var hasProfiles = profiles && profiles.length > 0;
+  result.hasProfiles = hasProfiles;
   partnersDataCache[cacheKey] = result;
-  document.getElementById('partners-marquee-left').innerHTML = result.leftCards;
-  document.getElementById('partners-marquee-right').innerHTML = result.rightCards;
+
+  var marqueeLeft = document.getElementById('partners-marquee-left');
+  var marqueeRight = document.getElementById('partners-marquee-right');
+
+  marqueeLeft.innerHTML = result.leftCards;
+  marqueeRight.innerHTML = result.rightCards;
+
+  if (hasProfiles) {
+    marqueeLeft.classList.add('animate-marquee-left');
+    marqueeRight.classList.add('animate-marquee-right');
+  } else {
+    marqueeLeft.classList.remove('animate-marquee-left');
+    marqueeRight.classList.remove('animate-marquee-right');
+  }
 }
 
 function renderSubcategoryPills(subcategories, activeSub, categoryId) {
-  const container = document.getElementById('partners-subcategories-scroll');
+  var container = document.getElementById('partners-subcategories-scroll');
   if (!container) return;
 
-  let html = `<button class="sub-pill ${!activeSub ? 'active' : ''}" data-sub="">All</button>`;
-  subcategories.forEach(s => {
-    const isActive = activeSub === s.name;
-    html += `<button class="sub-pill ${isActive ? 'active' : ''}" data-sub="${s.name}">${s.name}</button>`;
+  var html = '<button class="sub-pill' + (!activeSub ? ' active' : '') + '" data-sub="">All</button>';
+  subcategories.forEach(function(s) {
+    var isActive = activeSub === s.name;
+    html += '<button class="sub-pill' + (isActive ? ' active' : '') + '" data-sub="' + s.name + '">' + s.name + '</button>';
   });
   container.innerHTML = html;
 
-  container.querySelectorAll('.sub-pill').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const sub = this.dataset.sub || null;
+  container.querySelectorAll('.sub-pill').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var sub = this.dataset.sub || null;
       currentSubcategory = sub;
       loadTalentSubcategory(sub);
       renderSubcategoryPills(subcategories, sub, categoryId);
@@ -2202,21 +2820,21 @@ function renderSubcategoryPills(subcategories, activeSub, categoryId) {
 }
 
 function loadTalentSubcategory(subcategoryName) {
-  const cacheKey = subcategoryName ? 'talent-' + subcategoryName : 'talent';
+  var cacheKey = subcategoryName ? 'talent-' + subcategoryName : 'talent';
 
   if (partnersDataCache[cacheKey]) {
-    const data = partnersDataCache[cacheKey];
+    var data = partnersDataCache[cacheKey];
     document.getElementById('partners-marquee-left').innerHTML = data.leftCards;
     document.getElementById('partners-marquee-right').innerHTML = data.rightCards;
     return;
   }
 
-  const profiles = filterProfilesBySubcategory(allTalentProfiles, subcategoryName);
+  var profiles = filterProfilesBySubcategory(allTalentProfiles, subcategoryName);
   renderContent(profiles, 'talent', subcategoryName);
 }
 
 function updatePartnersIndicator(activeTab) {
-  const indicator = document.getElementById('partners-tab-indicator');
+  var indicator = document.getElementById('partners-tab-indicator');
   if (!activeTab || !indicator) return;
   indicator.style.width = activeTab.offsetWidth + 'px';
   indicator.style.left = activeTab.offsetLeft + 'px';
@@ -2227,24 +2845,35 @@ function switchPartnerCategory(categoryId, clickedBtn) {
   currentPartnerCategory = categoryId;
   currentSubcategory = null;
 
-  document.querySelectorAll('#partners-section .bento-tab').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('#partners-section .bento-tab').forEach(function(btn) { btn.classList.remove('active'); });
   if (clickedBtn) {
     clickedBtn.classList.add('active');
     updatePartnersIndicator(clickedBtn);
   }
 
-  const loadingEl = document.getElementById('partners-loading');
-  const contentEl = document.getElementById('partners-content');
-  const subcatsContainer = document.getElementById('partners-subcategories');
-  const errorEl = document.getElementById('partners-error');
+  var loadingEl = document.getElementById('partners-loading');
+  var contentEl = document.getElementById('partners-content');
+  var subcatsContainer = document.getElementById('partners-subcategories');
+  var errorEl = document.getElementById('partners-error');
   errorEl.classList.add('hidden');
 
-  const cacheKey = categoryId;
+  var cacheKey = categoryId;
 
   if (partnersDataCache[cacheKey]) {
-    const data = partnersDataCache[cacheKey];
-    document.getElementById('partners-marquee-left').innerHTML = data.leftCards;
-    document.getElementById('partners-marquee-right').innerHTML = data.rightCards;
+    var data = partnersDataCache[cacheKey];
+    var marqueeLeft = document.getElementById('partners-marquee-left');
+    var marqueeRight = document.getElementById('partners-marquee-right');
+    marqueeLeft.innerHTML = data.leftCards;
+    marqueeRight.innerHTML = data.rightCards;
+
+    if (data.hasProfiles) {
+      marqueeLeft.classList.add('animate-marquee-left');
+      marqueeRight.classList.add('animate-marquee-right');
+    } else {
+      marqueeLeft.classList.remove('animate-marquee-left');
+      marqueeRight.classList.remove('animate-marquee-right');
+    }
+
     if (categoryId === 'talent') {
       subcatsContainer.classList.remove('hidden');
       renderSubcategoryPills(talentSubcategories, null, 'talent');
@@ -2271,28 +2900,28 @@ function switchPartnerCategory(categoryId, clickedBtn) {
     subcatsContainer.classList.remove('hidden');
 
     if (recruiterSubcategories.length === 0) {
-      fetch(`${PARTNERS_API_BASE}/cms/categories/tree?scope=recruiter`)
-        .then(res => res.ok ? res.json() : null)
-        .then(json => {
+      fetch(PARTNERS_API_BASE + '/cms/categories/tree?scope=recruiter')
+        .then(function(res) { return res.ok ? res.json() : null; })
+        .then(function(json) {
           if (json) recruiterSubcategories = flattenSubcategories(extractPartnerData(json));
           renderSubcategoryPills(recruiterSubcategories, null, 'recruiter');
         })
-        .catch(() => renderSubcategoryPills(recruiterSubcategories, null, 'recruiter'));
+        .catch(function() { renderSubcategoryPills(recruiterSubcategories, null, 'recruiter'); });
     } else {
       renderSubcategoryPills(recruiterSubcategories, null, 'recruiter');
     }
 
-    fetch(`${PARTNERS_API_BASE}/home/featured-recruiters`)
-      .then(res => {
+    fetch(PARTNERS_API_BASE + '/recruiter/profiles')
+      .then(function(res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       })
-      .then(json => {
+      .then(function(json) {
         renderContent(extractPartnerData(json), 'recruiter', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
       })
-      .catch(() => {
+      .catch(function() {
         renderContent([], 'recruiter', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
@@ -2302,26 +2931,30 @@ function switchPartnerCategory(categoryId, clickedBtn) {
     loadingEl.classList.remove('hidden');
     contentEl.classList.add('hidden');
 
-    fetch(`${PARTNERS_API_BASE}/celebrity/list?status=&page=&limit=`)
-      .then(res => {
+    fetch(PARTNERS_API_BASE + '/home/celebrities')
+      .then(function(res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       })
-      .then(json => {
-        let data = extractPartnerData(json);
+      .then(function(json) {
+        var data = extractPartnerData(json);
         if (!data || data.length === 0) {
-          data = allTalentProfiles.filter(p =>
-            (p.subTalents || []).some(s => CELEBRITY_ROLES.includes(s.toLowerCase()))
-          );
+          data = allTalentProfiles.filter(function(p) {
+            return (p.subTalents || []).some(function(s) {
+              return CELEBRITY_ROLES.indexOf(s.toLowerCase()) !== -1;
+            });
+          });
         }
         renderContent(data, 'celebrities', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
       })
-      .catch(() => {
-        const data = allTalentProfiles.filter(p =>
-          (p.subTalents || []).some(s => CELEBRITY_ROLES.includes(s.toLowerCase()))
-        );
+      .catch(function() {
+        var data = allTalentProfiles.filter(function(p) {
+          return (p.subTalents || []).some(function(s) {
+            return CELEBRITY_ROLES.indexOf(s.toLowerCase()) !== -1;
+          });
+        });
         renderContent(data, 'celebrities', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
@@ -2330,50 +2963,48 @@ function switchPartnerCategory(categoryId, clickedBtn) {
 }
 
 async function initPartners() {
-  const loadingEl = document.getElementById('partners-loading');
-  const contentEl = document.getElementById('partners-content');
-  const errorEl = document.getElementById('partners-error');
+  var loadingEl = document.getElementById('partners-loading');
+  var contentEl = document.getElementById('partners-content');
+  var errorEl = document.getElementById('partners-error');
 
   loadingEl.classList.remove('hidden');
   contentEl.classList.add('hidden');
   errorEl.classList.add('hidden');
 
-  const activeTab = document.querySelector('#partners-section .bento-tab.active');
+  var activeTab = document.querySelector('#partners-section .bento-tab.active');
   if (activeTab) {
-    setTimeout(() => updatePartnersIndicator(activeTab), 200);
+    setTimeout(function() { updatePartnersIndicator(activeTab); }, 200);
   }
 
-  window.addEventListener('resize', () => {
-    const tab = document.querySelector('#partners-section .bento-tab.active');
+  window.addEventListener('resize', function() {
+    var tab = document.querySelector('#partners-section .bento-tab.active');
     if (tab) updatePartnersIndicator(tab);
   });
 
-  document.querySelectorAll('#partners-section .bento-tab').forEach(btn => {
-    btn.addEventListener('click', function () {
+  document.querySelectorAll('#partners-section .bento-tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
       switchPartnerCategory(this.dataset.category, this);
     });
   });
 
   try {
-    const [profilesRes, talentCatRes] = await Promise.all([
-      fetch(`${PARTNERS_API_BASE}/talent/profiles`),
-      fetch(`${PARTNERS_API_BASE}/cms/categories/tree?scope=talent`),
-    ]);
+    var profilesRes = await fetch(PARTNERS_API_BASE + '/talent/profiles');
+    var talentCatRes = await fetch(PARTNERS_API_BASE + '/cms/categories/tree?scope=talent');
 
     if (profilesRes.ok) {
-      const json = await profilesRes.json();
+      var json = await profilesRes.json();
       allTalentProfiles = extractPartnerData(json);
     }
 
     if (talentCatRes.ok) {
-      const json = await talentCatRes.json();
+      var json = await talentCatRes.json();
       talentSubcategories = flattenSubcategories(extractPartnerData(json));
     }
   } catch (err) {
     console.error('Partners init error:', err);
   }
 
-  const subcatsContainer = document.getElementById('partners-subcategories');
+  var subcatsContainer = document.getElementById('partners-subcategories');
   subcatsContainer.classList.remove('hidden');
   renderSubcategoryPills(talentSubcategories, null, 'talent');
   loadTalentSubcategory(null);
@@ -2422,6 +3053,20 @@ if (window.gsap && window.ScrollTrigger) {
   );
 }
 
+  </script>
+
+  <!-- Smooth Scroll on Hash Load (cross-page) -->
+  <script>
+    if (window.location.hash) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 400);
+      });
+    }
   </script>
 
   <!-- Global ScrollTrigger Refresh -->

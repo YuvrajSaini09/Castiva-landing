@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castiva - Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            inter: ['"Inter"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            castiva: {
+              purple: '#A128FF',
+              lightPurple: '#C86BFF',
+              dark: '#111827',
+              gray: '#4B5563',
+              lightBg: '#FFFFFF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      color: #111827;
+      overflow-x: hidden;
+    }
+    .scribble-underline {
+      position: relative;
+      display: inline-block;
+    }
+    .scribble-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+      width: 100%;
+      height: 16px;
+      background-image: url('sketch-line.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+    .btn-login-gradient {
+      background: linear-gradient(135deg, #A833FF 0%, #7C00FF 100%);
+      box-shadow: 0 4px 15px rgba(168, 51, 255, 0.35);
+    }
+    .btn-login-gradient:hover {
+      background: linear-gradient(135deg, #B54CFF 0%, #8D1AFF 100%);
+      box-shadow: 0 6px 20px rgba(168, 51, 255, 0.5);
+    }
+
+    /* Tab System */
+    .bento-tab-container {
+      position: relative;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 4px;
+      gap: 8px;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), 
+                  linear-gradient(289.32deg, #4E27D0 36.27%, #8840ED 54.7%, #6227D0 73.07%);
+      background-blend-mode: hard-light, normal;
+      box-shadow: 0px 5px 50px rgba(15, 115, 247, 0.12);
+      border-radius: 30px;
+      width: max-content;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .bento-tab {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 0%;
+      height: 42px;
+      border-radius: 22px;
+      font-size: 15px;
+      font-weight: 300;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #FFFFFF;
+      opacity: 0.85;
+      white-space: nowrap;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 0 14px;
+      z-index: 2;
+      transition: color 0.3s ease, opacity 0.3s ease;
+      outline: none;
+    }
+    .bento-tab.active {
+      color: #061D3D;
+      opacity: 1;
+    }
+    .bento-tab-indicator {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 4px;
+      border-radius: 22px;
+      background: linear-gradient(131.76deg, #DBC9FF 11.56%, #FFFFFF 69.18%);
+      border: 1.2px solid #FFFFFF;
+      box-shadow: 5px 4px 20px rgba(0, 0, 0, 0.12);
+      z-index: 1;
+      transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), 
+                  width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      box-sizing: border-box;
+    }
+
+    <!-- @import "../components/header/header.css" -->
+    <!-- @import "../components/scrolling-banner/scrolling-banner.css" -->
+  </style>
+</head>
+<body class="antialiased text-gray-900 bg-white selection:bg-purple-600 selection:text-white">
+  <!-- @import "../components/header/header.html" -->
+  <section class="pt-36 pb-32 flex flex-col items-center text-center relative overflow-hidden bg-cover bg-top text-slate-900" style="background-image: url('hero-gradient-small.png');">
+    <div class="absolute top-10 left-1/4 w-72 h-72 bg-purple-300/20 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+    <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-indigo-300/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/3 right-1/3 w-48 h-48 bg-pink-300/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-6">
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.15]">
+        <span class="gs-hero-reveal inline-block">Our</span>
+        <span class="gs-hero-reveal font-serif italic font-medium text-purple-600 text-5xl sm:text-7xl scribble-underline inline-block" style="--gs-delay: 0.15s">Pricing</span>
+      </h1>
+      <p class="gs-hero-reveal text-slate-600 max-w-2xl mx-auto text-sm sm:text-lg" style="--gs-delay: 0.3s">Simple, transparent pricing designed for talents, recruiters, and enterprises.</p>
+    </div>
+  </section>
+  <!-- @import "../components/scrolling-banner/scrolling-banner.html" -->
+
+  <!-- Pricing Plans Section -->
+  <section class="pt-0 pb-16 sm:pb-20 px-6 max-w-6xl mx-auto">
+    <!-- Loading -->
+    <div id="pricing-loading" class="text-center py-20">
+      <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+      <p class="text-slate-500 mt-4">Loading plans...</p>
+    </div>
+
+    <!-- Error -->
+    <div id="pricing-error" class="text-center py-16 hidden">
+      <p class="text-slate-500">Failed to load pricing plans.</p>
+      <button onclick="location.reload()" class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors text-sm">Retry</button>
+    </div>
+
+    <!-- Content (hidden until loaded) -->
+    <div id="pricing-content" class="hidden">
+      <!-- Tabs with equal spacing above and below -->
+      <div class="flex justify-center pt-2 pb-10">
+        <div class="bento-tab-container" style="width: 320px; max-width: 100%;">
+          <div class="bento-tab-indicator" id="pricing-tab-indicator"></div>
+          <button class="bento-tab active" data-tab="monthly" onclick="switchPricingTab('monthly', this)">Monthly</button>
+          <button class="bento-tab" data-tab="yearly" onclick="switchPricingTab('yearly', this)">Yearly</button>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div id="pricing-grid" class="flex flex-wrap justify-center gap-6">
+      </div>
+    </div>
+  </section>
+
+  <!-- @import "../components/footer/footer.html" -->
+  <script>
+    <!-- @import "../components/header/header.js" -->
+  </script>
+  <script>
+    <!-- @import "../components/scrolling-banner/scrolling-banner.js" -->
+  </script>
+
+  <script>
+    (function() {
+      var apiBase = 'https://backend.castiva.in/api/v1';
+      var loading = document.getElementById('pricing-loading');
+      var errorEl = document.getElementById('pricing-error');
+      var content = document.getElementById('pricing-content');
+      var grid = document.getElementById('pricing-grid');
+      var allPlans = [];
+      var currentTab = 'monthly';
+
+      function buildCard(plan) {
+        var price = 'Free';
+        if (plan.isPaid && plan.pricePaise > 0) {
+          price = '\u20B9' + (plan.pricePaise / 100).toLocaleString('en-IN');
+        }
+
+        var features = [
+          { label: 'Photos', value: plan.photoQuota !== null ? plan.photoQuota : 'Unlimited' },
+          { label: 'Videos', value: plan.videoQuota !== null ? plan.videoQuota : 'Unlimited' },
+          { label: 'Audio', value: plan.audioQuota !== null ? plan.audioQuota : 'Unlimited' },
+          { label: 'Documents', value: plan.documentQuota !== null ? plan.documentQuota : 'Unlimited' },
+          { label: 'Active Applications', value: plan.activeApplicationLimit !== null ? plan.activeApplicationLimit : 'Unlimited' },
+          { label: 'Edit Media', value: plan.canEditMedia ? 'Yes' : 'No' },
+          { label: 'Withdraw', value: plan.canWithdraw ? 'Yes' : 'No' }
+        ];
+
+        var isPopular = plan.tier === 'premium';
+        var borderClass = isPopular ? 'border-purple-400 ring-2 ring-purple-200' : 'border-slate-100';
+        var badge = isPopular
+          ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</div>'
+          : '';
+
+        var card = document.createElement('div');
+        card.className = 'gs-pricing-card relative bg-white rounded-2xl border ' + borderClass + ' shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 p-6 sm:p-8 flex flex-col w-full max-w-sm opacity-0';
+        card.innerHTML = badge +
+          '<div class="mb-6">' +
+            '<h3 class="text-lg font-bold text-slate-900">' + plan.name + '</h3>' +
+            '<div class="mt-2 flex items-baseline gap-1">' +
+              '<span class="text-3xl sm:text-4xl font-extrabold text-slate-900">' + price + '</span>' +
+              (plan.isPaid ? '<span class="text-slate-400 text-sm">/month</span>' : '') +
+            '</div>' +
+          '</div>' +
+          '<div class="space-y-3 flex-1">' +
+            features.map(function(f) {
+              var check = f.value === 'Yes' || f.value === 'Unlimited' || (typeof f.value === 'number' && f.value > 0);
+              return '<div class="flex items-center gap-3 text-sm">' +
+                '<svg class="w-4 h-4 flex-shrink-0 ' + (check ? 'text-purple-600' : 'text-slate-300') + '" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>' +
+                '<span class="text-slate-600">' + f.label + ': <strong>' + f.value + '</strong></span>' +
+              '</div>';
+            }).join('') +
+          '</div>' +
+          '<button class="mt-8 w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 ' +
+            (plan.isPaid
+              ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-200 hover:shadow-purple-300'
+              : 'bg-purple-50 hover:bg-purple-100 text-purple-700') +
+            '">' +
+            (plan.isPaid ? 'Subscribe Now' : 'Get Started') +
+          '</button>';
+
+        return card;
+      }
+
+      function renderGrid(tab) {
+        grid.innerHTML = '';
+        var filtered;
+        if (tab === 'monthly') {
+          filtered = allPlans.filter(function(p) { return p.tier === 'free' || p.tier === 'premium'; });
+        } else {
+          filtered = allPlans.filter(function(p) { return p.tier === 'free' || p.tier === 'verified' || p.tier === 'premium'; });
+        }
+
+        filtered.forEach(function(plan) {
+          grid.appendChild(buildCard(plan));
+        });
+
+        requestAnimationFrame(function() {
+          if (window.gsap && window.ScrollTrigger) {
+            gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.refresh();
+            gsap.fromTo('.gs-pricing-card',
+              { opacity: 0, y: 40, filter: 'blur(4px)' },
+              { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.6, stagger: 0.12, ease: 'power2.out', scrollTrigger: { trigger: '#pricing-grid', start: 'top 85%' } }
+            );
+          } else {
+            document.querySelectorAll('.gs-pricing-card').forEach(function(c) { c.style.opacity = '1'; });
+          }
+        });
+      }
+
+      // Tab switching
+      window.switchPricingTab = function(tab, btn) {
+        if (currentTab === tab) return;
+        currentTab = tab;
+
+        document.querySelectorAll('#pricing-content .bento-tab').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        var indicator = document.getElementById('pricing-tab-indicator');
+        if (indicator) {
+          indicator.style.width = btn.offsetWidth + 'px';
+          indicator.style.left = btn.offsetLeft + 'px';
+        }
+
+        renderGrid(tab);
+      };
+
+      // Fetch
+      fetch(apiBase + '/subscription/plans?_=' + Date.now())
+        .then(function(res) { return res.json(); })
+        .then(function(json) {
+          if (!json.success || !Array.isArray(json.data)) {
+            throw new Error('Invalid response');
+          }
+          allPlans = json.data;
+          loading.style.display = 'none';
+          content.classList.remove('hidden');
+
+          // Set initial indicator
+          var activeTab = document.querySelector('#pricing-content .bento-tab.active');
+          var indicator = document.getElementById('pricing-tab-indicator');
+          if (activeTab && indicator) {
+            setTimeout(function() {
+              indicator.style.width = activeTab.offsetWidth + 'px';
+              indicator.style.left = activeTab.offsetLeft + 'px';
+            }, 200);
+          }
+
+          renderGrid('monthly');
+
+          window.addEventListener('resize', function() {
+            var tab = document.querySelector('#pricing-content .bento-tab.active');
+            if (tab && indicator) {
+              indicator.style.width = tab.offsetWidth + 'px';
+              indicator.style.left = tab.offsetLeft + 'px';
+            }
+          });
+        })
+        .catch(function(err) {
+          console.error('Pricing fetch error:', err);
+          loading.style.display = 'none';
+          errorEl.classList.remove('hidden');
+        });
+    })();
+  </script>
+
+  <script>
+    if (window.gsap) {
+      gsap.fromTo('.gs-hero-reveal',
+        { opacity: 0, y: 35, filter: 'blur(12px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.1, stagger: 0.2, ease: 'power3.out', delay: 0.3 }
+      );
+    }
+  </script>
+</body>
+</html>

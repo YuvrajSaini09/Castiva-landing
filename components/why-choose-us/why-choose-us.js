@@ -1,36 +1,57 @@
 // Why Choose Us Tab Switcher
-function switchWhy(tab, btn) {
-  // Hide all panels
-  document.querySelectorAll('.why-panel').forEach(p => {
-    p.classList.add('opacity-0', 'hidden');
-    p.classList.remove('opacity-100', 'block');
-  });
+let currentWhyTab = 'talent';
 
-  // Show target panel
-  const panel = document.getElementById('why-' + tab + '-panel');
-  if (panel) {
-    panel.classList.remove('opacity-0', 'hidden');
-    panel.classList.add('opacity-100', 'block');
+function updateWhyIndicator(activeTab) {
+  const indicator = document.getElementById('why-tab-indicator');
+  if (!activeTab || !indicator) return;
+  indicator.style.width = `${activeTab.offsetWidth}px`;
+  indicator.style.left = `${activeTab.offsetLeft}px`;
+}
+
+function switchWhy(type, clickedBtn) {
+  if (currentWhyTab === type) return;
+  currentWhyTab = type;
+
+  const talentPanel = document.getElementById('why-talent-panel');
+  const recruiterPanel = document.getElementById('why-recruiter-panel');
+  const buttons = document.querySelectorAll('.why-choose-us-section .bento-tab');
+
+  buttons.forEach(btn => btn.classList.remove('active'));
+  if (clickedBtn) {
+    clickedBtn.classList.add('active');
+    updateWhyIndicator(clickedBtn);
+  } else {
+    const targetBtn = document.querySelector(`.why-choose-us-section .bento-tab[data-tab="${type}"]`);
+    if (targetBtn) {
+      targetBtn.classList.add('active');
+      updateWhyIndicator(targetBtn);
+    }
   }
 
-  // Update tab active state
-  btn.closest('.bento-tab-container').querySelectorAll('.bento-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-
-  // Slide indicator
-  const indicator = document.getElementById('why-tab-indicator');
-  if (indicator) {
-    indicator.style.left = btn.offsetLeft + 'px';
-    indicator.style.width = btn.offsetWidth + 'px';
+  if (type === 'talent') {
+    recruiterPanel.classList.add('opacity-0');
+    setTimeout(() => {
+      recruiterPanel.classList.add('hidden');
+      talentPanel.classList.remove('hidden');
+      setTimeout(() => talentPanel.classList.remove('opacity-0'), 50);
+    }, 300);
+  } else {
+    talentPanel.classList.add('opacity-0');
+    setTimeout(() => {
+      talentPanel.classList.add('hidden');
+      recruiterPanel.classList.remove('hidden');
+      setTimeout(() => recruiterPanel.classList.remove('opacity-0'), 50);
+    }, 300);
   }
 }
 
-// Init indicator on load
 document.addEventListener('DOMContentLoaded', () => {
-  const activeBtn = document.querySelector('#why-choose-us .bento-tab.active');
-  const indicator = document.getElementById('why-tab-indicator');
-  if (activeBtn && indicator) {
-    indicator.style.left = activeBtn.offsetLeft + 'px';
-    indicator.style.width = activeBtn.offsetWidth + 'px';
+  const activeTab = document.querySelector('.why-choose-us-section .bento-tab.active');
+  if (activeTab) {
+    setTimeout(() => updateWhyIndicator(activeTab), 200);
   }
+  window.addEventListener('resize', () => {
+    const tab = document.querySelector('.why-choose-us-section .bento-tab.active');
+    if (tab) updateWhyIndicator(tab);
+  });
 });

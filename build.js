@@ -22,7 +22,7 @@ function build() {
   try {
     console.log('Building index.html, legal.html, about.html, contact.html, team.html, blog.html...');
     
-    const pages = ['index.html', 'legal.html', 'about.html', 'contact.html', 'team.html', 'blog.html', 'blog-post.html', 'faq.html'];
+    const pages = ['index.html', 'legal.html', 'about.html', 'contact.html', 'team.html', 'blog.html', 'blog-post.html', 'faq.html', 'career.html', 'pricing.html', 'events.html', 'award-shows.html', 'projects.html', 'services.html', 'auditions.html'];
     pages.forEach(page => {
       const srcPath = path.join(__dirname, 'src', page);
       const destPath = path.join(__dirname, page);
