@@ -297,6 +297,133 @@
   animation-play-state: paused;
 }
 
+/* Premium Testimonial Card */
+.tp-card {
+  position: relative;
+  z-index: 0;
+  width: 360px;
+  padding: 34px 30px 30px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(168, 51, 255, 0.10);
+  overflow: hidden;
+}
+.tp-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  border-radius: 24px;
+  z-index: -1;
+}
+.tp-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(168, 51, 255, 0.16) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.tp-quote {
+  position: absolute;
+  top: 6px;
+  right: 26px;
+  font-size: 96px;
+  line-height: 1;
+  color: rgba(168, 51, 255, 0.14);
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+.tp-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.tp-avatar {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+.tp-avatar-img,
+.tp-fallback {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.tp-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 22px;
+  background: linear-gradient(135deg, #A833FF 0%, #7C00FF 100%);
+}
+.tp-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  z-index: 2;
+}
+.tp-badge svg {
+  width: 11px;
+  height: 11px;
+  fill: #ffffff;
+}
+.tp-info {
+  flex: 1;
+  min-width: 0;
+}
+.tp-info h3 {
+  color: #111827;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.tp-role {
+  color: #9ca3af;
+  font-size: 13px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.tp-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+.tp-stars svg {
+  width: 18px;
+  height: 18px;
+}
+.tp-text {
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 400;
+  white-space: normal;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+@media (max-width: 480px) {
+  .tp-card {
+    width: 300px;
+    padding: 28px 24px 24px;
+  }
+}
+
 
     /* Partners Styles */
     @keyframes marquee-left {
@@ -371,6 +498,23 @@
 .partner-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  z-index: 50;
+}
+
+.partners-marquee-row {
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  padding-top: 16px;
+  padding-bottom: 10px;
+}
+
+.partners-marquee-row:first-child {
+  margin-top: -16px;
+}
+
+.partners-marquee-row + .partners-marquee-row {
+  margin-top: calc(1.5rem - 16px);
 }
 
 .partner-card-gradient {
@@ -519,7 +663,7 @@
 /* --- Celebrity Card Redesign --- */
 .partner-card.celebrity-card {
   width: 300px;
-  padding: 52px 8px 8px 8px;
+  padding: 64px 8px 8px 8px;
   border-radius: 32px;
   overflow: visible;
   display: inline-flex;
@@ -531,7 +675,7 @@
 .celebrity-inner-card {
   background: #ffffff;
   border-radius: 24px;
-  padding: 48px 12px 12px 12px;
+  padding: 26px 12px 8px 12px;
   width: 100%;
   box-sizing: border-box;
   position: relative;
@@ -542,14 +686,14 @@
 
 .celebrity-avatar-wrapper {
   position: absolute;
-  top: -44px;
+  top: -38px;
   left: 16px;
   z-index: 10;
 }
 
 .celebrity-avatar {
-  width: 76px;
-  height: 76px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   border: none;
   object-fit: cover;
@@ -558,62 +702,157 @@
 }
 
 .partner-avatar-placeholder.celebrity-avatar {
-  width: 76px;
-  height: 76px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 400;
   color: #fff;
   box-shadow: 0 4px 16px rgba(0,0,0,0.18);
 }
 
 .celebrity-name {
+  position: absolute;
+  top: 4px;
+  left: 100px;
+  right: 12px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: #0f172a;
   margin: 0;
   line-height: 1.3;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: left;
 }
 
-.celebrity-role {
-  font-size: 13px;
-  color: #9333ea;
-  font-weight: 600;
-  margin: 0;
-}
-
-.celebrity-location {
-  font-size: 12px;
-  color: #94a3b8;
-  margin: 4px 0 0 0;
+.celebrity-tags {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.location-pill-wrapper {
-  min-height: 32px;
-  display: flex;
-  align-items: center;
+  gap: 6px;
+  margin-left: 0;
   margin-top: 2px;
 }
 
-.location-pill-wrapper .relative {
-  line-height: 0;
+.celebrity-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
 }
 
-.location-pill-wrapper button {
+.celebrity-bottom-row .view-profile-wrapper {
+  min-height: 0;
+  margin-top: 0;
+}
+
+.celebrity-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: #f3e8ff;
+  color: #9333ea;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.celebrity-flag-wrap {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  background: #f1f5f9;
+  flex-shrink: 0;
+}
+
+.celebrity-flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.celebrity-desc {
+  margin: 2px 0 0 88px;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.view-profile-wrapper {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  justify-content: flex-end;
+}
+
+.view-profile-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  height: 36px;
   padding: 0 14px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-profile-label {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.view-profile-glow {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 1px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.view-profile-btn:hover {
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3), 0 0 14px rgba(255,255,255,0.12) !important;
+}
+
+.view-profile-btn:hover .view-profile-glow {
+  opacity: 0.9;
 }
 
 
@@ -1009,7 +1248,7 @@
 
         <!-- Mobile Menu Icon -->
         <button id="mobile-menu-btn" class="md:hidden relative w-10 h-10 flex items-center justify-center" aria-label="Toggle menu">
-          <img id="menu-icon-open" src="Asset/menu.png" alt="Menu" class="w-6 h-6 object-contain transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] scale-100 opacity-100 rotate-0">
+          <img id="menu-icon-open" src="Asset/menu.png" alt="Menu" class="w-[22px] h-[22px] object-contain transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] scale-100 opacity-100 rotate-0">
           <svg id="menu-icon-close" class="w-6 h-6 text-slate-700 absolute scale-0 opacity-0 -rotate-90 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <line x1="18" y1="6" x2="6" y2="18"/>
             <line x1="6" y1="6" x2="18" y2="18"/>
@@ -1278,10 +1517,10 @@
   </div>
 
   <div id="partners-content" class="space-y-6 hidden">
-    <div class="w-full overflow-hidden select-none relative z-10">
+    <div class="partners-marquee-row w-full overflow-hidden select-none relative z-10">
       <div id="partners-marquee-left" class="animate-marquee-left whitespace-nowrap flex gap-6"></div>
     </div>
-    <div class="w-full overflow-hidden select-none relative z-10">
+    <div class="partners-marquee-row w-full overflow-hidden select-none relative z-10">
       <div id="partners-marquee-right" class="animate-marquee-right whitespace-nowrap flex gap-6"></div>
     </div>
   </div>
@@ -1581,27 +1820,27 @@
 
     <!-- Talent Panel -->
     <div id="why-talent-panel" class="why-panel grid grid-cols-1 md:grid-cols-3 gap-6 opacity-100 block">
-      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-        <img src="Cards/Talent/1.png" alt="Verified Talent Community" class="w-full h-auto block">
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer h-full">
+        <img src="Cards/Talent/1.png" alt="Verified Talent Community" class="w-full h-full object-cover block">
       </div>
-      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-        <img src="Cards/Talent/2.png" alt="Get Discovered Faster" class="w-full h-auto block">
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer h-full">
+        <img src="Cards/Talent/2.png" alt="Get Discovered Faster" class="w-full h-full object-cover block">
       </div>
-      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-        <img src="Cards/Talent/3.png" alt="Create. Showcase. Get Hired." class="w-full h-auto block">
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer h-full">
+        <img src="Cards/Talent/3.png" alt="Create. Showcase. Get Hired." class="w-full h-full object-cover block">
       </div>
     </div>
 
     <!-- Recruiter Panel -->
     <div id="why-recruiter-panel" class="why-panel grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0 hidden">
-      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-        <img src="Cards/recruiter-tab/4.png" alt="Track Hiring Progress" class="w-full h-auto block">
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer h-full">
+        <img src="Cards/recruiter-tab/4.png" alt="Track Hiring Progress" class="w-full h-full object-cover block">
       </div>
-      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-        <img src="Cards/recruiter-tab/2.png" alt="Manage Talent Database" class="w-full h-auto block">
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer h-full">
+        <img src="Cards/recruiter-tab/2.png" alt="Manage Talent Database" class="w-full h-full object-cover block">
       </div>
-      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-        <img src="Cards/recruiter-tab/3.png" alt="Advanced Talent Filters" class="w-full h-auto block">
+      <div class="rounded-3xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 cursor-pointer h-full">
+        <img src="Cards/recruiter-tab/3.png" alt="Advanced Talent Filters" class="w-full h-full object-cover block">
       </div>
     </div>
   </div>
@@ -1663,16 +1902,16 @@
   </main>
   
   <!-- Footer Component -->
-<footer class="bg-slate-950 text-slate-400 py-16 px-6 border-t border-slate-900">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<footer class="text-slate-200 py-16 px-6 border-t border-[#260B47]" style="background: linear-gradient(0deg, rgba(0,0,0,0.12), rgba(0,0,0,0.12)), linear-gradient(289.32deg, #8840ED 36.27%, #4E27D0 54.7%, #8840ED 73.07%); background-blend-mode: hard-light, normal;">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
     <!-- Col 1: Brand -->
     <div class="space-y-4">
       <a href="index.html" class="flex items-center group">
-        <div class="w-[112px] h-10 overflow-hidden group-hover:scale-105 transition-transform bg-transparent flex items-center">
-          <img src="logo.png" alt="Castiva logo" class="w-full h-full object-contain">
+        <div class="w-[273.44px] h-[97.66px] md:w-[246.1px] md:h-[87.9px] overflow-hidden group-hover:scale-105 transition-transform bg-transparent flex items-center">
+          <img src="new-logo.png" alt="Castiva logo" class="w-full h-full object-contain">
         </div>
       </a>
-      <p class="text-sm text-slate-500 leading-relaxed">India's 1st AI Enabled Global Casting Ecosystem. Bridging talent and opportunity weightlessly.</p>
+      <p class="text-sm text-slate-300 leading-relaxed">India's 1st AI Enabled Global Casting Ecosystem. Bridging talent and opportunity weightlessly.</p>
     </div>
 
     <!-- Col 2: Navigation -->
@@ -1698,19 +1937,9 @@
         <li><a href="legal.html?tab=cookie-policy" class="hover:text-white transition-colors">Cookie Policy</a></li>
       </ul>
     </div>
-
-    <!-- Col 4: Newsletter -->
-    <div>
-      <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Stay Tuned</h5>
-      <p class="text-sm text-slate-500 mb-4">Subscribe to receive casting alerts and news.</p>
-      <form class="flex gap-2">
-        <input type="email" placeholder="Your email" class="bg-slate-900 border border-slate-800 rounded-full px-4 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-purple-600 w-full">
-        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-full px-4 py-2 transition-colors">Go</button>
-      </form>
-    </div>
   </div>
 
-  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
+  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-[#260B47] text-center text-xs text-slate-300">
     <p>&copy; 2026 Castiva. All rights reserved.</p>
   </div>
 </footer>
@@ -1788,7 +2017,7 @@
   const modal = document.getElementById('mobile-nav-modal');
   const openIcon = document.getElementById('menu-icon-open');
   const closeIcon = document.getElementById('menu-icon-close');
-  const links = modal?.querySelectorAll('.mobile-nav-link');
+  const links = modal?.querySelectorAll('a.mobile-nav-link');
   if (!btn || !modal) return;
 
   let open = false;
@@ -1827,23 +2056,63 @@
   window.addEventListener('scroll', () => { if (open) closeMenu(); }, { passive: true });
   window.addEventListener('resize', () => { if (open) positionModal(); });
 
-  // Mobile submenu toggles
-  function setupMobileSubmenu(triggerId, subId, arrowId) {
-    const trigger = document.getElementById(triggerId);
-    const sub = document.getElementById(subId);
-    const arrow = document.getElementById(arrowId);
+  // Mobile submenu toggles (accordion: only one open at a time, animated)
+  const mobileSubmenus = [
+    { trigger: 'mobile-about-trigger', sub: 'mobile-about-sub', arrow: 'mobile-about-arrow' },
+    { trigger: 'mobile-events-trigger', sub: 'mobile-events-sub', arrow: 'mobile-events-arrow' }
+  ];
+
+  function animateSubmenu(sub, open) {
+    if (open) {
+      sub.classList.remove('hidden');
+      sub.style.overflow = 'hidden';
+      sub.style.maxHeight = '0px';
+      sub.style.opacity = '0';
+      sub.style.transition = 'max-height 0.35s ease, opacity 0.3s ease';
+      void sub.offsetHeight;
+      sub.style.maxHeight = sub.scrollHeight + 'px';
+      sub.style.opacity = '1';
+      sub.dataset.open = 'true';
+    } else {
+      sub.style.maxHeight = sub.scrollHeight + 'px';
+      sub.style.opacity = '1';
+      void sub.offsetHeight;
+      sub.style.maxHeight = '0px';
+      sub.style.opacity = '0';
+      sub.dataset.open = 'false';
+      setTimeout(function () {
+        sub.classList.add('hidden');
+      }, 300);
+    }
+  }
+
+  function setupMobileSubmenu(config) {
+    const trigger = document.getElementById(config.trigger);
+    const sub = document.getElementById(config.sub);
+    const arrow = document.getElementById(config.arrow);
     if (!trigger || !sub || !arrow) return;
+    sub.dataset.open = 'false';
 
     trigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isHidden = sub.classList.contains('hidden');
-      sub.classList.toggle('hidden');
-      arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+      const isOpening = sub.dataset.open !== 'true';
+
+      mobileSubmenus.forEach(function (other) {
+        if (other.sub === config.sub) return;
+        const otherSub = document.getElementById(other.sub);
+        const otherArrow = document.getElementById(other.arrow);
+        if (otherSub && otherSub.dataset.open === 'true') {
+          animateSubmenu(otherSub, false);
+        }
+        if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+      });
+
+      animateSubmenu(sub, isOpening);
+      arrow.style.transform = isOpening ? 'rotate(180deg)' : 'rotate(0deg)';
     });
   }
 
-  setupMobileSubmenu('mobile-about-trigger', 'mobile-about-sub', 'mobile-about-arrow');
-  setupMobileSubmenu('mobile-events-trigger', 'mobile-events-sub', 'mobile-events-arrow');
+  mobileSubmenus.forEach(setupMobileSubmenu);
 })();
 
 // WebGL Button Shader (Purple Theme)
@@ -2422,65 +2691,40 @@ document.addEventListener('DOMContentLoaded', () => {
 (function () {
   var apiBase = 'https://backend.castiva.in/api/v1';
 
-  function createFallbackEl(name) {
-    var el = document.createElement('div');
-    el.className = 'w-full h-full flex items-center justify-center text-white font-bold text-xl bg-purple-600';
-    el.textContent = name.charAt(0).toUpperCase();
-    return el;
-  }
-
   function buildTestimonialCard(t) {
     var card = document.createElement('div');
-    card.className = 'inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow';
+    card.className = 'tp-card inline-block align-top shrink-0';
 
-    var top = document.createElement('div');
-    top.className = 'flex items-center gap-4 mb-6';
-
-    var imgWrapper = document.createElement('div');
-    imgWrapper.className = 'w-14 h-14 rounded-full overflow-hidden shrink-0 bg-slate-100';
-
-    if (t.imageUrl) {
-      var img = document.createElement('img');
-      img.className = 'w-full h-full object-cover';
-      img.src = t.imageUrl;
-      img.alt = t.name;
-      img.loading = 'lazy';
-      img.onerror = function () {
-        img.style.display = 'none';
-        imgWrapper.appendChild(createFallbackEl(t.name));
-      };
-      imgWrapper.appendChild(img);
-    } else {
-      imgWrapper.appendChild(createFallbackEl(t.name));
+    var filled = Math.max(1, Math.min(5, t.starsCount || 5));
+    var starSvg = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+    var stars = '';
+    for (var i = 0; i < 5; i++) {
+      stars += '<span class="' + (i < filled ? 'text-amber-400' : 'text-slate-200') + '">' + starSvg + '</span>';
     }
 
-    var info = document.createElement('div');
-    info.className = 'flex-1 min-w-0';
+    var avatarInner;
+    if (t.imageUrl) {
+      avatarInner = '<img src="' + t.imageUrl + '" alt="' + (t.name || '') + '" loading="lazy" class="tp-avatar-img" onerror="this.style.display=\'none\'">';
+    } else {
+      avatarInner = '<span class="tp-fallback">' + (t.name ? t.name.charAt(0).toUpperCase() : 'C') + '</span>';
+    }
 
-    var nameRow = document.createElement('div');
-    nameRow.className = 'flex items-center gap-1.5';
+    card.innerHTML =
+      '<div class="tp-glow"></div>' +
+      '<div class="tp-quote">&ldquo;</div>' +
+      '<div class="tp-head">' +
+        '<div class="tp-avatar">' +
+          avatarInner +
+          '<span class="tp-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>' +
+        '</div>' +
+        '<div class="tp-info">' +
+          '<h3>' + (t.name || 'Castiva Talent') + '</h3>' +
+          '<p class="tp-role">Verified Talent</p>' +
+        '</div>' +
+      '</div>' +
+      '<div class="tp-stars">' + stars + '</div>' +
+      '<p class="tp-text">&ldquo;' + (t.content || '') + '&rdquo;</p>';
 
-    var nameEl = document.createElement('h4');
-    nameEl.className = 'font-bold text-slate-900 text-base';
-    nameEl.textContent = t.name;
-
-    var starsEl = document.createElement('span');
-    starsEl.className = 'text-yellow-400 text-xs shrink-0 font-semibold';
-    starsEl.textContent = '(' + (t.starsCount || 0) + '\u00a0\u2605)';
-
-    nameRow.appendChild(nameEl);
-    nameRow.appendChild(starsEl);
-    info.appendChild(nameRow);
-
-    top.appendChild(imgWrapper);
-    top.appendChild(info);
-
-    var quote = document.createElement('p');
-    quote.className = 'text-slate-600 text-sm leading-relaxed whitespace-normal font-sans';
-    quote.textContent = '\u201C' + t.content + '\u201D';
-
-    card.appendChild(top);
-    card.appendChild(quote);
     return card;
   }
 
@@ -2556,6 +2800,7 @@ let currentPartnerCategory = 'talent';
 let currentSubcategory = null;
 const partnersDataCache = {};
 let allTalentProfiles = [];
+let allRecruiterProfiles = [];
 let talentSubcategories = [];
 let recruiterSubcategories = [];
 
@@ -2585,13 +2830,36 @@ const CARD_PHOTOS = [
 ];
 
 const CARD_GRADIENTS = [
-  'linear-gradient(110deg, #c7d2fe 0%, #fbcfe8 45%, #fed7aa 100%)',
-  'linear-gradient(110deg, #bae6fd 0%, #ddd6fe 50%, #fbcfe8 100%)',
-  'linear-gradient(110deg, #fde68a 0%, #fca5a5 55%, #f9a8d4 100%)',
-  'linear-gradient(110deg, #a7f3d0 0%, #bae6fd 50%, #c4b5fd 100%)',
-  'linear-gradient(110deg, #e9d5ff 0%, #fbcfe8 50%, #fecaca 100%)',
-  'linear-gradient(110deg, #fecdd3 0%, #fdba74 50%, #fef08a 100%)',
+  'linear-gradient(110deg, #EDE9FE 0%, #DDD6FE 100%)',
+  'linear-gradient(110deg, #FCE7F3 0%, #FBCFE8 100%)',
+  'linear-gradient(110deg, #DBEAFE 0%, #BFDBFE 100%)',
+  'linear-gradient(110deg, #D1FAE5 0%, #A7F3D0 100%)',
+  'linear-gradient(110deg, #FFEDD5 0%, #FED7AA 100%)',
+  'linear-gradient(110deg, #CCFBF1 0%, #99F6E4 100%)',
+  'linear-gradient(110deg, #FEF9C3 0%, #FDE68A 100%)',
+  'linear-gradient(110deg, #FFE4E6 0%, #FECDD3 100%)',
 ];
+
+const DIAL_CODE_FLAGS = {
+  '1': 'us', '7': 'ru', '20': 'eg', '27': 'za', '30': 'gr', '31': 'nl',
+  '32': 'be', '33': 'fr', '34': 'es', '36': 'hu', '39': 'it', '40': 'ro',
+  '41': 'ch', '43': 'at', '44': 'gb', '45': 'dk', '46': 'se', '47': 'no',
+  '48': 'pl', '49': 'de', '51': 'pe', '52': 'mx', '53': 'cu', '54': 'ar',
+  '55': 'br', '56': 'cl', '57': 'co', '58': 've', '60': 'my', '61': 'au',
+  '62': 'id', '63': 'ph', '64': 'nz', '65': 'sg', '66': 'th', '81': 'jp',
+  '82': 'kr', '84': 'vn', '86': 'cn', '90': 'tr', '91': 'in', '92': 'pk',
+  '93': 'af', '94': 'lk', '95': 'mm', '98': 'ir', '212': 'ma', '213': 'dz',
+  '216': 'tn', '218': 'ly', '220': 'gm', '221': 'sn', '234': 'ng', '254': 'ke',
+  '255': 'tz', '256': 'ug', '260': 'zm', '263': 'zw', '351': 'pt', '352': 'lu',
+  '353': 'ie', '354': 'is', '355': 'al', '356': 'mt', '357': 'cy', '358': 'fi',
+  '359': 'bg', '370': 'lt', '371': 'lv', '372': 'ee', '373': 'md', '374': 'am',
+  '375': 'by', '380': 'ua', '381': 'rs', '385': 'hr', '386': 'si', '387': 'ba',
+  '420': 'cz', '421': 'sk', '852': 'hk', '853': 'mo', '880': 'bd', '886': 'tw',
+  '962': 'jo', '963': 'sy', '964': 'iq', '965': 'kw', '966': 'sa', '967': 'ye',
+  '968': 'om', '971': 'ae', '972': 'il', '973': 'bh', '974': 'qa', '975': 'bt',
+  '976': 'mn', '977': 'np', '992': 'tj', '993': 'tm', '994': 'az', '995': 'ge',
+  '996': 'kg', '998': 'uz',
+};
 
 function hashId(id) {
   var hash = 0;
@@ -2611,6 +2879,43 @@ function getCountryCode(country) {
   if (!country) return '';
   var key = country.toLowerCase().trim();
   return COUNTRY_FLAGS[key] || key.slice(0, 2).toLowerCase();
+}
+
+function getCountryFromPhone(phone) {
+  if (!phone) return '';
+  var digits = String(phone).replace(/\D/g, '');
+  var keys = Object.keys(DIAL_CODE_FLAGS).sort(function(a, b) { return b.length - a.length; });
+  for (var i = 0; i < keys.length; i++) {
+    if (digits.indexOf(keys[i]) === 0) {
+      return DIAL_CODE_FLAGS[keys[i]];
+    }
+  }
+  return '';
+}
+
+function getProfileMobile(profile) {
+  var nested = profile.user || {};
+  return profile.mobile || profile.phone || profile.phoneNumber || profile.mobileNumber ||
+         profile.contactNumber || nested.mobile || nested.phone || nested.phoneNumber || '';
+}
+
+function getProfileCountry(profile) {
+  var country = profile.country;
+  if (typeof country === 'string' && country.trim().startsWith('{')) {
+    try {
+      var parsed = JSON.parse(country.replace(/'/g, '"'));
+      country = parsed.country || country;
+    } catch (e) {}
+  }
+  if (typeof country === 'string' && country.trim()) return country.trim();
+  var city = profile.city;
+  if (typeof city === 'string' && city.trim().startsWith('{')) {
+    try {
+      var pc = JSON.parse(city.replace(/'/g, '"'));
+      if (pc.country) return pc.country.trim();
+    } catch (e) {}
+  }
+  return '';
 }
 
 function extractPartnerData(raw) {
@@ -2714,37 +3019,58 @@ function createPartnerCard(profile, categoryId, subcategoryName) {
   var initial = name ? name.charAt(0).toUpperCase() : '?';
   var clickHandler = "void(function(){if(localStorage.getItem('_cv')==='1'){window.open('https://castiva.in/auth','_blank')}else{localStorage.setItem('_cv','1');window.open('https://castiva.in/welcome','_blank')}}())";
 
-  var locationPillHtml = '<div class="location-pill-wrapper">' +
-    '<div class="relative inline-block group text-sm rounded-full">' +
-      '<button class="group relative inline-flex min-w-[120px] cursor-default transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] text-xs font-semibold text-white/70 tracking-tight rounded-full items-center justify-center text-center" style="height:32px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1);background:radial-gradient(ellipse at bottom,rgba(55,55,55,1) 0%,rgba(0,0,0,1) 100%);">' +
-        '<span class="relative z-10 font-normal rounded-full text-xs whitespace-nowrap">' +
-          (location ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-right:4px"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>' + location : 'UnKnown') +
-        '</span>' +
-        '<span aria-hidden="true" class="absolute bottom-0 left-1/2 h-[1px] w-[70%] -translate-x-1/2 opacity-20 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] group-hover:opacity-80 rounded-full text-xs" style="background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);"></span>' +
-      '</button>' +
-    '</div>' +
+  var roleTagHtml = '<span class="celebrity-tag">' + category + '</span>';
+  var tagsHtml = '<div class="celebrity-tags">' + roleTagHtml + '</div>';
+
+  var viewProfileBtnHtml = '<div class="view-profile-wrapper">' +
+    '<button class="view-profile-btn" style="height:36px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1);background:radial-gradient(ellipse at bottom,rgba(55,55,55,1) 0%,rgba(0,0,0,1) 100%);">' +
+      '<span class="view-profile-label">View Profile</span>' +
+      '<span aria-hidden="true" class="view-profile-glow"></span>' +
+    '</button>' +
   '</div>';
 
+  var countryCode = getCountryFromPhone(getProfileMobile(profile)) || getCountryCode(getProfileCountry(profile)) || 'in';
+  var flagHtml = countryCode
+    ? '<div class="celebrity-flag-wrap"><img src="https://flagcdn.com/w80/' + countryCode.toLowerCase() + '.png" alt="Flag" class="celebrity-flag" loading="lazy" onerror="this.style.display=\'none\'"></div>'
+    : '';
+
+  var description = getProfileTagline(profile);
+  var descriptionHtml = '<p class="celebrity-desc">' + (description || '') + '</p>';
+
+  var stockPhoto = getPhoto(id);
   var avatarHtml = avatar
-    ? '<img src="' + avatar + '" alt="' + name + '" class="celebrity-avatar" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="partner-avatar-placeholder celebrity-avatar" style="display:none;background:' + gradient + '">' + initial + '</div>'
-    : '<div class="partner-avatar-placeholder celebrity-avatar" style="background:' + gradient + '">' + initial + '</div>';
+    ? '<img src="' + avatar + '" alt="' + name + '" class="celebrity-avatar" loading="lazy" onerror="this.onerror=null;this.src=\'' + stockPhoto + '\'">'
+    : '<img src="' + stockPhoto + '" alt="' + name + '" class="celebrity-avatar" loading="lazy">';
+
+  var bottomRowHtml = '<div class="celebrity-bottom-row">' +
+    tagsHtml +
+    viewProfileBtnHtml +
+  '</div>';
 
   return '<div class="partner-card celebrity-card" onclick="' + clickHandler + '" style="background: ' + gradient + '">' +
+    flagHtml +
     '<div class="celebrity-inner-card">' +
       '<div class="celebrity-avatar-wrapper">' + avatarHtml + '</div>' +
       '<h4 class="celebrity-name">' + name + '</h4>' +
-      '<p class="celebrity-role">' + category + '</p>' +
-      locationPillHtml +
+      descriptionHtml +
+      bottomRowHtml +
     '</div>' +
   '</div>';
 }
 
 
-function filterProfilesBySubcategory(profiles, subcategoryName) {
+function filterProfilesBySubcategory(categoryId, subcategoryName) {
+  var profiles = categoryId === 'recruiter' ? allRecruiterProfiles : allTalentProfiles;
   if (!profiles || profiles.length === 0) return [];
   if (!subcategoryName) return profiles;
+  var needle = subcategoryName.toLowerCase();
   return profiles.filter(function(p) {
-    return (p.subTalents || []).some(function(s) { return s.toLowerCase() === subcategoryName.toLowerCase(); });
+    if (categoryId === 'recruiter') {
+      return [p.recruiterType, p.recruiterCategory]
+        .filter(Boolean)
+        .some(function(v) { return v.toLowerCase() === needle; });
+    }
+    return (p.subTalents || []).some(function(s) { return s.toLowerCase() === needle; });
   });
 }
 
@@ -2757,6 +3083,16 @@ function comingSoonHtml() {
   '</div>';
 }
 
+function buildMarqueeBlock(set, categoryId, subcategoryName, minCards) {
+  if (!set || set.length === 0) return '';
+  var repeats = Math.max(1, Math.ceil(minCards / set.length));
+  var html = '';
+  for (var r = 0; r < repeats; r++) {
+    html += set.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
+  }
+  return html;
+}
+
 function renderPartnerCards(profiles, categoryId, subcategoryName) {
   if (!profiles || profiles.length === 0) {
     if (categoryId === 'recruiter') return { leftCards: comingSoonHtml(), rightCards: '' };
@@ -2764,16 +3100,45 @@ function renderPartnerCards(profiles, categoryId, subcategoryName) {
     return { leftCards: '<div class="text-center text-slate-500 py-6 w-full">No profiles found.</div>', rightCards: '' };
   }
 
-  var mid = Math.ceil(profiles.length / 2);
-  var leftSet = profiles.slice(0, mid);
-  var rightSet = profiles.slice(mid);
+  var leftSet, rightSet;
+  if (profiles.length <= 4) {
+    leftSet = profiles;
+    rightSet = profiles;
+  } else {
+    var mid = Math.ceil(profiles.length / 2);
+    leftSet = profiles.slice(0, mid);
+    rightSet = profiles.slice(mid);
+  }
 
-  var leftCards = leftSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('') +
-                  leftSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
-  var rightCards = rightSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('') +
-                   rightSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
+  var leftBlock = buildMarqueeBlock(leftSet, categoryId, subcategoryName, 6);
+  var rightBlock = buildMarqueeBlock(rightSet, categoryId, subcategoryName, 6);
 
-  return { leftCards: leftCards, rightCards: rightCards };
+  return { leftCards: leftBlock + leftBlock, rightCards: rightBlock + rightBlock };
+}
+
+function applyPartnersContent(data) {
+  var marqueeLeft = document.getElementById('partners-marquee-left');
+  var marqueeRight = document.getElementById('partners-marquee-right');
+  marqueeLeft.innerHTML = data.leftCards;
+  marqueeRight.innerHTML = data.rightCards;
+
+  var rightRow = marqueeRight.closest('.partners-marquee-row');
+  var hasRight = data.rightCards && data.rightCards.trim() !== '';
+
+  if (data.hasProfiles) {
+    marqueeLeft.classList.add('animate-marquee-left');
+    if (hasRight) {
+      marqueeRight.classList.add('animate-marquee-right');
+      if (rightRow) rightRow.style.display = '';
+    } else {
+      marqueeRight.classList.remove('animate-marquee-right');
+      if (rightRow) rightRow.style.display = 'none';
+    }
+  } else {
+    marqueeLeft.classList.remove('animate-marquee-left');
+    marqueeRight.classList.remove('animate-marquee-right');
+    if (rightRow) rightRow.style.display = 'none';
+  }
 }
 
 function renderContent(profiles, categoryId, subcategoryName) {
@@ -2783,19 +3148,7 @@ function renderContent(profiles, categoryId, subcategoryName) {
   result.hasProfiles = hasProfiles;
   partnersDataCache[cacheKey] = result;
 
-  var marqueeLeft = document.getElementById('partners-marquee-left');
-  var marqueeRight = document.getElementById('partners-marquee-right');
-
-  marqueeLeft.innerHTML = result.leftCards;
-  marqueeRight.innerHTML = result.rightCards;
-
-  if (hasProfiles) {
-    marqueeLeft.classList.add('animate-marquee-left');
-    marqueeRight.classList.add('animate-marquee-right');
-  } else {
-    marqueeLeft.classList.remove('animate-marquee-left');
-    marqueeRight.classList.remove('animate-marquee-right');
-  }
+  applyPartnersContent(result);
 }
 
 function renderSubcategoryPills(subcategories, activeSub, categoryId) {
@@ -2813,24 +3166,22 @@ function renderSubcategoryPills(subcategories, activeSub, categoryId) {
     btn.addEventListener('click', function() {
       var sub = this.dataset.sub || null;
       currentSubcategory = sub;
-      loadTalentSubcategory(sub);
+      loadSubcategory(categoryId, sub);
       renderSubcategoryPills(subcategories, sub, categoryId);
     });
   });
 }
 
-function loadTalentSubcategory(subcategoryName) {
-  var cacheKey = subcategoryName ? 'talent-' + subcategoryName : 'talent';
+function loadSubcategory(categoryId, subcategoryName) {
+  var cacheKey = subcategoryName ? categoryId + '-' + subcategoryName : categoryId;
 
   if (partnersDataCache[cacheKey]) {
-    var data = partnersDataCache[cacheKey];
-    document.getElementById('partners-marquee-left').innerHTML = data.leftCards;
-    document.getElementById('partners-marquee-right').innerHTML = data.rightCards;
+    applyPartnersContent(partnersDataCache[cacheKey]);
     return;
   }
 
-  var profiles = filterProfilesBySubcategory(allTalentProfiles, subcategoryName);
-  renderContent(profiles, 'talent', subcategoryName);
+  var profiles = filterProfilesBySubcategory(categoryId, subcategoryName);
+  renderContent(profiles, categoryId, subcategoryName);
 }
 
 function updatePartnersIndicator(activeTab) {
@@ -2860,19 +3211,7 @@ function switchPartnerCategory(categoryId, clickedBtn) {
   var cacheKey = categoryId;
 
   if (partnersDataCache[cacheKey]) {
-    var data = partnersDataCache[cacheKey];
-    var marqueeLeft = document.getElementById('partners-marquee-left');
-    var marqueeRight = document.getElementById('partners-marquee-right');
-    marqueeLeft.innerHTML = data.leftCards;
-    marqueeRight.innerHTML = data.rightCards;
-
-    if (data.hasProfiles) {
-      marqueeLeft.classList.add('animate-marquee-left');
-      marqueeRight.classList.add('animate-marquee-right');
-    } else {
-      marqueeLeft.classList.remove('animate-marquee-left');
-      marqueeRight.classList.remove('animate-marquee-right');
-    }
+    applyPartnersContent(partnersDataCache[cacheKey]);
 
     if (categoryId === 'talent') {
       subcatsContainer.classList.remove('hidden');
@@ -2891,7 +3230,7 @@ function switchPartnerCategory(categoryId, clickedBtn) {
   if (categoryId === 'talent') {
     subcatsContainer.classList.remove('hidden');
     renderSubcategoryPills(talentSubcategories, null, 'talent');
-    loadTalentSubcategory(null);
+    loadSubcategory('talent', null);
     loadingEl.classList.add('hidden');
     contentEl.classList.remove('hidden');
   } else if (categoryId === 'recruiter') {
@@ -2917,7 +3256,8 @@ function switchPartnerCategory(categoryId, clickedBtn) {
         return res.json();
       })
       .then(function(json) {
-        renderContent(extractPartnerData(json), 'recruiter', null);
+        allRecruiterProfiles = extractPartnerData(json);
+        renderContent(allRecruiterProfiles, 'recruiter', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
       })
@@ -3007,7 +3347,7 @@ async function initPartners() {
   var subcatsContainer = document.getElementById('partners-subcategories');
   subcatsContainer.classList.remove('hidden');
   renderSubcategoryPills(talentSubcategories, null, 'talent');
-  loadTalentSubcategory(null);
+  loadSubcategory('talent', null);
   currentPartnerCategory = 'talent';
   loadingEl.classList.add('hidden');
   contentEl.classList.remove('hidden');

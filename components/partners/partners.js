@@ -3,6 +3,7 @@ let currentPartnerCategory = 'talent';
 let currentSubcategory = null;
 const partnersDataCache = {};
 let allTalentProfiles = [];
+let allRecruiterProfiles = [];
 let talentSubcategories = [];
 let recruiterSubcategories = [];
 
@@ -32,13 +33,36 @@ const CARD_PHOTOS = [
 ];
 
 const CARD_GRADIENTS = [
-  'linear-gradient(110deg, #c7d2fe 0%, #fbcfe8 45%, #fed7aa 100%)',
-  'linear-gradient(110deg, #bae6fd 0%, #ddd6fe 50%, #fbcfe8 100%)',
-  'linear-gradient(110deg, #fde68a 0%, #fca5a5 55%, #f9a8d4 100%)',
-  'linear-gradient(110deg, #a7f3d0 0%, #bae6fd 50%, #c4b5fd 100%)',
-  'linear-gradient(110deg, #e9d5ff 0%, #fbcfe8 50%, #fecaca 100%)',
-  'linear-gradient(110deg, #fecdd3 0%, #fdba74 50%, #fef08a 100%)',
+  'linear-gradient(110deg, #EDE9FE 0%, #DDD6FE 100%)',
+  'linear-gradient(110deg, #FCE7F3 0%, #FBCFE8 100%)',
+  'linear-gradient(110deg, #DBEAFE 0%, #BFDBFE 100%)',
+  'linear-gradient(110deg, #D1FAE5 0%, #A7F3D0 100%)',
+  'linear-gradient(110deg, #FFEDD5 0%, #FED7AA 100%)',
+  'linear-gradient(110deg, #CCFBF1 0%, #99F6E4 100%)',
+  'linear-gradient(110deg, #FEF9C3 0%, #FDE68A 100%)',
+  'linear-gradient(110deg, #FFE4E6 0%, #FECDD3 100%)',
 ];
+
+const DIAL_CODE_FLAGS = {
+  '1': 'us', '7': 'ru', '20': 'eg', '27': 'za', '30': 'gr', '31': 'nl',
+  '32': 'be', '33': 'fr', '34': 'es', '36': 'hu', '39': 'it', '40': 'ro',
+  '41': 'ch', '43': 'at', '44': 'gb', '45': 'dk', '46': 'se', '47': 'no',
+  '48': 'pl', '49': 'de', '51': 'pe', '52': 'mx', '53': 'cu', '54': 'ar',
+  '55': 'br', '56': 'cl', '57': 'co', '58': 've', '60': 'my', '61': 'au',
+  '62': 'id', '63': 'ph', '64': 'nz', '65': 'sg', '66': 'th', '81': 'jp',
+  '82': 'kr', '84': 'vn', '86': 'cn', '90': 'tr', '91': 'in', '92': 'pk',
+  '93': 'af', '94': 'lk', '95': 'mm', '98': 'ir', '212': 'ma', '213': 'dz',
+  '216': 'tn', '218': 'ly', '220': 'gm', '221': 'sn', '234': 'ng', '254': 'ke',
+  '255': 'tz', '256': 'ug', '260': 'zm', '263': 'zw', '351': 'pt', '352': 'lu',
+  '353': 'ie', '354': 'is', '355': 'al', '356': 'mt', '357': 'cy', '358': 'fi',
+  '359': 'bg', '370': 'lt', '371': 'lv', '372': 'ee', '373': 'md', '374': 'am',
+  '375': 'by', '380': 'ua', '381': 'rs', '385': 'hr', '386': 'si', '387': 'ba',
+  '420': 'cz', '421': 'sk', '852': 'hk', '853': 'mo', '880': 'bd', '886': 'tw',
+  '962': 'jo', '963': 'sy', '964': 'iq', '965': 'kw', '966': 'sa', '967': 'ye',
+  '968': 'om', '971': 'ae', '972': 'il', '973': 'bh', '974': 'qa', '975': 'bt',
+  '976': 'mn', '977': 'np', '992': 'tj', '993': 'tm', '994': 'az', '995': 'ge',
+  '996': 'kg', '998': 'uz',
+};
 
 function hashId(id) {
   var hash = 0;
@@ -58,6 +82,43 @@ function getCountryCode(country) {
   if (!country) return '';
   var key = country.toLowerCase().trim();
   return COUNTRY_FLAGS[key] || key.slice(0, 2).toLowerCase();
+}
+
+function getCountryFromPhone(phone) {
+  if (!phone) return '';
+  var digits = String(phone).replace(/\D/g, '');
+  var keys = Object.keys(DIAL_CODE_FLAGS).sort(function(a, b) { return b.length - a.length; });
+  for (var i = 0; i < keys.length; i++) {
+    if (digits.indexOf(keys[i]) === 0) {
+      return DIAL_CODE_FLAGS[keys[i]];
+    }
+  }
+  return '';
+}
+
+function getProfileMobile(profile) {
+  var nested = profile.user || {};
+  return profile.mobile || profile.phone || profile.phoneNumber || profile.mobileNumber ||
+         profile.contactNumber || nested.mobile || nested.phone || nested.phoneNumber || '';
+}
+
+function getProfileCountry(profile) {
+  var country = profile.country;
+  if (typeof country === 'string' && country.trim().startsWith('{')) {
+    try {
+      var parsed = JSON.parse(country.replace(/'/g, '"'));
+      country = parsed.country || country;
+    } catch (e) {}
+  }
+  if (typeof country === 'string' && country.trim()) return country.trim();
+  var city = profile.city;
+  if (typeof city === 'string' && city.trim().startsWith('{')) {
+    try {
+      var pc = JSON.parse(city.replace(/'/g, '"'));
+      if (pc.country) return pc.country.trim();
+    } catch (e) {}
+  }
+  return '';
 }
 
 function extractPartnerData(raw) {
@@ -161,37 +222,58 @@ function createPartnerCard(profile, categoryId, subcategoryName) {
   var initial = name ? name.charAt(0).toUpperCase() : '?';
   var clickHandler = "void(function(){if(localStorage.getItem('_cv')==='1'){window.open('https://castiva.in/auth','_blank')}else{localStorage.setItem('_cv','1');window.open('https://castiva.in/welcome','_blank')}}())";
 
-  var locationPillHtml = '<div class="location-pill-wrapper">' +
-    '<div class="relative inline-block group text-sm rounded-full">' +
-      '<button class="group relative inline-flex min-w-[120px] cursor-default transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] text-xs font-semibold text-white/70 tracking-tight rounded-full items-center justify-center text-center" style="height:32px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1);background:radial-gradient(ellipse at bottom,rgba(55,55,55,1) 0%,rgba(0,0,0,1) 100%);">' +
-        '<span class="relative z-10 font-normal rounded-full text-xs whitespace-nowrap">' +
-          (location ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-1px;margin-right:4px"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>' + location : 'UnKnown') +
-        '</span>' +
-        '<span aria-hidden="true" class="absolute bottom-0 left-1/2 h-[1px] w-[70%] -translate-x-1/2 opacity-20 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] group-hover:opacity-80 rounded-full text-xs" style="background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);"></span>' +
-      '</button>' +
-    '</div>' +
+  var roleTagHtml = '<span class="celebrity-tag">' + category + '</span>';
+  var tagsHtml = '<div class="celebrity-tags">' + roleTagHtml + '</div>';
+
+  var viewProfileBtnHtml = '<div class="view-profile-wrapper">' +
+    '<button class="view-profile-btn" style="height:36px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1);background:radial-gradient(ellipse at bottom,rgba(55,55,55,1) 0%,rgba(0,0,0,1) 100%);">' +
+      '<span class="view-profile-label">View Profile</span>' +
+      '<span aria-hidden="true" class="view-profile-glow"></span>' +
+    '</button>' +
   '</div>';
 
+  var countryCode = getCountryFromPhone(getProfileMobile(profile)) || getCountryCode(getProfileCountry(profile)) || 'in';
+  var flagHtml = countryCode
+    ? '<div class="celebrity-flag-wrap"><img src="https://flagcdn.com/w80/' + countryCode.toLowerCase() + '.png" alt="Flag" class="celebrity-flag" loading="lazy" onerror="this.style.display=\'none\'"></div>'
+    : '';
+
+  var description = getProfileTagline(profile);
+  var descriptionHtml = '<p class="celebrity-desc">' + (description || '') + '</p>';
+
+  var stockPhoto = getPhoto(id);
   var avatarHtml = avatar
-    ? '<img src="' + avatar + '" alt="' + name + '" class="celebrity-avatar" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="partner-avatar-placeholder celebrity-avatar" style="display:none;background:' + gradient + '">' + initial + '</div>'
-    : '<div class="partner-avatar-placeholder celebrity-avatar" style="background:' + gradient + '">' + initial + '</div>';
+    ? '<img src="' + avatar + '" alt="' + name + '" class="celebrity-avatar" loading="lazy" onerror="this.onerror=null;this.src=\'' + stockPhoto + '\'">'
+    : '<img src="' + stockPhoto + '" alt="' + name + '" class="celebrity-avatar" loading="lazy">';
+
+  var bottomRowHtml = '<div class="celebrity-bottom-row">' +
+    tagsHtml +
+    viewProfileBtnHtml +
+  '</div>';
 
   return '<div class="partner-card celebrity-card" onclick="' + clickHandler + '" style="background: ' + gradient + '">' +
+    flagHtml +
     '<div class="celebrity-inner-card">' +
       '<div class="celebrity-avatar-wrapper">' + avatarHtml + '</div>' +
       '<h4 class="celebrity-name">' + name + '</h4>' +
-      '<p class="celebrity-role">' + category + '</p>' +
-      locationPillHtml +
+      descriptionHtml +
+      bottomRowHtml +
     '</div>' +
   '</div>';
 }
 
 
-function filterProfilesBySubcategory(profiles, subcategoryName) {
+function filterProfilesBySubcategory(categoryId, subcategoryName) {
+  var profiles = categoryId === 'recruiter' ? allRecruiterProfiles : allTalentProfiles;
   if (!profiles || profiles.length === 0) return [];
   if (!subcategoryName) return profiles;
+  var needle = subcategoryName.toLowerCase();
   return profiles.filter(function(p) {
-    return (p.subTalents || []).some(function(s) { return s.toLowerCase() === subcategoryName.toLowerCase(); });
+    if (categoryId === 'recruiter') {
+      return [p.recruiterType, p.recruiterCategory]
+        .filter(Boolean)
+        .some(function(v) { return v.toLowerCase() === needle; });
+    }
+    return (p.subTalents || []).some(function(s) { return s.toLowerCase() === needle; });
   });
 }
 
@@ -204,6 +286,16 @@ function comingSoonHtml() {
   '</div>';
 }
 
+function buildMarqueeBlock(set, categoryId, subcategoryName, minCards) {
+  if (!set || set.length === 0) return '';
+  var repeats = Math.max(1, Math.ceil(minCards / set.length));
+  var html = '';
+  for (var r = 0; r < repeats; r++) {
+    html += set.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
+  }
+  return html;
+}
+
 function renderPartnerCards(profiles, categoryId, subcategoryName) {
   if (!profiles || profiles.length === 0) {
     if (categoryId === 'recruiter') return { leftCards: comingSoonHtml(), rightCards: '' };
@@ -211,16 +303,45 @@ function renderPartnerCards(profiles, categoryId, subcategoryName) {
     return { leftCards: '<div class="text-center text-slate-500 py-6 w-full">No profiles found.</div>', rightCards: '' };
   }
 
-  var mid = Math.ceil(profiles.length / 2);
-  var leftSet = profiles.slice(0, mid);
-  var rightSet = profiles.slice(mid);
+  var leftSet, rightSet;
+  if (profiles.length <= 4) {
+    leftSet = profiles;
+    rightSet = profiles;
+  } else {
+    var mid = Math.ceil(profiles.length / 2);
+    leftSet = profiles.slice(0, mid);
+    rightSet = profiles.slice(mid);
+  }
 
-  var leftCards = leftSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('') +
-                  leftSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
-  var rightCards = rightSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('') +
-                   rightSet.map(function(p) { return createPartnerCard(p, categoryId, subcategoryName); }).join('');
+  var leftBlock = buildMarqueeBlock(leftSet, categoryId, subcategoryName, 6);
+  var rightBlock = buildMarqueeBlock(rightSet, categoryId, subcategoryName, 6);
 
-  return { leftCards: leftCards, rightCards: rightCards };
+  return { leftCards: leftBlock + leftBlock, rightCards: rightBlock + rightBlock };
+}
+
+function applyPartnersContent(data) {
+  var marqueeLeft = document.getElementById('partners-marquee-left');
+  var marqueeRight = document.getElementById('partners-marquee-right');
+  marqueeLeft.innerHTML = data.leftCards;
+  marqueeRight.innerHTML = data.rightCards;
+
+  var rightRow = marqueeRight.closest('.partners-marquee-row');
+  var hasRight = data.rightCards && data.rightCards.trim() !== '';
+
+  if (data.hasProfiles) {
+    marqueeLeft.classList.add('animate-marquee-left');
+    if (hasRight) {
+      marqueeRight.classList.add('animate-marquee-right');
+      if (rightRow) rightRow.style.display = '';
+    } else {
+      marqueeRight.classList.remove('animate-marquee-right');
+      if (rightRow) rightRow.style.display = 'none';
+    }
+  } else {
+    marqueeLeft.classList.remove('animate-marquee-left');
+    marqueeRight.classList.remove('animate-marquee-right');
+    if (rightRow) rightRow.style.display = 'none';
+  }
 }
 
 function renderContent(profiles, categoryId, subcategoryName) {
@@ -230,19 +351,7 @@ function renderContent(profiles, categoryId, subcategoryName) {
   result.hasProfiles = hasProfiles;
   partnersDataCache[cacheKey] = result;
 
-  var marqueeLeft = document.getElementById('partners-marquee-left');
-  var marqueeRight = document.getElementById('partners-marquee-right');
-
-  marqueeLeft.innerHTML = result.leftCards;
-  marqueeRight.innerHTML = result.rightCards;
-
-  if (hasProfiles) {
-    marqueeLeft.classList.add('animate-marquee-left');
-    marqueeRight.classList.add('animate-marquee-right');
-  } else {
-    marqueeLeft.classList.remove('animate-marquee-left');
-    marqueeRight.classList.remove('animate-marquee-right');
-  }
+  applyPartnersContent(result);
 }
 
 function renderSubcategoryPills(subcategories, activeSub, categoryId) {
@@ -260,24 +369,22 @@ function renderSubcategoryPills(subcategories, activeSub, categoryId) {
     btn.addEventListener('click', function() {
       var sub = this.dataset.sub || null;
       currentSubcategory = sub;
-      loadTalentSubcategory(sub);
+      loadSubcategory(categoryId, sub);
       renderSubcategoryPills(subcategories, sub, categoryId);
     });
   });
 }
 
-function loadTalentSubcategory(subcategoryName) {
-  var cacheKey = subcategoryName ? 'talent-' + subcategoryName : 'talent';
+function loadSubcategory(categoryId, subcategoryName) {
+  var cacheKey = subcategoryName ? categoryId + '-' + subcategoryName : categoryId;
 
   if (partnersDataCache[cacheKey]) {
-    var data = partnersDataCache[cacheKey];
-    document.getElementById('partners-marquee-left').innerHTML = data.leftCards;
-    document.getElementById('partners-marquee-right').innerHTML = data.rightCards;
+    applyPartnersContent(partnersDataCache[cacheKey]);
     return;
   }
 
-  var profiles = filterProfilesBySubcategory(allTalentProfiles, subcategoryName);
-  renderContent(profiles, 'talent', subcategoryName);
+  var profiles = filterProfilesBySubcategory(categoryId, subcategoryName);
+  renderContent(profiles, categoryId, subcategoryName);
 }
 
 function updatePartnersIndicator(activeTab) {
@@ -307,19 +414,7 @@ function switchPartnerCategory(categoryId, clickedBtn) {
   var cacheKey = categoryId;
 
   if (partnersDataCache[cacheKey]) {
-    var data = partnersDataCache[cacheKey];
-    var marqueeLeft = document.getElementById('partners-marquee-left');
-    var marqueeRight = document.getElementById('partners-marquee-right');
-    marqueeLeft.innerHTML = data.leftCards;
-    marqueeRight.innerHTML = data.rightCards;
-
-    if (data.hasProfiles) {
-      marqueeLeft.classList.add('animate-marquee-left');
-      marqueeRight.classList.add('animate-marquee-right');
-    } else {
-      marqueeLeft.classList.remove('animate-marquee-left');
-      marqueeRight.classList.remove('animate-marquee-right');
-    }
+    applyPartnersContent(partnersDataCache[cacheKey]);
 
     if (categoryId === 'talent') {
       subcatsContainer.classList.remove('hidden');
@@ -338,7 +433,7 @@ function switchPartnerCategory(categoryId, clickedBtn) {
   if (categoryId === 'talent') {
     subcatsContainer.classList.remove('hidden');
     renderSubcategoryPills(talentSubcategories, null, 'talent');
-    loadTalentSubcategory(null);
+    loadSubcategory('talent', null);
     loadingEl.classList.add('hidden');
     contentEl.classList.remove('hidden');
   } else if (categoryId === 'recruiter') {
@@ -364,7 +459,8 @@ function switchPartnerCategory(categoryId, clickedBtn) {
         return res.json();
       })
       .then(function(json) {
-        renderContent(extractPartnerData(json), 'recruiter', null);
+        allRecruiterProfiles = extractPartnerData(json);
+        renderContent(allRecruiterProfiles, 'recruiter', null);
         loadingEl.classList.add('hidden');
         contentEl.classList.remove('hidden');
       })
@@ -454,7 +550,7 @@ async function initPartners() {
   var subcatsContainer = document.getElementById('partners-subcategories');
   subcatsContainer.classList.remove('hidden');
   renderSubcategoryPills(talentSubcategories, null, 'talent');
-  loadTalentSubcategory(null);
+  loadSubcategory('talent', null);
   currentPartnerCategory = 'talent';
   loadingEl.classList.add('hidden');
   contentEl.classList.remove('hidden');

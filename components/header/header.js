@@ -6,7 +6,7 @@
   const modal = document.getElementById('mobile-nav-modal');
   const openIcon = document.getElementById('menu-icon-open');
   const closeIcon = document.getElementById('menu-icon-close');
-  const links = modal?.querySelectorAll('.mobile-nav-link');
+  const links = modal?.querySelectorAll('a.mobile-nav-link');
   if (!btn || !modal) return;
 
   let open = false;
@@ -45,23 +45,63 @@
   window.addEventListener('scroll', () => { if (open) closeMenu(); }, { passive: true });
   window.addEventListener('resize', () => { if (open) positionModal(); });
 
-  // Mobile submenu toggles
-  function setupMobileSubmenu(triggerId, subId, arrowId) {
-    const trigger = document.getElementById(triggerId);
-    const sub = document.getElementById(subId);
-    const arrow = document.getElementById(arrowId);
+  // Mobile submenu toggles (accordion: only one open at a time, animated)
+  const mobileSubmenus = [
+    { trigger: 'mobile-about-trigger', sub: 'mobile-about-sub', arrow: 'mobile-about-arrow' },
+    { trigger: 'mobile-events-trigger', sub: 'mobile-events-sub', arrow: 'mobile-events-arrow' }
+  ];
+
+  function animateSubmenu(sub, open) {
+    if (open) {
+      sub.classList.remove('hidden');
+      sub.style.overflow = 'hidden';
+      sub.style.maxHeight = '0px';
+      sub.style.opacity = '0';
+      sub.style.transition = 'max-height 0.35s ease, opacity 0.3s ease';
+      void sub.offsetHeight;
+      sub.style.maxHeight = sub.scrollHeight + 'px';
+      sub.style.opacity = '1';
+      sub.dataset.open = 'true';
+    } else {
+      sub.style.maxHeight = sub.scrollHeight + 'px';
+      sub.style.opacity = '1';
+      void sub.offsetHeight;
+      sub.style.maxHeight = '0px';
+      sub.style.opacity = '0';
+      sub.dataset.open = 'false';
+      setTimeout(function () {
+        sub.classList.add('hidden');
+      }, 300);
+    }
+  }
+
+  function setupMobileSubmenu(config) {
+    const trigger = document.getElementById(config.trigger);
+    const sub = document.getElementById(config.sub);
+    const arrow = document.getElementById(config.arrow);
     if (!trigger || !sub || !arrow) return;
+    sub.dataset.open = 'false';
 
     trigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isHidden = sub.classList.contains('hidden');
-      sub.classList.toggle('hidden');
-      arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+      const isOpening = sub.dataset.open !== 'true';
+
+      mobileSubmenus.forEach(function (other) {
+        if (other.sub === config.sub) return;
+        const otherSub = document.getElementById(other.sub);
+        const otherArrow = document.getElementById(other.arrow);
+        if (otherSub && otherSub.dataset.open === 'true') {
+          animateSubmenu(otherSub, false);
+        }
+        if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+      });
+
+      animateSubmenu(sub, isOpening);
+      arrow.style.transform = isOpening ? 'rotate(180deg)' : 'rotate(0deg)';
     });
   }
 
-  setupMobileSubmenu('mobile-about-trigger', 'mobile-about-sub', 'mobile-about-arrow');
-  setupMobileSubmenu('mobile-events-trigger', 'mobile-events-sub', 'mobile-events-arrow');
+  mobileSubmenus.forEach(setupMobileSubmenu);
 })();
 
 // WebGL Button Shader (Purple Theme)

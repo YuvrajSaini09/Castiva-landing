@@ -340,7 +340,7 @@
 
         <!-- Mobile Menu Icon -->
         <button id="mobile-menu-btn" class="md:hidden relative w-10 h-10 flex items-center justify-center" aria-label="Toggle menu">
-          <img id="menu-icon-open" src="Asset/menu.png" alt="Menu" class="w-6 h-6 object-contain transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] scale-100 opacity-100 rotate-0">
+          <img id="menu-icon-open" src="Asset/menu.png" alt="Menu" class="w-[22px] h-[22px] object-contain transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] scale-100 opacity-100 rotate-0">
           <svg id="menu-icon-close" class="w-6 h-6 text-slate-700 absolute scale-0 opacity-0 -rotate-90 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <line x1="18" y1="6" x2="6" y2="18"/>
             <line x1="6" y1="6" x2="18" y2="18"/>
@@ -418,7 +418,7 @@
 
 
   <!-- Pricing Plans Section -->
-  <section class="pt-0 pb-16 sm:pb-20 px-6 max-w-6xl mx-auto">
+  <section class="pt-0 pb-16 sm:pb-20 px-6 max-w-7xl mx-auto">
     <!-- Loading -->
     <div id="pricing-loading" class="text-center py-20">
       <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
@@ -443,22 +443,22 @@
       </div>
 
       <!-- Grid -->
-      <div id="pricing-grid" class="flex flex-wrap justify-center gap-6">
+      <div id="pricing-grid" class="relative flex flex-wrap justify-center gap-8">
       </div>
     </div>
   </section>
 
   <!-- Footer Component -->
-<footer class="bg-slate-950 text-slate-400 py-16 px-6 border-t border-slate-900">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<footer class="text-slate-200 py-16 px-6 border-t border-[#260B47]" style="background: linear-gradient(0deg, rgba(0,0,0,0.12), rgba(0,0,0,0.12)), linear-gradient(289.32deg, #8840ED 36.27%, #4E27D0 54.7%, #8840ED 73.07%); background-blend-mode: hard-light, normal;">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
     <!-- Col 1: Brand -->
     <div class="space-y-4">
       <a href="index.html" class="flex items-center group">
-        <div class="w-[112px] h-10 overflow-hidden group-hover:scale-105 transition-transform bg-transparent flex items-center">
-          <img src="logo.png" alt="Castiva logo" class="w-full h-full object-contain">
+        <div class="w-[273.44px] h-[97.66px] md:w-[246.1px] md:h-[87.9px] overflow-hidden group-hover:scale-105 transition-transform bg-transparent flex items-center">
+          <img src="new-logo.png" alt="Castiva logo" class="w-full h-full object-contain">
         </div>
       </a>
-      <p class="text-sm text-slate-500 leading-relaxed">India's 1st AI Enabled Global Casting Ecosystem. Bridging talent and opportunity weightlessly.</p>
+      <p class="text-sm text-slate-300 leading-relaxed">India's 1st AI Enabled Global Casting Ecosystem. Bridging talent and opportunity weightlessly.</p>
     </div>
 
     <!-- Col 2: Navigation -->
@@ -484,19 +484,9 @@
         <li><a href="legal.html?tab=cookie-policy" class="hover:text-white transition-colors">Cookie Policy</a></li>
       </ul>
     </div>
-
-    <!-- Col 4: Newsletter -->
-    <div>
-      <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Stay Tuned</h5>
-      <p class="text-sm text-slate-500 mb-4">Subscribe to receive casting alerts and news.</p>
-      <form class="flex gap-2">
-        <input type="email" placeholder="Your email" class="bg-slate-900 border border-slate-800 rounded-full px-4 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-purple-600 w-full">
-        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-full px-4 py-2 transition-colors">Go</button>
-      </form>
-    </div>
   </div>
 
-  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
+  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-[#260B47] text-center text-xs text-slate-300">
     <p>&copy; 2026 Castiva. All rights reserved.</p>
   </div>
 </footer>
@@ -510,7 +500,7 @@
   const modal = document.getElementById('mobile-nav-modal');
   const openIcon = document.getElementById('menu-icon-open');
   const closeIcon = document.getElementById('menu-icon-close');
-  const links = modal?.querySelectorAll('.mobile-nav-link');
+  const links = modal?.querySelectorAll('a.mobile-nav-link');
   if (!btn || !modal) return;
 
   let open = false;
@@ -549,23 +539,63 @@
   window.addEventListener('scroll', () => { if (open) closeMenu(); }, { passive: true });
   window.addEventListener('resize', () => { if (open) positionModal(); });
 
-  // Mobile submenu toggles
-  function setupMobileSubmenu(triggerId, subId, arrowId) {
-    const trigger = document.getElementById(triggerId);
-    const sub = document.getElementById(subId);
-    const arrow = document.getElementById(arrowId);
+  // Mobile submenu toggles (accordion: only one open at a time, animated)
+  const mobileSubmenus = [
+    { trigger: 'mobile-about-trigger', sub: 'mobile-about-sub', arrow: 'mobile-about-arrow' },
+    { trigger: 'mobile-events-trigger', sub: 'mobile-events-sub', arrow: 'mobile-events-arrow' }
+  ];
+
+  function animateSubmenu(sub, open) {
+    if (open) {
+      sub.classList.remove('hidden');
+      sub.style.overflow = 'hidden';
+      sub.style.maxHeight = '0px';
+      sub.style.opacity = '0';
+      sub.style.transition = 'max-height 0.35s ease, opacity 0.3s ease';
+      void sub.offsetHeight;
+      sub.style.maxHeight = sub.scrollHeight + 'px';
+      sub.style.opacity = '1';
+      sub.dataset.open = 'true';
+    } else {
+      sub.style.maxHeight = sub.scrollHeight + 'px';
+      sub.style.opacity = '1';
+      void sub.offsetHeight;
+      sub.style.maxHeight = '0px';
+      sub.style.opacity = '0';
+      sub.dataset.open = 'false';
+      setTimeout(function () {
+        sub.classList.add('hidden');
+      }, 300);
+    }
+  }
+
+  function setupMobileSubmenu(config) {
+    const trigger = document.getElementById(config.trigger);
+    const sub = document.getElementById(config.sub);
+    const arrow = document.getElementById(config.arrow);
     if (!trigger || !sub || !arrow) return;
+    sub.dataset.open = 'false';
 
     trigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isHidden = sub.classList.contains('hidden');
-      sub.classList.toggle('hidden');
-      arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+      const isOpening = sub.dataset.open !== 'true';
+
+      mobileSubmenus.forEach(function (other) {
+        if (other.sub === config.sub) return;
+        const otherSub = document.getElementById(other.sub);
+        const otherArrow = document.getElementById(other.arrow);
+        if (otherSub && otherSub.dataset.open === 'true') {
+          animateSubmenu(otherSub, false);
+        }
+        if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+      });
+
+      animateSubmenu(sub, isOpening);
+      arrow.style.transform = isOpening ? 'rotate(180deg)' : 'rotate(0deg)';
     });
   }
 
-  setupMobileSubmenu('mobile-about-trigger', 'mobile-about-sub', 'mobile-about-arrow');
-  setupMobileSubmenu('mobile-events-trigger', 'mobile-events-sub', 'mobile-events-arrow');
+  mobileSubmenus.forEach(setupMobileSubmenu);
 })();
 
 // WebGL Button Shader (Purple Theme)
@@ -605,10 +635,15 @@
       var allPlans = [];
       var currentTab = 'monthly';
 
-      function buildCard(plan) {
+      function buildCard(plan, tab) {
+        var isYearly = tab === 'yearly';
+        var yearly = isYearly && plan.yearlyPricePaise != null && plan.yearlyPricePaise > 0;
+        var isPaid = !!plan.isPaid || yearly;
+        var paise = yearly ? plan.yearlyPricePaise : (plan.isPaid ? plan.pricePaise : null);
+
         var price = 'Free';
-        if (plan.isPaid && plan.pricePaise > 0) {
-          price = '\u20B9' + (plan.pricePaise / 100).toLocaleString('en-IN');
+        if (isPaid && paise != null && paise > 0) {
+          price = '\u20B9' + (paise / 100).toLocaleString('en-IN');
         }
 
         var features = [
@@ -622,37 +657,47 @@
         ];
 
         var isPopular = plan.tier === 'premium';
-        var borderClass = isPopular ? 'border-purple-400 ring-2 ring-purple-200' : 'border-slate-100';
-        var badge = isPopular
-          ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</div>'
-          : '';
 
         var card = document.createElement('div');
-        card.className = 'gs-pricing-card relative bg-white rounded-2xl border ' + borderClass + ' shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 p-6 sm:p-8 flex flex-col w-full max-w-sm opacity-0';
-        card.innerHTML = badge +
-          '<div class="mb-6">' +
-            '<h3 class="text-lg font-bold text-slate-900">' + plan.name + '</h3>' +
-            '<div class="mt-2 flex items-baseline gap-1">' +
-              '<span class="text-3xl sm:text-4xl font-extrabold text-slate-900">' + price + '</span>' +
-              (plan.isPaid ? '<span class="text-slate-400 text-sm">/month</span>' : '') +
+        card.className = 'gs-pricing-card relative rounded-3xl border bg-white/80 backdrop-blur-xl overflow-hidden transition-all duration-300 group cursor-pointer w-full max-w-sm flex flex-col opacity-0 ' +
+          (isPopular
+            ? 'border-purple-300 shadow-[0_0_30px_rgba(168,51,255,0.15)] hover:border-purple-400 hover:shadow-[0_20px_50px_-12px_rgba(168,51,255,0.3)]'
+            : 'border-slate-200 hover:border-purple-300 hover:shadow-[0_20px_50px_-12px_rgba(168,51,255,0.18)]');
+
+        card.innerHTML =
+          '<div class="pointer-events-none absolute inset-0 transition-all duration-300 group-hover:opacity-100 opacity-75" style="background: radial-gradient(120% 100% at 0% 0%, rgba(168,51,255,0.12), rgba(168,51,255,0.04) 40%, transparent 60%);"></div>' +
+          '<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>' +
+          '<div class="p-6 sm:p-8 flex flex-col flex-1">' +
+            '<div class="flex items-center justify-between">' +
+              '<h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900 group-hover:text-purple-700 transition-colors duration-300">' + plan.name + '</h3>' +
+              (isPopular
+                ? '<span class="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold text-purple-700 bg-purple-100 border border-purple-200">Popular</span>'
+                : '') +
             '</div>' +
-          '</div>' +
-          '<div class="space-y-3 flex-1">' +
-            features.map(function(f) {
-              var check = f.value === 'Yes' || f.value === 'Unlimited' || (typeof f.value === 'number' && f.value > 0);
-              return '<div class="flex items-center gap-3 text-sm">' +
-                '<svg class="w-4 h-4 flex-shrink-0 ' + (check ? 'text-purple-600' : 'text-slate-300') + '" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>' +
-                '<span class="text-slate-600">' + f.label + ': <strong>' + f.value + '</strong></span>' +
-              '</div>';
-            }).join('') +
-          '</div>' +
-          '<button class="mt-8 w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 ' +
-            (plan.isPaid
-              ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-200 hover:shadow-purple-300'
-              : 'bg-purple-50 hover:bg-purple-100 text-purple-700') +
-            '">' +
-            (plan.isPaid ? 'Subscribe Now' : 'Get Started') +
-          '</button>';
+            '<p class="mt-4 text-slate-500 group-hover:text-slate-600 transition-colors duration-300">Everything you need to get started.</p>' +
+            '<div class="mt-2 flex items-baseline gap-2">' +
+              '<span class="text-slate-900 text-3xl sm:text-4xl font-semibold tracking-tight group-hover:text-purple-700 transition-colors duration-300">' + price + '</span>' +
+              (isPaid ? '<span class="text-slate-400 text-sm">/' + (isYearly ? 'year' : 'month') + '</span>' : '') +
+            '</div>' +
+            '<ul class="mt-6 space-y-3 flex-1">' +
+              features.map(function(f) {
+                var check = f.value === 'Yes' || f.value === 'Unlimited' || (typeof f.value === 'number' && f.value > 0);
+                return '<li class="flex items-start gap-3">' +
+                  '<span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-purple-100 ring-1 ring-purple-200 flex-shrink-0">' +
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 ' + (check ? 'text-purple-600' : 'text-slate-300') + '"><path d="M20 6 9 17l-5-5"/></svg>' +
+                  '</span>' +
+                  '<span class="text-slate-600 text-sm sm:text-base">' + f.label + ': <strong>' + f.value + '</strong></span>' +
+                '</li>';
+              }).join('') +
+            '</ul>' +
+            '<button class="mt-8 w-full inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-all duration-200 ' +
+              (isPaid
+                ? 'text-white bg-purple-600 hover:bg-purple-700 shadow-lg shadow-purple-200 hover:shadow-purple-300'
+                : 'text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200') +
+              '">' +
+              (isPaid ? 'Subscribe Now' : 'Get Started') +
+            '</button>' +
+          '</div>';
 
         return card;
       }
@@ -667,7 +712,7 @@
         }
 
         filtered.forEach(function(plan) {
-          grid.appendChild(buildCard(plan));
+          grid.appendChild(buildCard(plan, tab));
         });
 
         requestAnimationFrame(function() {
@@ -702,13 +747,43 @@
       };
 
       // Fetch
-      fetch(apiBase + '/subscription/plans?_=' + Date.now())
+      var plansFetch = fetch(apiBase + '/subscription/plans?_=' + Date.now())
         .then(function(res) { return res.json(); })
         .then(function(json) {
           if (!json.success || !Array.isArray(json.data)) {
             throw new Error('Invalid response');
           }
-          allPlans = json.data;
+          return json.data;
+        });
+
+      var yearlyFetch = fetch(apiBase + '/plans?_=' + Date.now())
+        .then(function(res) { return res.json(); })
+        .then(function(json) {
+          if (!json.success || !Array.isArray(json.data)) return {};
+          var map = {};
+          function norm(n) {
+            return n.toLowerCase().trim().replace(/[^a-z]/g, '').replace(/plan$/, '');
+          }
+          json.data.forEach(function(p) {
+            if (p.type === 'talent' && !p.isAddOn && p.name) {
+              map[norm(p.name)] = p.priceYearPaise;
+            }
+          });
+          return map;
+        })
+        .catch(function() { return {}; });
+
+      Promise.all([plansFetch, yearlyFetch])
+        .then(function(results) {
+          var plansData = results[0];
+          var yearlyMap = results[1];
+
+          allPlans = plansData.map(function(p) {
+            var key = p.name ? p.name.toLowerCase().trim().replace(/[^a-z]/g, '').replace(/plan$/, '') : '';
+            p.yearlyPricePaise = yearlyMap[key] != null ? yearlyMap[key] : null;
+            return p;
+          });
+
           loading.style.display = 'none';
           content.classList.remove('hidden');
 

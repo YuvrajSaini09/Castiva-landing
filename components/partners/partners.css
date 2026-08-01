@@ -70,6 +70,23 @@
 .partner-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  z-index: 50;
+}
+
+.partners-marquee-row {
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  padding-top: 16px;
+  padding-bottom: 10px;
+}
+
+.partners-marquee-row:first-child {
+  margin-top: -16px;
+}
+
+.partners-marquee-row + .partners-marquee-row {
+  margin-top: calc(1.5rem - 16px);
 }
 
 .partner-card-gradient {
@@ -218,7 +235,7 @@
 /* --- Celebrity Card Redesign --- */
 .partner-card.celebrity-card {
   width: 300px;
-  padding: 52px 8px 8px 8px;
+  padding: 64px 8px 8px 8px;
   border-radius: 32px;
   overflow: visible;
   display: inline-flex;
@@ -230,7 +247,7 @@
 .celebrity-inner-card {
   background: #ffffff;
   border-radius: 24px;
-  padding: 48px 12px 12px 12px;
+  padding: 26px 12px 8px 12px;
   width: 100%;
   box-sizing: border-box;
   position: relative;
@@ -241,14 +258,14 @@
 
 .celebrity-avatar-wrapper {
   position: absolute;
-  top: -44px;
+  top: -38px;
   left: 16px;
   z-index: 10;
 }
 
 .celebrity-avatar {
-  width: 76px;
-  height: 76px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   border: none;
   object-fit: cover;
@@ -257,61 +274,156 @@
 }
 
 .partner-avatar-placeholder.celebrity-avatar {
-  width: 76px;
-  height: 76px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 400;
   color: #fff;
   box-shadow: 0 4px 16px rgba(0,0,0,0.18);
 }
 
 .celebrity-name {
+  position: absolute;
+  top: 4px;
+  left: 100px;
+  right: 12px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: #0f172a;
   margin: 0;
   line-height: 1.3;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: left;
 }
 
-.celebrity-role {
-  font-size: 13px;
-  color: #9333ea;
-  font-weight: 600;
-  margin: 0;
-}
-
-.celebrity-location {
-  font-size: 12px;
-  color: #94a3b8;
-  margin: 4px 0 0 0;
+.celebrity-tags {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.location-pill-wrapper {
-  min-height: 32px;
-  display: flex;
-  align-items: center;
+  gap: 6px;
+  margin-left: 0;
   margin-top: 2px;
 }
 
-.location-pill-wrapper .relative {
-  line-height: 0;
+.celebrity-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
 }
 
-.location-pill-wrapper button {
+.celebrity-bottom-row .view-profile-wrapper {
+  min-height: 0;
+  margin-top: 0;
+}
+
+.celebrity-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: #f3e8ff;
+  color: #9333ea;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.celebrity-flag-wrap {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  background: #f1f5f9;
+  flex-shrink: 0;
+}
+
+.celebrity-flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.celebrity-desc {
+  margin: 2px 0 0 88px;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.view-profile-wrapper {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  justify-content: flex-end;
+}
+
+.view-profile-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  height: 36px;
   padding: 0 14px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-profile-label {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.view-profile-glow {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 1px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.view-profile-btn:hover {
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3), 0 0 14px rgba(255,255,255,0.12) !important;
+}
+
+.view-profile-btn:hover .view-profile-glow {
+  opacity: 0.9;
 }
 

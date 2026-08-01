@@ -3,65 +3,40 @@
 (function () {
   var apiBase = 'https://backend.castiva.in/api/v1';
 
-  function createFallbackEl(name) {
-    var el = document.createElement('div');
-    el.className = 'w-full h-full flex items-center justify-center text-white font-bold text-xl bg-purple-600';
-    el.textContent = name.charAt(0).toUpperCase();
-    return el;
-  }
-
   function buildTestimonialCard(t) {
     var card = document.createElement('div');
-    card.className = 'inline-block shrink-0 w-[350px] bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow';
+    card.className = 'tp-card inline-block align-top shrink-0';
 
-    var top = document.createElement('div');
-    top.className = 'flex items-center gap-4 mb-6';
-
-    var imgWrapper = document.createElement('div');
-    imgWrapper.className = 'w-14 h-14 rounded-full overflow-hidden shrink-0 bg-slate-100';
-
-    if (t.imageUrl) {
-      var img = document.createElement('img');
-      img.className = 'w-full h-full object-cover';
-      img.src = t.imageUrl;
-      img.alt = t.name;
-      img.loading = 'lazy';
-      img.onerror = function () {
-        img.style.display = 'none';
-        imgWrapper.appendChild(createFallbackEl(t.name));
-      };
-      imgWrapper.appendChild(img);
-    } else {
-      imgWrapper.appendChild(createFallbackEl(t.name));
+    var filled = Math.max(1, Math.min(5, t.starsCount || 5));
+    var starSvg = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+    var stars = '';
+    for (var i = 0; i < 5; i++) {
+      stars += '<span class="' + (i < filled ? 'text-amber-400' : 'text-slate-200') + '">' + starSvg + '</span>';
     }
 
-    var info = document.createElement('div');
-    info.className = 'flex-1 min-w-0';
+    var avatarInner;
+    if (t.imageUrl) {
+      avatarInner = '<img src="' + t.imageUrl + '" alt="' + (t.name || '') + '" loading="lazy" class="tp-avatar-img" onerror="this.style.display=\'none\'">';
+    } else {
+      avatarInner = '<span class="tp-fallback">' + (t.name ? t.name.charAt(0).toUpperCase() : 'C') + '</span>';
+    }
 
-    var nameRow = document.createElement('div');
-    nameRow.className = 'flex items-center gap-1.5';
+    card.innerHTML =
+      '<div class="tp-glow"></div>' +
+      '<div class="tp-quote">&ldquo;</div>' +
+      '<div class="tp-head">' +
+        '<div class="tp-avatar">' +
+          avatarInner +
+          '<span class="tp-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>' +
+        '</div>' +
+        '<div class="tp-info">' +
+          '<h3>' + (t.name || 'Castiva Talent') + '</h3>' +
+          '<p class="tp-role">Verified Talent</p>' +
+        '</div>' +
+      '</div>' +
+      '<div class="tp-stars">' + stars + '</div>' +
+      '<p class="tp-text">&ldquo;' + (t.content || '') + '&rdquo;</p>';
 
-    var nameEl = document.createElement('h4');
-    nameEl.className = 'font-bold text-slate-900 text-base';
-    nameEl.textContent = t.name;
-
-    var starsEl = document.createElement('span');
-    starsEl.className = 'text-yellow-400 text-xs shrink-0 font-semibold';
-    starsEl.textContent = '(' + (t.starsCount || 0) + '\u00a0\u2605)';
-
-    nameRow.appendChild(nameEl);
-    nameRow.appendChild(starsEl);
-    info.appendChild(nameRow);
-
-    top.appendChild(imgWrapper);
-    top.appendChild(info);
-
-    var quote = document.createElement('p');
-    quote.className = 'text-slate-600 text-sm leading-relaxed whitespace-normal font-sans';
-    quote.textContent = '\u201C' + t.content + '\u201D';
-
-    card.appendChild(top);
-    card.appendChild(quote);
     return card;
   }
 

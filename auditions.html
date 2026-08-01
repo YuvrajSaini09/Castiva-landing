@@ -281,7 +281,7 @@
 
         <!-- Mobile Menu Icon -->
         <button id="mobile-menu-btn" class="md:hidden relative w-10 h-10 flex items-center justify-center" aria-label="Toggle menu">
-          <img id="menu-icon-open" src="Asset/menu.png" alt="Menu" class="w-6 h-6 object-contain transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] scale-100 opacity-100 rotate-0">
+          <img id="menu-icon-open" src="Asset/menu.png" alt="Menu" class="w-[22px] h-[22px] object-contain transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] scale-100 opacity-100 rotate-0">
           <svg id="menu-icon-close" class="w-6 h-6 text-slate-700 absolute scale-0 opacity-0 -rotate-90 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <line x1="18" y1="6" x2="6" y2="18"/>
             <line x1="6" y1="6" x2="18" y2="18"/>
@@ -372,16 +372,16 @@
     <div id="auditions-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </section>
   <!-- Footer Component -->
-<footer class="bg-slate-950 text-slate-400 py-16 px-6 border-t border-slate-900">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<footer class="text-slate-200 py-16 px-6 border-t border-[#260B47]" style="background: linear-gradient(0deg, rgba(0,0,0,0.12), rgba(0,0,0,0.12)), linear-gradient(289.32deg, #8840ED 36.27%, #4E27D0 54.7%, #8840ED 73.07%); background-blend-mode: hard-light, normal;">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
     <!-- Col 1: Brand -->
     <div class="space-y-4">
       <a href="index.html" class="flex items-center group">
-        <div class="w-[112px] h-10 overflow-hidden group-hover:scale-105 transition-transform bg-transparent flex items-center">
-          <img src="logo.png" alt="Castiva logo" class="w-full h-full object-contain">
+        <div class="w-[273.44px] h-[97.66px] md:w-[246.1px] md:h-[87.9px] overflow-hidden group-hover:scale-105 transition-transform bg-transparent flex items-center">
+          <img src="new-logo.png" alt="Castiva logo" class="w-full h-full object-contain">
         </div>
       </a>
-      <p class="text-sm text-slate-500 leading-relaxed">India's 1st AI Enabled Global Casting Ecosystem. Bridging talent and opportunity weightlessly.</p>
+      <p class="text-sm text-slate-300 leading-relaxed">India's 1st AI Enabled Global Casting Ecosystem. Bridging talent and opportunity weightlessly.</p>
     </div>
 
     <!-- Col 2: Navigation -->
@@ -407,19 +407,9 @@
         <li><a href="legal.html?tab=cookie-policy" class="hover:text-white transition-colors">Cookie Policy</a></li>
       </ul>
     </div>
-
-    <!-- Col 4: Newsletter -->
-    <div>
-      <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Stay Tuned</h5>
-      <p class="text-sm text-slate-500 mb-4">Subscribe to receive casting alerts and news.</p>
-      <form class="flex gap-2">
-        <input type="email" placeholder="Your email" class="bg-slate-900 border border-slate-800 rounded-full px-4 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-purple-600 w-full">
-        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-full px-4 py-2 transition-colors">Go</button>
-      </form>
-    </div>
   </div>
 
-  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
+  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-[#260B47] text-center text-xs text-slate-300">
     <p>&copy; 2026 Castiva. All rights reserved.</p>
   </div>
 </footer>
@@ -433,7 +423,7 @@
   const modal = document.getElementById('mobile-nav-modal');
   const openIcon = document.getElementById('menu-icon-open');
   const closeIcon = document.getElementById('menu-icon-close');
-  const links = modal?.querySelectorAll('.mobile-nav-link');
+  const links = modal?.querySelectorAll('a.mobile-nav-link');
   if (!btn || !modal) return;
 
   let open = false;
@@ -472,23 +462,63 @@
   window.addEventListener('scroll', () => { if (open) closeMenu(); }, { passive: true });
   window.addEventListener('resize', () => { if (open) positionModal(); });
 
-  // Mobile submenu toggles
-  function setupMobileSubmenu(triggerId, subId, arrowId) {
-    const trigger = document.getElementById(triggerId);
-    const sub = document.getElementById(subId);
-    const arrow = document.getElementById(arrowId);
+  // Mobile submenu toggles (accordion: only one open at a time, animated)
+  const mobileSubmenus = [
+    { trigger: 'mobile-about-trigger', sub: 'mobile-about-sub', arrow: 'mobile-about-arrow' },
+    { trigger: 'mobile-events-trigger', sub: 'mobile-events-sub', arrow: 'mobile-events-arrow' }
+  ];
+
+  function animateSubmenu(sub, open) {
+    if (open) {
+      sub.classList.remove('hidden');
+      sub.style.overflow = 'hidden';
+      sub.style.maxHeight = '0px';
+      sub.style.opacity = '0';
+      sub.style.transition = 'max-height 0.35s ease, opacity 0.3s ease';
+      void sub.offsetHeight;
+      sub.style.maxHeight = sub.scrollHeight + 'px';
+      sub.style.opacity = '1';
+      sub.dataset.open = 'true';
+    } else {
+      sub.style.maxHeight = sub.scrollHeight + 'px';
+      sub.style.opacity = '1';
+      void sub.offsetHeight;
+      sub.style.maxHeight = '0px';
+      sub.style.opacity = '0';
+      sub.dataset.open = 'false';
+      setTimeout(function () {
+        sub.classList.add('hidden');
+      }, 300);
+    }
+  }
+
+  function setupMobileSubmenu(config) {
+    const trigger = document.getElementById(config.trigger);
+    const sub = document.getElementById(config.sub);
+    const arrow = document.getElementById(config.arrow);
     if (!trigger || !sub || !arrow) return;
+    sub.dataset.open = 'false';
 
     trigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isHidden = sub.classList.contains('hidden');
-      sub.classList.toggle('hidden');
-      arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+      const isOpening = sub.dataset.open !== 'true';
+
+      mobileSubmenus.forEach(function (other) {
+        if (other.sub === config.sub) return;
+        const otherSub = document.getElementById(other.sub);
+        const otherArrow = document.getElementById(other.arrow);
+        if (otherSub && otherSub.dataset.open === 'true') {
+          animateSubmenu(otherSub, false);
+        }
+        if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+      });
+
+      animateSubmenu(sub, isOpening);
+      arrow.style.transform = isOpening ? 'rotate(180deg)' : 'rotate(0deg)';
     });
   }
 
-  setupMobileSubmenu('mobile-about-trigger', 'mobile-about-sub', 'mobile-about-arrow');
-  setupMobileSubmenu('mobile-events-trigger', 'mobile-events-sub', 'mobile-events-arrow');
+  mobileSubmenus.forEach(setupMobileSubmenu);
 })();
 
 // WebGL Button Shader (Purple Theme)
@@ -538,17 +568,19 @@
         var recruiter = job.recruiter?.recruiterProfile;
         var companyName = recruiter?.companyName || '';
         var logoUrl = recruiter?.companyLogoUrl || '';
+        var coverImage = job.coverImageUrl || logoUrl || '';
         var city = job.locationCity || '';
         var state = job.locationState || '';
         var location = city + (city && state ? ', ' : '') + state;
         var workMode = job.workMode ? job.workMode.charAt(0).toUpperCase() + job.workMode.slice(1) : '';
-        var budgetLabel = '';
-        if (job.budgetType === 'negotiable') {
-          budgetLabel = 'Negotiable';
-        } else if (job.budgetMinPaise || job.budgetMaxPaise) {
+        var isNegotiable = job.budgetType === 'negotiable';
+        var budgetValue = '';
+        if (job.budgetMinPaise || job.budgetMaxPaise) {
           var min = formatPaise(job.budgetMinPaise);
           var max = formatPaise(job.budgetMaxPaise);
-          budgetLabel = (min || '') + ' - ' + (max || '');
+          budgetValue = (min || '') + ' - ' + (max || '');
+        } else if (isNegotiable) {
+          budgetValue = 'Negotiable';
         }
 
         var ageRange = '';
@@ -558,36 +590,57 @@
 
         var skills = Array.isArray(job.skillsRequired) ? job.skillsRequired : [];
 
+        var subtitle = '';
+        var jobTypeLabel = job.jobType ? job.jobType.charAt(0).toUpperCase() + job.jobType.slice(1) : '';
+        var categoryLabel = job.category ? job.category.charAt(0).toUpperCase() + job.category.slice(1) : '';
+        if (categoryLabel && jobTypeLabel) {
+          subtitle = categoryLabel + ' \u00B7 ' + jobTypeLabel;
+        } else {
+          subtitle = categoryLabel || jobTypeLabel;
+        }
+
         var card = document.createElement('div');
-        card.className = 'gs-audition-card relative bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 p-6 sm:p-8 flex flex-col opacity-0';
+        card.className = 'gs-audition-card relative overflow-hidden rounded-[24px] bg-white text-slate-900 border border-purple-100 shadow-[0_10px_40px_rgba(168,51,255,0.12)] hover:shadow-[0_20px_60px_rgba(124,0,255,0.2)] hover:-translate-y-1 transition-all duration-500 p-6 sm:p-7 flex flex-col opacity-0';
 
         card.innerHTML =
-          '<div class="flex items-start gap-4 mb-5">' +
-            (logoUrl
-              ? '<img src="' + logoUrl + '" alt="' + companyName + '" class="w-12 h-12 rounded-xl object-cover flex-shrink-0 border border-slate-100" onerror="this.style.display=\'none\'">'
-              : '<div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-lg flex-shrink-0">' + (companyName ? companyName.charAt(0) : 'C') + '</div>') +
-            '<div class="flex-1 min-w-0">' +
-              '<h3 class="text-lg font-bold text-slate-900 truncate">' + (job.title || 'Untitled') + '</h3>' +
-              (companyName ? '<p class="text-sm text-slate-500 truncate">' + companyName + '</p>' : '') +
+          '<div class="absolute -top-12 -right-12 w-44 h-44 bg-purple-300/80 rounded-full blur-3xl pointer-events-none"></div>' +
+          '<div class="absolute -bottom-16 -left-10 w-56 h-56 bg-purple-400/20 rounded-full blur-3xl pointer-events-none"></div>' +
+          '<div class="absolute top-1/2 left-1/3 w-32 h-32 bg-fuchsia-300/60 rounded-full blur-3xl pointer-events-none"></div>' +
+          '<div class="relative z-10 flex flex-col flex-1 min-w-0">' +
+
+            '<div class="flex items-center justify-between gap-3">' +
+              '<div class="text-sm font-semibold text-slate-700 truncate" style="opacity:.95;">' + (companyName || 'Castiva') + '</div>' +
+              (workMode ? '<span class="inline-flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-purple-200 rounded-md px-2.5 py-1 text-purple-700 bg-purple-50/80 whitespace-nowrap" style="opacity:.95;">' + workMode + '</span>' : '') +
             '</div>' +
-          '</div>' +
 
-          '<div class="flex flex-wrap gap-2 mb-4">' +
-            (job.category ? '<span class="text-[11px] font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">' + job.category + '</span>' : '') +
-            (workMode ? '<span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-full">' + workMode + '</span>' : '') +
-            (job.jobType ? '<span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-full">' + job.jobType.charAt(0).toUpperCase() + job.jobType.slice(1) + '</span>' : '') +
-            (job.vacancies ? '<span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-full">' + job.vacancies + ' openings</span>' : '') +
-          '</div>' +
+            '<div class="flex items-center gap-4 mt-4 ml-1.5">' +
+              '<div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden flex-shrink-0">' +
+                '<div class="absolute inset-0" style="background: linear-gradient(135deg, #A833FF 0%, #7C00FF 100%);"></div>' +
+                (coverImage
+                  ? '<img src="' + coverImage + '" alt="' + (job.title || 'Audition') + '" class="relative w-full h-full object-cover rounded-full" onerror="this.style.display=\'none\'">'
+                  : '<div class="absolute inset-0 flex items-center justify-center"><svg class="w-7 h-7 text-white/70" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>') +
+              '</div>' +
+              '<div class="min-w-0 flex-1">' +
+                '<h2 class="text-xl sm:text-2xl font-bold tracking-tight leading-tight text-slate-900">' + (job.title || 'Untitled') + '</h2>' +
+                (subtitle ? '<p class="text-sm text-slate-500 mt-1">' + subtitle + '</p>' : '') +
+              '</div>' +
+            '</div>' +
 
-          '<div class="space-y-2 text-sm text-slate-600 mb-5 flex-1">' +
-            (location ? '<div class="flex items-center gap-2"><svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>' + location + '</span></div>' : '') +
-            (budgetLabel ? '<div class="flex items-center gap-2"><svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>' + budgetLabel + '</span></div>' : '') +
-            (ageRange ? '<div class="flex items-center gap-2"><svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/></svg><span>' + ageRange + '</span></div>' : '') +
-            (job.applicationCount !== undefined ? '<div class="flex items-center gap-2"><svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>' + job.applicationCount + ' applicant' + (job.applicationCount !== 1 ? 's' : '') + '</span></div>' : '') +
-          '</div>' +
+            '<ul class="mt-4 space-y-2.5 text-sm flex-1">' +
+              (location ? '<li class="flex items-center gap-2.5"><img src="icons/recruiter-icons/location.png" alt="Location" class="w-5 h-5 object-contain flex-shrink-0"><span class="text-slate-900 font-medium">' + location + '</span></li>' : '') +
+              (ageRange ? '<li class="flex items-center gap-2.5"><img src="icons/recruiter-icons/search-filter.png" alt="Age" class="w-5 h-5 object-contain flex-shrink-0"><span class="text-slate-900 font-medium">Age ' + ageRange + '</span></li>' : '') +
+              (job.vacancies ? '<li class="flex items-center gap-2.5"><img src="icons/howitworks-talent/dream-job.png" alt="Openings" class="w-5 h-5 object-contain flex-shrink-0"><span class="text-slate-900 font-medium">' + job.vacancies + ' opening' + (job.vacancies !== 1 ? 's' : '') + '</span></li>' : '') +
+              (job.applicationCount !== undefined ? '<li class="flex items-center gap-2.5"><img src="icons/howitworks-talent/verified.png" alt="Applicants" class="w-5 h-5 object-contain flex-shrink-0"><span class="text-slate-900 font-medium">' + job.applicationCount + ' applicant' + (job.applicationCount !== 1 ? 's' : '') + '</span></li>' : '') +
+              (isNegotiable ? '<li class="flex items-center gap-2.5"><img src="icons/recruiter-icons/cost-effective.png" alt="Negotiable" class="w-5 h-5 object-contain flex-shrink-0"><span class="text-slate-900 font-medium">Negotiable</span></li>' : '') +
+            '</ul>' +
 
-          '<div class="flex gap-2 pt-4 border-t border-slate-100">' +
-            '<a href="https://castiva.in" target="_blank" class="flex-1 text-center py-2.5 rounded-xl font-bold text-sm bg-purple-600 hover:bg-purple-700 text-white transition-colors">Apply Now</a>' +
+            '<div class="mt-4 flex items-center justify-between gap-3">' +
+              (budgetValue ? '<div class="flex items-center gap-2 min-w-0 ml-1">' +
+                '<span class="text-lg sm:text-xl font-bold tracking-tight truncate text-slate-900">' + budgetValue + '</span>' +
+              '</div>' : '') +
+              '<a href="https://castiva.in" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm text-white shadow-sm transition-all" style="background: linear-gradient(135deg, #A833FF 0%, #7C00FF 100%); box-shadow: 0 4px 15px rgba(168, 51, 255, 0.35);">Apply Now</a>' +
+            '</div>' +
+
           '</div>';
 
         return card;

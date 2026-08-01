@@ -84,13 +84,24 @@
     </div>
   </section>
   <!-- @import "../components/scrolling-banner/scrolling-banner.html" -->
-  <section class="py-16 sm:py-20 px-6 max-w-5xl mx-auto">
-    <div class="text-center space-y-8">
-      <div class="gs-about-features-title">
-        <span class="text-xs font-semibold text-purple-600 bg-purple-50 px-4 py-2 rounded-full uppercase tracking-wider">Coming Soon</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 leading-tight">Events <span class="text-purple-600">Calendar</span></h2>
+  <section class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="space-y-8">
+      <div id="events-loading" class="flex justify-center py-10">
+        <div class="flex items-center gap-3 text-slate-500">
+          <svg class="animate-spin h-6 w-6 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span class="text-base font-medium">Loading events...</span>
+        </div>
       </div>
-      <p class="gs-vision-reveal text-slate-500 max-w-xl mx-auto text-base sm:text-lg leading-relaxed">We're curating a calendar of exciting events for the talent community. Stay tuned for announcements.</p>
+
+      <div id="events-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+      <div id="events-error" class="hidden text-center py-10">
+        <p class="text-slate-500 text-base">Unable to load events at this time.</p>
+        <button onclick="location.reload()" class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors">Retry</button>
+      </div>
     </div>
   </section>
   <!-- @import "../components/footer/footer.html" -->
@@ -99,6 +110,83 @@
   </script>
   <script>
     <!-- @import "../components/scrolling-banner/scrolling-banner.js" -->
+  </script>
+  <script>
+    function buildContentCard(page) {
+      var card = document.createElement('a');
+      card.href = 'page-post.html?category=events&slug=' + encodeURIComponent(page.slug || page.id);
+      card.className = 'block bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 group';
+
+      var imgWrapper = document.createElement('div');
+      imgWrapper.className = 'aspect-[2/1] bg-slate-100 overflow-hidden';
+
+      if (page.imageUrl) {
+        var img = document.createElement('img');
+        img.className = 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500';
+        img.src = page.imageUrl;
+        img.alt = page.title;
+        img.loading = 'lazy';
+        img.onerror = function () {
+          this.style.display = 'none';
+        };
+        imgWrapper.appendChild(img);
+      }
+
+      var body = document.createElement('div');
+      body.className = 'p-6 space-y-3 rounded-t-[2.5rem] -mt-8 relative z-10 bg-white';
+
+      var titleEl = document.createElement('h3');
+      titleEl.className = 'font-bold text-slate-900 text-lg leading-snug group-hover:text-purple-600 transition-colors';
+      titleEl.textContent = page.title;
+      body.appendChild(titleEl);
+
+      if (page.body) {
+        var excerptEl = document.createElement('p');
+        excerptEl.className = 'text-slate-500 text-sm leading-relaxed line-clamp-3';
+        excerptEl.textContent = page.body.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+        body.appendChild(excerptEl);
+      }
+
+      var dateEl = document.createElement('p');
+      dateEl.className = 'text-xs text-slate-400 font-medium';
+      if (page.publishedAt) {
+        var d = new Date(page.publishedAt);
+        dateEl.textContent = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+      body.appendChild(dateEl);
+
+      card.appendChild(imgWrapper);
+      card.appendChild(body);
+
+      return card;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var loading = document.getElementById('events-loading');
+      var list = document.getElementById('events-list');
+      var errorEl = document.getElementById('events-error');
+      if (!list) return;
+
+      fetch('https://backend.castiva.in/api/v1/pages?category=events&_=' + Date.now())
+        .then(function (res) { return res.json(); })
+        .then(function (json) {
+          loading.style.display = 'none';
+          if (!json.success || !Array.isArray(json.data)) {
+            throw new Error('Invalid response');
+          }
+          if (json.data.length === 0) {
+            list.innerHTML = '<div class="sm:col-span-2 text-center py-12"><p class="text-slate-500">No events available at the moment.</p></div>';
+            return;
+          }
+          json.data.forEach(function (page) {
+            list.appendChild(buildContentCard(page));
+          });
+        })
+        .catch(function () {
+          loading.style.display = 'none';
+          errorEl.classList.remove('hidden');
+        });
+    });
   </script>
   <script>
     if (window.gsap) {

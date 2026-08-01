@@ -145,7 +145,7 @@
   <!-- @import "../components/scrolling-banner/scrolling-banner.html" -->
 
   <!-- Pricing Plans Section -->
-  <section class="pt-0 pb-16 sm:pb-20 px-6 max-w-6xl mx-auto">
+  <section class="pt-0 pb-16 sm:pb-20 px-6 max-w-7xl mx-auto">
     <!-- Loading -->
     <div id="pricing-loading" class="text-center py-20">
       <div class="inline-block w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
@@ -170,7 +170,7 @@
       </div>
 
       <!-- Grid -->
-      <div id="pricing-grid" class="flex flex-wrap justify-center gap-6">
+      <div id="pricing-grid" class="relative flex flex-wrap justify-center gap-8">
       </div>
     </div>
   </section>
@@ -193,10 +193,15 @@
       var allPlans = [];
       var currentTab = 'monthly';
 
-      function buildCard(plan) {
+      function buildCard(plan, tab) {
+        var isYearly = tab === 'yearly';
+        var yearly = isYearly && plan.yearlyPricePaise != null && plan.yearlyPricePaise > 0;
+        var isPaid = !!plan.isPaid || yearly;
+        var paise = yearly ? plan.yearlyPricePaise : (plan.isPaid ? plan.pricePaise : null);
+
         var price = 'Free';
-        if (plan.isPaid && plan.pricePaise > 0) {
-          price = '\u20B9' + (plan.pricePaise / 100).toLocaleString('en-IN');
+        if (isPaid && paise != null && paise > 0) {
+          price = '\u20B9' + (paise / 100).toLocaleString('en-IN');
         }
 
         var features = [
@@ -210,37 +215,47 @@
         ];
 
         var isPopular = plan.tier === 'premium';
-        var borderClass = isPopular ? 'border-purple-400 ring-2 ring-purple-200' : 'border-slate-100';
-        var badge = isPopular
-          ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</div>'
-          : '';
 
         var card = document.createElement('div');
-        card.className = 'gs-pricing-card relative bg-white rounded-2xl border ' + borderClass + ' shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 p-6 sm:p-8 flex flex-col w-full max-w-sm opacity-0';
-        card.innerHTML = badge +
-          '<div class="mb-6">' +
-            '<h3 class="text-lg font-bold text-slate-900">' + plan.name + '</h3>' +
-            '<div class="mt-2 flex items-baseline gap-1">' +
-              '<span class="text-3xl sm:text-4xl font-extrabold text-slate-900">' + price + '</span>' +
-              (plan.isPaid ? '<span class="text-slate-400 text-sm">/month</span>' : '') +
+        card.className = 'gs-pricing-card relative rounded-3xl border bg-white/80 backdrop-blur-xl overflow-hidden transition-all duration-300 group cursor-pointer w-full max-w-sm flex flex-col opacity-0 ' +
+          (isPopular
+            ? 'border-purple-300 shadow-[0_0_30px_rgba(168,51,255,0.15)] hover:border-purple-400 hover:shadow-[0_20px_50px_-12px_rgba(168,51,255,0.3)]'
+            : 'border-slate-200 hover:border-purple-300 hover:shadow-[0_20px_50px_-12px_rgba(168,51,255,0.18)]');
+
+        card.innerHTML =
+          '<div class="pointer-events-none absolute inset-0 transition-all duration-300 group-hover:opacity-100 opacity-75" style="background: radial-gradient(120% 100% at 0% 0%, rgba(168,51,255,0.12), rgba(168,51,255,0.04) 40%, transparent 60%);"></div>' +
+          '<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>' +
+          '<div class="p-6 sm:p-8 flex flex-col flex-1">' +
+            '<div class="flex items-center justify-between">' +
+              '<h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900 group-hover:text-purple-700 transition-colors duration-300">' + plan.name + '</h3>' +
+              (isPopular
+                ? '<span class="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold text-purple-700 bg-purple-100 border border-purple-200">Popular</span>'
+                : '') +
             '</div>' +
-          '</div>' +
-          '<div class="space-y-3 flex-1">' +
-            features.map(function(f) {
-              var check = f.value === 'Yes' || f.value === 'Unlimited' || (typeof f.value === 'number' && f.value > 0);
-              return '<div class="flex items-center gap-3 text-sm">' +
-                '<svg class="w-4 h-4 flex-shrink-0 ' + (check ? 'text-purple-600' : 'text-slate-300') + '" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>' +
-                '<span class="text-slate-600">' + f.label + ': <strong>' + f.value + '</strong></span>' +
-              '</div>';
-            }).join('') +
-          '</div>' +
-          '<button class="mt-8 w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 ' +
-            (plan.isPaid
-              ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-200 hover:shadow-purple-300'
-              : 'bg-purple-50 hover:bg-purple-100 text-purple-700') +
-            '">' +
-            (plan.isPaid ? 'Subscribe Now' : 'Get Started') +
-          '</button>';
+            '<p class="mt-4 text-slate-500 group-hover:text-slate-600 transition-colors duration-300">Everything you need to get started.</p>' +
+            '<div class="mt-2 flex items-baseline gap-2">' +
+              '<span class="text-slate-900 text-3xl sm:text-4xl font-semibold tracking-tight group-hover:text-purple-700 transition-colors duration-300">' + price + '</span>' +
+              (isPaid ? '<span class="text-slate-400 text-sm">/' + (isYearly ? 'year' : 'month') + '</span>' : '') +
+            '</div>' +
+            '<ul class="mt-6 space-y-3 flex-1">' +
+              features.map(function(f) {
+                var check = f.value === 'Yes' || f.value === 'Unlimited' || (typeof f.value === 'number' && f.value > 0);
+                return '<li class="flex items-start gap-3">' +
+                  '<span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-purple-100 ring-1 ring-purple-200 flex-shrink-0">' +
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 ' + (check ? 'text-purple-600' : 'text-slate-300') + '"><path d="M20 6 9 17l-5-5"/></svg>' +
+                  '</span>' +
+                  '<span class="text-slate-600 text-sm sm:text-base">' + f.label + ': <strong>' + f.value + '</strong></span>' +
+                '</li>';
+              }).join('') +
+            '</ul>' +
+            '<button class="mt-8 w-full inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-all duration-200 ' +
+              (isPaid
+                ? 'text-white bg-purple-600 hover:bg-purple-700 shadow-lg shadow-purple-200 hover:shadow-purple-300'
+                : 'text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200') +
+              '">' +
+              (isPaid ? 'Subscribe Now' : 'Get Started') +
+            '</button>' +
+          '</div>';
 
         return card;
       }
@@ -255,7 +270,7 @@
         }
 
         filtered.forEach(function(plan) {
-          grid.appendChild(buildCard(plan));
+          grid.appendChild(buildCard(plan, tab));
         });
 
         requestAnimationFrame(function() {
@@ -290,13 +305,43 @@
       };
 
       // Fetch
-      fetch(apiBase + '/subscription/plans?_=' + Date.now())
+      var plansFetch = fetch(apiBase + '/subscription/plans?_=' + Date.now())
         .then(function(res) { return res.json(); })
         .then(function(json) {
           if (!json.success || !Array.isArray(json.data)) {
             throw new Error('Invalid response');
           }
-          allPlans = json.data;
+          return json.data;
+        });
+
+      var yearlyFetch = fetch(apiBase + '/plans?_=' + Date.now())
+        .then(function(res) { return res.json(); })
+        .then(function(json) {
+          if (!json.success || !Array.isArray(json.data)) return {};
+          var map = {};
+          function norm(n) {
+            return n.toLowerCase().trim().replace(/[^a-z]/g, '').replace(/plan$/, '');
+          }
+          json.data.forEach(function(p) {
+            if (p.type === 'talent' && !p.isAddOn && p.name) {
+              map[norm(p.name)] = p.priceYearPaise;
+            }
+          });
+          return map;
+        })
+        .catch(function() { return {}; });
+
+      Promise.all([plansFetch, yearlyFetch])
+        .then(function(results) {
+          var plansData = results[0];
+          var yearlyMap = results[1];
+
+          allPlans = plansData.map(function(p) {
+            var key = p.name ? p.name.toLowerCase().trim().replace(/[^a-z]/g, '').replace(/plan$/, '') : '';
+            p.yearlyPricePaise = yearlyMap[key] != null ? yearlyMap[key] : null;
+            return p;
+          });
+
           loading.style.display = 'none';
           content.classList.remove('hidden');
 
